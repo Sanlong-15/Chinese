@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Character Memory Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+Khmer:wght@400;600;700&family=Zilla+Slab:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="stamp">學</div>
+  <h1 class="title" id="pageTitle">Character Memory Lab</h1>
+  <p class="subtitle" id="pageSubtitle"></p>
+</header>
+
+<main>
+
+  <!-- ================= TODAY ================= -->
+  <div id="todayView" class="view active">
+    <div class="stat-row">
+      <div class="stat due"><div class="num" id="statDue">0</div><div class="lbl">Due</div></div>
+      <div class="stat"><div class="num" id="statNew">0</div><div class="lbl">New</div></div>
+      <div class="stat done"><div class="num" id="statDone">0</div><div class="lbl">Done today</div></div>
+      <div class="stat"><div class="num" id="statStreak">0</div><div class="lbl">Day streak</div></div>
+    </div>
+
+    <div id="sessionStart" class="session-start">
+      <div class="big-zi">今</div>
+      <h2 style="font-family:'Zilla Slab';font-size:21px;margin:8px 0 0;">Today's session</h2>
+      <p id="sessionStartNote"></p>
+      <button class="btn primary big" id="startSessionBtn">Start session</button>
+    </div>
+
+    <div id="sessionRun" class="task-wrap" style="display:none;">
+      <div class="task-bar">
+        <div class="meta"><span id="taskCounter"></span><span id="taskWordLevel"></span></div>
+        <div class="bar"><span id="taskProgress"></span></div>
+      </div>
+      <div class="task-card" id="taskCard"></div>
+      <div class="task-actions" id="taskActions"></div>
+      <button class="btn" id="endSessionBtn" style="margin-top:16px;">End session</button>
+    </div>
+
+    <div id="sessionDone" style="display:none;">
+      <div class="done-card">
+        <div class="big-zi">好</div>
+        <h2 style="font-family:'Zilla Slab';font-size:21px;margin:8px 0 6px;">Session finished</h2>
+        <p id="doneNote" style="font-size:13.5px;color:var(--ink-soft);line-height:1.6;"></p>
+        <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:14px;">
+          <button class="btn primary" id="againSessionBtn">Study more</button>
+          <button class="btn" id="goLearnBtn">Browse words</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= LEARN ================= -->
+  <div id="learnView" class="view">
+    <div class="seg" id="learnSeg">
+      <button class="active" data-mode="list">Word list</button>
+      <button data-mode="cards">Flashcards</button>
+    </div>
+
+    <div id="learnList">
+      <div class="controls">
+        <div class="search-wrap">
+          <input id="searchBox" type="text" placeholder="Search Chinese, pinyin, English or Khmer...">
+        </div>
+        <span id="wordsLevelChips" style="display:contents;"></span>
+      </div>
+      <p class="count-note" id="countNote"></p>
+      <div class="grid" id="wordGrid"></div>
+    </div>
+
+    <div id="learnCards" style="display:none;">
+      <p class="intro-text" style="margin-bottom:14px;">Try to answer <em>before</em> you flip. Guessing first is what builds the memory. This is browsing only, it does not change your review schedule.</p>
+      <div class="front-pick">
+        <span class="front-pick-label">Show first</span>
+        <div class="seg" id="frontSeg" style="margin-bottom:0;">
+          <button class="active" data-front="zi">汉字</button>
+          <button data-front="py">Pinyin</button>
+          <button data-front="kh">ខ្មែរ</button>
+        </div>
+      </div>
+      <div class="controls" style="margin-bottom:6px;">
+        <span id="studyLevelChips" style="display:contents;"></span>
+      </div>
+      <div class="study-wrap">
+        <div class="flashcard" id="flashcard">
+          <div class="fc-front fc-front--zi" id="fc-front">你</div>
+          <div class="prompt-hint hint" id="fcHint">Tap to reveal pinyin, meaning and Khmer</div>
+          <div class="revealed">
+            <div class="zi hanzi" id="fc-zi"></div>
+            <div class="py" id="fc-py"></div>
+            <div class="en" id="fc-en"></div>
+            <div class="kh" id="fc-kh"></div>
+          </div>
+        </div>
+        <div class="study-controls">
+          <button class="btn" id="prevBtn">&larr; Prev</button>
+          <button class="btn primary" id="shuffleBtn">Shuffle</button>
+          <button class="btn" id="detailBtn">Full card</button>
+          <button class="btn" id="nextBtn">Next &rarr;</button>
+        </div>
+        <p class="progress-note" id="progressNote"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= PRACTICE ================= -->
+  <div id="practiceView" class="view">
+    <div class="seg" id="practiceSeg">
+      <button class="active" data-pane="paneFamilies">Sound &amp; radicals</button>
+      <button data-pane="paneStructures">Structures</button>
+      <button data-pane="paneCloze">Sentences</button>
+    </div>
+
+    <div id="paneFamilies" class="pane">
+      <h2 class="section-title">Sound-clue families (形声字)</h2>
+      <p class="intro-text">Each group shares one component that gives the SOUND. A different piece gives the MEANING. Learn the group once and you get several characters at a time.</p>
+      <div id="patternGroupsWrap" style="margin-top:16px;"></div>
+      <h2 class="section-title" style="margin-top:28px;">Meaning-clue families (radicals)</h2>
+      <p class="intro-text">These do not share a sound. They share a MEANING radical. Once you know a radical you can guess what a new character is about before you can say it.</p>
+      <div id="radicalGroupsWrap" style="margin-top:16px;"></div>
+    </div>
+
+    <div id="paneStructures" class="pane" style="display:none;">
+      <h2 class="section-title">Character structures (汉字结构)</h2>
+      <p class="intro-text">Before you learn the parts, learn the shape. Every character is laid out in one of these ways. Red lines are a wrapping part. Green blocks are the pieces inside. Characters shown in red are in this lesson, tap them.</p>
+      <div class="struct-grid" id="structGrid" style="margin-top:16px;"></div>
+    </div>
+
+    <div id="paneCloze" class="pane" style="display:none;">
+      <h2 class="section-title">Fill the blank</h2>
+      <p class="intro-text">Read the sentence and pick the word that belongs in the gap. Wrong answers here also push that word back into your review queue.</p>
+      <div class="cloze-wrap" style="margin-top:16px;">
+        <div class="cloze-card" id="clozeCard"></div>
+        <p class="score-note" id="clozeScore"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= YOU ================= -->
+  <div id="youView" class="view">
+    <h2 class="section-title">You</h2>
+
+    <div class="set-card">
+      <h3>Chinese voice</h3>
+      <p class="note">Pick the voice used for every 🔊 button and for listening tasks. If the list is empty or has no Chinese voice, install one in your system settings, then reload this page.</p>
+      <div class="set-row">
+        <label for="voicePicker">Voice</label>
+        <select id="voicePicker"></select>
+      </div>
+      <div class="set-row">
+        <label for="rateSlider">Speed</label>
+        <input type="range" id="rateSlider" min="0.5" max="1.2" step="0.05" value="0.85">
+        <span class="range-val" id="rateVal">0.85x</span>
+      </div>
+      <div class="set-row">
+        <label for="pitchSlider">Pitch</label>
+        <input type="range" id="pitchSlider" min="0.6" max="1.4" step="0.05" value="1">
+        <span class="range-val" id="pitchVal">1.00</span>
+      </div>
+      <div class="set-row">
+        <button class="btn primary" id="voiceTestBtn">Test the voice</button>
+        <span class="hanzi" style="font-size:17px;">你好，我在学中文。</span>
+      </div>
+      <p class="warn" id="voiceWarn" style="display:none;">No Chinese voice found in this browser.</p>
+    </div>
+
+    <div class="set-card">
+      <h3>Session</h3>
+      <p class="note">How much new material to take on each day. Reviews that are already due are always shown first.</p>
+      <div class="set-row">
+        <label for="newLimit">New words / day</label>
+        <input type="number" id="newLimit" min="0" max="50" step="1" value="8">
+      </div>
+      <div class="set-row">
+        <label for="sessionCap">Cards / session</label>
+        <input type="number" id="sessionCap" min="5" max="100" step="5" value="25">
+      </div>
+    </div>
+
+    <div class="set-card">
+      <h3>Backup</h3>
+      <p class="note">Your progress lives only in this browser. Clearing browser data will erase it. Export a backup file now and then, especially before you clear anything.</p>
+      <div class="set-row">
+        <button class="btn primary" id="exportBtn">Export backup</button>
+        <button class="btn" id="importBtn">Import backup</button>
+        <input type="file" id="importFile" accept="application/json,.json" style="display:none;">
+      </div>
+      <p class="ok-note" id="backupNote"></p>
+    </div>
+
+    <div class="set-card">
+      <h3>Progress</h3>
+      <p class="note" id="progressSummary"></p>
+      <div class="set-row">
+        <button class="btn" id="resetBtn">Reset all progress</button>
+        <span class="warn" id="resetWarn" style="display:none;">This cannot be undone. Click again to confirm.</span>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<nav class="bottom">
+  <button class="nav-btn active" data-view="todayView"><span class="nav-zi">今</span>Today<span class="nav-badge" id="navDueBadge" style="display:none;">0</span></button>
+  <button class="nav-btn" data-view="learnView"><span class="nav-zi">學</span>Learn</button>
+  <button class="nav-btn" data-view="practiceView"><span class="nav-zi">練</span>Practice</button>
+  <button class="nav-btn" data-view="youView"><span class="nav-zi">我</span>You</button>
+</nav>
+
+<div id="overlay">
+  <div class="detail-card">
+    <button class="close-btn" id="closeDetail">&times;</button>
+    <div id="detailContent"></div>
+  </div>
+</div>
+
+<footer id="pageFooter"></footer>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
