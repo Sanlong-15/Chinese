@@ -1,0 +1,3257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Character Memory Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+Khmer:wght@400;600;700&family=Zilla+Slab:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #F6F1E6;
+    --paper-2: #EFE7D6;
+    --ink: #2A2622;
+    --ink-soft: #5B5348;
+    --seal: #AE3428;
+    --seal-soft: #E7D3CE;
+    --jade: #3F6F5E;
+    --jade-soft: #DCE7E1;
+    --gold: #B98A2A;
+    --line: #DDD2BC;
+    --card: #FFFFFF;
+    --shadow: 0 2px 10px rgba(42,38,34,0.08);
+    --radius: 14px;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background: var(--paper);
+    background-image: radial-gradient(circle at 1px 1px, rgba(42,38,34,0.045) 1px, transparent 0);
+    background-size: 22px 22px;
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, sans-serif;
+    min-height: 100vh;
+  }
+  .hanzi{ font-family:'Noto Serif SC', serif; }
+  .kh, .prompt-kh, .fc-front--kh{
+    font-family:'Noto Sans Khmer', 'Khmer OS', 'Khmer OS System', sans-serif;
+    line-height: 1.7;
+  }
+
+  header.top{
+    padding: 22px 20px 16px;
+    text-align:center;
+    border-bottom: 1px solid var(--line);
+    background: linear-gradient(180deg, rgba(255,255,255,0.5), transparent);
+  }
+  .stamp{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:48px;height:48px;
+    background: var(--seal); color:#fff;
+    font-family:'Noto Serif SC', serif; font-size: 24px; font-weight:700;
+    border-radius: 8px; transform: rotate(-3deg);
+    box-shadow: var(--shadow); margin-bottom: 8px;
+  }
+  h1.title{ font-family:'Zilla Slab', serif; font-size: clamp(20px, 4vw, 30px); margin: 0 0 4px; }
+  p.subtitle{ margin:0; color: var(--ink-soft); font-size: 13.5px; }
+
+  main{ max-width: 1080px; margin: 0 auto; padding: 20px 16px 110px; }
+  .view{ display:none; }
+  .view.active{ display:block; }
+
+  h2.section-title{
+    font-family:'Zilla Slab'; font-size:20px; margin: 6px 0 14px; padding-bottom:8px;
+    border-bottom: 2px solid var(--seal); display:inline-block;
+  }
+  p.intro-text{ font-size:13.5px; color:var(--ink-soft); line-height:1.6; max-width:640px; }
+
+  /* ---------- Bottom navigation ---------- */
+  nav.bottom{
+    position: fixed; left:0; right:0; bottom:0; z-index: 40;
+    display:flex; justify-content:center; gap:2px;
+    background: rgba(246,241,230,0.96);
+    backdrop-filter: blur(8px);
+    border-top: 1px solid var(--line);
+    padding: 6px 8px calc(6px + env(safe-area-inset-bottom));
+  }
+  .nav-btn{
+    flex:1; max-width:150px;
+    border:none; background:none; cursor:pointer;
+    display:flex; flex-direction:column; align-items:center; gap:2px;
+    padding: 7px 4px 6px; border-radius:12px;
+    color: var(--ink-soft); font-family:'Inter'; font-weight:600; font-size:11.5px;
+  }
+  .nav-btn .nav-zi{ font-family:'Noto Serif SC'; font-size:19px; line-height:1; font-weight:700; }
+  .nav-btn.active{ color: var(--seal); background: var(--seal-soft); }
+  .nav-btn:hover{ color: var(--seal); }
+  .nav-badge{
+    position:absolute; transform: translate(16px,-6px);
+    background: var(--seal); color:#fff; font-size:9.5px; font-weight:700;
+    border-radius:999px; padding:1px 5px; min-width:16px;
+  }
+
+  /* ---------- Shared bits ---------- */
+  .btn{
+    border:1px solid var(--line); background:var(--card); padding:10px 18px;
+    border-radius:10px; font-family:'Inter'; font-weight:600; font-size:13px;
+    cursor:pointer; color:var(--ink);
+  }
+  .btn:hover{ border-color: var(--seal); color: var(--seal); }
+  .btn.primary{ background: var(--jade); color:#fff; border-color:var(--jade); }
+  .btn.primary:hover{ background:#35604f; color:#fff; }
+  .btn.big{ padding:14px 30px; font-size:15px; border-radius:12px; }
+  .btn:disabled{ opacity:.45; cursor:not-allowed; }
+  .speak-btn{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:28px; height:28px; border-radius:999px;
+    background: var(--jade); color:#fff; border:none; cursor:pointer;
+    font-size:14px; flex-shrink:0; margin-left:6px; transition: transform .1s ease;
+  }
+  .speak-btn:hover{ transform: scale(1.08); }
+  .speak-btn.small{ width:22px; height:22px; font-size:11px; }
+  .speak-btn.xl{ width:44px; height:44px; font-size:20px; margin:0; }
+  .zi-row{ display:flex; align-items:center; justify-content:center; gap:6px; }
+  .seg{
+    display:inline-flex; background: var(--paper-2); border:1px solid var(--line);
+    border-radius: 999px; padding:3px; gap:2px; margin-bottom:16px; flex-wrap:wrap;
+  }
+  .seg button{
+    border:none; background:none; cursor:pointer; border-radius:999px;
+    padding:7px 15px; font-family:'Inter'; font-weight:600; font-size:12.5px; color:var(--ink-soft);
+  }
+  .seg button.active{ background: var(--card); color: var(--ink); box-shadow: var(--shadow); }
+
+  /* ---------- Today ---------- */
+  .stat-row{ display:grid; grid-template-columns: repeat(4, 1fr); gap:8px; margin-bottom:18px; }
+  .stat{
+    background: var(--card); border:1px solid var(--line); border-radius:12px;
+    padding:11px 6px; text-align:center; box-shadow: var(--shadow);
+  }
+  .stat .num{ font-family:'Zilla Slab'; font-size:22px; font-weight:600; line-height:1.1; }
+  .stat .lbl{ font-size:10.5px; color:var(--ink-soft); margin-top:2px; letter-spacing:.3px; }
+  .stat.due .num{ color: var(--seal); }
+  .stat.done .num{ color: var(--jade); }
+
+  .session-start{
+    background: var(--card); border:1px solid var(--line); border-radius:18px;
+    padding: 30px 22px; text-align:center; box-shadow: var(--shadow);
+  }
+  .session-start .big-zi{ font-family:'Noto Serif SC'; font-size:52px; font-weight:900; color:var(--jade); }
+  .session-start p{ font-size:13.5px; color:var(--ink-soft); line-height:1.6; max-width:420px; margin:10px auto 18px; }
+
+  .task-wrap{ display:flex; flex-direction:column; align-items:center; }
+  .task-bar{ width:100%; max-width:520px; margin-bottom:14px; }
+  .task-bar .meta{ display:flex; justify-content:space-between; font-size:11.5px; color:var(--ink-soft); margin-bottom:5px; }
+  .bar{ height:6px; background: var(--paper-2); border-radius:999px; overflow:hidden; border:1px solid var(--line); }
+  .bar > span{ display:block; height:100%; background: var(--jade); width:0%; transition: width .25s ease; }
+
+  .task-card{
+    width:100%; max-width:520px; background: var(--card);
+    border:1px solid var(--line); border-radius:18px; box-shadow: var(--shadow);
+    padding: 26px 20px; text-align:center; min-height:240px;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+  }
+  .task-kind{
+    display:inline-block; font-size:10px; font-weight:700; letter-spacing:.6px; text-transform:uppercase;
+    padding:3px 10px; border-radius:999px; background: var(--paper-2); color:var(--ink-soft); margin-bottom:14px;
+  }
+  .task-kind.recognize{ background: var(--jade-soft); color: var(--jade); }
+  .task-kind.recall{ background: var(--seal-soft); color: var(--seal); }
+  .task-kind.listen{ background:#EFE3C9; color:#8A5A12; }
+  .task-kind.sentence{ background:#E2E0EC; color:#4C4470; }
+  .task-card .zi{ font-family:'Noto Serif SC'; font-size:60px; font-weight:900; line-height:1.15; }
+  .task-card .prompt-en{ font-size:28px; font-weight:600; }
+  .task-card .prompt-kh{ font-size:28px; color:var(--jade); font-weight:600; margin-top:6px; }
+  .task-card .py{ font-size:24px; color:var(--seal); font-weight:600; margin-top:8px; }
+  .task-card .en{ font-size:15px; color:var(--ink-soft); margin-top:3px; }
+  .task-card .kh{ font-size:19px; color:var(--jade); font-weight:600; margin-top:6px; }
+  .task-card .hint{ font-size:12px; color:var(--ink-soft); margin-top:14px; }
+  .task-hidden{ display:none; }
+  .cloze-sentence{ font-family:'Noto Serif SC'; font-size:22px; line-height:1.7; }
+  .cloze-blank{
+    display:inline-block; min-width:56px; border-bottom:3px solid var(--seal);
+    color: var(--seal); font-weight:700;
+  }
+  .cloze-en{ font-size:13px; color:var(--ink-soft); margin-top:10px; }
+
+  .choices{ display:grid; gap:8px; width:100%; max-width:420px; margin-top:16px; }
+  .choice{
+    border:1px solid var(--line); background: var(--paper); border-radius:12px;
+    padding:12px 14px; font-family:'Inter'; font-size:14px; cursor:pointer; text-align:center; color:var(--ink);
+  }
+  .choice .zi{ font-family:'Noto Serif SC'; font-size:22px; font-weight:700; line-height:1.2; }
+  .choice:hover{ border-color: var(--seal); }
+  .choice.correct{ background: var(--jade-soft); border-color: var(--jade); color: var(--jade); font-weight:600; }
+  .choice.wrong{ background: var(--seal-soft); border-color: var(--seal); color: var(--seal); font-weight:600; }
+  .choice:disabled{ cursor:default; }
+
+  .rate-row{ display:flex; gap:8px; margin-top:18px; flex-wrap:wrap; justify-content:center; }
+  .rate-btn{
+    border:1px solid var(--line); background:var(--card); border-radius:10px;
+    padding:10px 16px; cursor:pointer; font-family:'Inter'; font-weight:600; font-size:13px; color:var(--ink);
+    display:flex; flex-direction:column; align-items:center; gap:2px; min-width:78px;
+  }
+  .rate-btn small{ font-size:10px; font-weight:500; color:var(--ink-soft); }
+  .rate-btn[data-rate="again"]:hover{ border-color:var(--seal); color:var(--seal); }
+  .rate-btn[data-rate="good"]{ background: var(--jade); border-color:var(--jade); color:#fff; }
+  .rate-btn[data-rate="good"] small{ color: rgba(255,255,255,.8); }
+  .task-actions{ margin-top:18px; display:flex; gap:8px; justify-content:center; flex-wrap:wrap; }
+
+  .done-card{
+    background: var(--card); border:1px solid var(--line); border-radius:18px;
+    padding:34px 22px; text-align:center; box-shadow: var(--shadow); max-width:520px; margin:0 auto;
+  }
+  .done-card .big-zi{ font-family:'Noto Serif SC'; font-size:56px; font-weight:900; color:var(--jade); }
+
+  /* ---------- Learn ---------- */
+  .controls{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin: 6px 0 16px; }
+  .search-wrap{ flex:1; min-width:220px; position:relative; }
+  input#searchBox{
+    width:100%; padding: 11px 14px 11px 38px; border-radius: 10px;
+    border: 1px solid var(--line); background: var(--card); font-size: 14px; color: var(--ink);
+    font-family:'Inter';
+  }
+  input#searchBox:focus{ outline:2px solid var(--jade); outline-offset:1px; }
+  .search-wrap::before{
+    content:"搜"; font-family:'Noto Serif SC';
+    position:absolute; left:12px; top:50%; transform:translateY(-50%);
+    color: var(--ink-soft); font-size: 13px;
+  }
+  .filter-chip{
+    border:1px solid var(--line); background:var(--card); padding:9px 14px; border-radius:10px;
+    font-family:'Inter'; font-size:13px; font-weight:600; color: var(--ink-soft); cursor:pointer;
+  }
+  .filter-chip.active{ background: var(--jade); border-color: var(--jade); color:#fff; }
+  .count-note{ font-size:12.5px; color:var(--ink-soft); margin: 0 0 14px; }
+
+  .grid{ display:grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
+  .word-card{
+    background: var(--card); border:1px solid var(--line); border-radius: var(--radius);
+    padding: 14px 10px 10px; text-align:center; cursor:pointer; box-shadow: var(--shadow);
+    transition: transform .12s ease, border-color .12s ease; position:relative;
+  }
+  .word-card:hover{ transform: translateY(-2px); border-color: var(--seal); }
+  .word-card .zi{ font-family:'Noto Serif SC'; font-size: 26px; font-weight:700; line-height:1.2; }
+  .word-card .py{ font-size: 11.5px; color: var(--ink-soft); margin-top:3px; }
+  .word-card .en{ font-size: 11px; color: var(--jade); margin-top:2px; font-weight:600; }
+  .level-tag{
+    display:inline-block; font-size:9.5px; font-weight:700; letter-spacing:0.4px;
+    padding: 1px 6px; border-radius: 999px; margin-top:6px;
+    background: var(--paper-2); color: var(--ink-soft);
+  }
+  .mini-bar{ height:3px; background: var(--paper-2); border-radius:999px; margin-top:8px; overflow:hidden; }
+  .mini-bar > span{ display:block; height:100%; background: var(--jade); width:0%; }
+
+  .study-wrap{ display:flex; flex-direction:column; align-items:center; padding: 4px 0 20px; }
+  .flashcard{
+    width:100%; max-width:420px; min-height:230px;
+    background: var(--card); border:1px solid var(--line); border-radius:18px; box-shadow: var(--shadow);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    padding: 30px 18px; cursor:pointer; text-align:center;
+  }
+  .flashcard .zi{ font-family:'Noto Serif SC'; font-size:64px; font-weight:900; }
+  .flashcard .hint{ font-size:12px; color:var(--ink-soft); margin-top:14px; }
+  /* the prompt side — one of 汉字 / pinyin / Khmer */
+  .fc-front--zi{ font-family:'Noto Serif SC', serif; font-size:64px; font-weight:900; color: var(--ink); }
+  .fc-front--py{ font-size:52px; font-weight:700; color: var(--seal); line-height:1.25; }
+  .fc-front--kh{ font-size:50px; font-weight:600; color: var(--jade); }
+  .flashcard.flipped .revealed .zi{ font-size:44px; margin-bottom:2px; }
+  .front-pick{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:10px; }
+  .front-pick-label{ font-size:12px; font-weight:600; color:var(--ink-soft); letter-spacing:.3px; }
+  #frontSeg button[data-front="zi"]{ font-family:'Noto Serif SC'; font-size:15px; }
+  #frontSeg button[data-front="kh"]{ font-size:14px; }
+  .flashcard .revealed{ display:none; }
+  .flashcard.flipped .revealed{ display:block; }
+  .flashcard.flipped .prompt-hint{ display:none; }
+  .flashcard .py{ font-size:24px; color:var(--seal); font-weight:600; margin-top:6px; }
+  .flashcard .en{ font-size:14px; color:var(--ink-soft); margin-top:2px; }
+  .flashcard .kh{ font-size:19px; color:var(--jade); margin-top:6px; font-weight:600; }
+  .study-controls{ display:flex; gap:10px; margin-top:18px; flex-wrap:wrap; justify-content:center; }
+  .progress-note{ font-size:12px; color:var(--ink-soft); margin-top:10px; }
+
+  /* ---------- Detail overlay ---------- */
+  #overlay{
+    position:fixed; inset:0; background: rgba(30,26,22,0.55);
+    display:none; align-items:flex-start; justify-content:center;
+    padding: 24px 14px; overflow-y:auto; z-index: 50;
+  }
+  #overlay.show{ display:flex; }
+  .detail-card{
+    background: var(--paper); border-radius: 18px; max-width: 640px; width:100%;
+    padding: 26px 22px 30px; box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+    position:relative; margin: 20px 0 40px;
+  }
+  .close-btn{
+    position:absolute; top:14px; right:16px; background:none; border:none;
+    font-size:22px; color:var(--ink-soft); cursor:pointer; line-height:1;
+  }
+  .detail-head{ text-align:center; padding-bottom:16px; border-bottom:1px solid var(--line); margin-bottom:16px; }
+  .detail-head .zi{ font-family:'Noto Serif SC'; font-size:56px; font-weight:900; }
+  .detail-head .py{ font-size:18px; color: var(--seal); font-weight:600; margin-top:4px; }
+  .detail-head .en{ font-size:15px; color:var(--ink-soft); margin-top:2px; }
+  .detail-head .kh{ font-size:19px; color:var(--jade); margin-top:8px; font-weight:600; }
+  .section-label{
+    font-size:11px; font-weight:700; letter-spacing:0.6px; text-transform:uppercase;
+    color: var(--ink-soft); margin: 18px 0 8px;
+  }
+  .strength-wrap{ max-width:280px; margin:14px auto 0; }
+  .strength-wrap .lbl{ display:flex; justify-content:space-between; font-size:11px; color:var(--ink-soft); margin-bottom:4px; }
+
+  .word-image-wrap{
+    background: var(--card); border:1px solid var(--line); border-radius:12px;
+    padding:12px 14px; text-align:center;
+  }
+  .word-image{ max-width:100%; max-height:220px; border-radius:8px; display:block; margin:0 auto; }
+  .image-loading, .image-none{ font-size:12.5px; color:var(--ink-soft); margin:0; }
+  .image-caption{
+    display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap;
+    font-size:11px; color:var(--ink-soft); margin-top:8px;
+  }
+  .image-caption a{ color: var(--jade); }
+  .img-shuffle-btn{
+    border:1px solid var(--line); background: var(--paper-2); color:var(--ink);
+    font-size:11px; font-weight:600; padding:4px 10px; border-radius:999px; cursor:pointer;
+  }
+
+  .example-box{
+    background: var(--card); border:1px solid var(--line); border-radius:12px; padding:12px 14px;
+    margin-bottom:8px; position:relative;
+  }
+  .example-box:last-child{ margin-bottom:0; }
+  .level-badge{
+    display:inline-block; font-size:10px; font-weight:700; padding:2px 8px; border-radius:999px;
+    margin-bottom:6px; letter-spacing:0.3px;
+  }
+  .level-badge-hsk1{ background: var(--jade-soft); color: var(--jade); }
+  .level-badge-hsk2{ background: var(--seal-soft); color: var(--seal); }
+  .example-box .cn{ font-family:'Noto Serif SC'; font-size:17px; }
+  .example-box .py{ font-size:13px; color:var(--ink-soft); margin-top:3px; font-style:italic; }
+  .example-box .en{ font-size:13px; color:var(--ink); margin-top:3px; }
+
+  .char-story-card{
+    background: var(--card); border:1px solid var(--line); border-radius:12px;
+    padding: 12px 14px; margin-bottom:10px; display:flex; gap:12px; align-items:flex-start;
+  }
+  .char-story-card .big-zi{ font-family:'Noto Serif SC'; font-size:34px; font-weight:700; flex-shrink:0; width:44px; text-align:center; }
+  .char-story-body{ flex:1; }
+  .type-badge{
+    display:inline-block; font-size:10px; font-weight:700; padding:2px 8px; border-radius:999px;
+    margin-bottom:5px; letter-spacing:0.3px;
+  }
+  .type-pictograph{ background: var(--jade-soft); color: var(--jade); }
+  .type-compound{ background: #EFE3C9; color:#8A5A12; }
+  .type-phono{ background: var(--seal-soft); color: var(--seal); }
+  .type-whole{ background:#E7E2DA; color:#6b6459; }
+  .parts-line{ font-size:12.5px; color:var(--ink-soft); margin-bottom:4px; }
+  .story-line{ font-size:13px; line-height:1.5; }
+  .family-chip{
+    display:inline-block; margin-top:6px; font-size:11.5px; font-weight:600;
+    color:#fff; background: var(--seal); padding:3px 9px; border-radius:999px; cursor:pointer;
+  }
+  .web-row{ display:flex; gap:8px; flex-wrap:wrap; }
+  .web-pill{
+    background: var(--card); border:1px solid var(--line); border-radius:10px; padding:8px 12px;
+    cursor:pointer; text-align:center; min-width:74px;
+  }
+  .web-pill:hover{ border-color: var(--seal); }
+  .web-pill .zi{ font-family:'Noto Serif SC'; font-size:20px; font-weight:700; }
+  .web-pill .py{ font-size:10.5px; color:var(--ink-soft); }
+  .web-pill .en{ font-size:10px; color:var(--jade); font-weight:600; }
+  .web-pill mark{ background:none; color: var(--seal); }
+  .empty-note{ font-size:13px; color:var(--ink-soft); background:var(--card);
+    border:1px dashed var(--line); border-radius:12px; padding:14px 16px; }
+
+  /* ---------- Practice ---------- */
+  .pattern-group{
+    background: var(--card); border:1px solid var(--line); border-radius:14px;
+    padding:16px 18px; margin-bottom:14px; box-shadow: var(--shadow);
+  }
+  .pattern-group h3{ margin:0 0 4px; font-family:'Zilla Slab'; font-size:18px; }
+  .pattern-group .sound-tag{
+    display:inline-block; font-family:'Noto Serif SC'; font-size:15px; font-weight:700;
+    background: var(--seal-soft); color:var(--seal); padding:3px 10px; border-radius:8px; margin-bottom:6px;
+  }
+  .pattern-group p.explain{ font-size:13px; color:var(--ink-soft); margin: 4px 0 10px; }
+  .member-row{ display:flex; gap:10px; flex-wrap:wrap; }
+  .member-pill{
+    background: var(--paper-2); border:1px solid var(--line); border-radius:10px; padding:8px 12px;
+    display:flex; flex-direction:column; align-items:center; min-width:78px; cursor:pointer;
+  }
+  .member-pill:hover{ border-color: var(--seal); }
+  .member-pill .zi{ font-family:'Noto Serif SC'; font-size:22px; font-weight:700; }
+  .member-pill .py{ font-size:10.5px; color:var(--ink-soft); }
+  .member-pill .gloss{ font-size:10px; color:var(--jade); font-weight:600; }
+  .radical-group{
+    background: var(--card); border:1px dashed var(--line); border-radius:14px;
+    padding:14px 16px; margin-bottom:10px;
+  }
+  .radical-group .rad-tag{ font-family:'Noto Serif SC'; font-weight:700; color: var(--jade); font-size:16px; }
+  .rad-members{ font-family:'Noto Serif SC'; font-size: 20px; letter-spacing:6px; color:var(--ink); margin-top:6px; }
+
+  .struct-grid{ display:grid; grid-template-columns: repeat(auto-fill, minmax(250px,1fr)); gap:12px; }
+  .struct-card{
+    background: var(--card); border:1px solid var(--line); border-radius:14px;
+    padding:14px 16px; box-shadow: var(--shadow);
+  }
+  .struct-head{ display:flex; gap:12px; align-items:center; }
+  .struct-head svg{ flex-shrink:0; }
+  .struct-name{ font-family:'Noto Serif SC'; font-size:19px; font-weight:700; }
+  .struct-py{ font-size:11.5px; color:var(--ink-soft); font-style:italic; }
+  .struct-en{ font-size:12.5px; color:var(--jade); font-weight:600; }
+  .struct-tier{
+    display:inline-block; font-size:9.5px; font-weight:700; letter-spacing:.4px; text-transform:uppercase;
+    padding:1px 7px; border-radius:999px; background: var(--paper-2); color:var(--ink-soft); margin-top:4px;
+  }
+  .struct-hint{ font-size:12.5px; color:var(--ink-soft); line-height:1.55; margin:10px 0 8px; }
+  .struct-members{ display:flex; gap:5px; flex-wrap:wrap; }
+  .struct-zi{
+    font-family:'Noto Serif SC'; font-size:18px; font-weight:700;
+    background: var(--paper-2); border:1px solid var(--line); border-radius:7px;
+    width:32px; height:32px; display:flex; align-items:center; justify-content:center;
+    color: var(--ink-soft);
+  }
+  .struct-zi.in-lab{ color: var(--seal); border-color: var(--seal); cursor:pointer; background:#fff; }
+
+  .cloze-wrap{ display:flex; flex-direction:column; align-items:center; }
+  .cloze-card{
+    width:100%; max-width:520px; background: var(--card); border:1px solid var(--line);
+    border-radius:18px; box-shadow: var(--shadow); padding:26px 20px; text-align:center;
+  }
+  .score-note{ font-size:12.5px; color:var(--ink-soft); margin-top:12px; }
+
+  /* ---------- You / settings ---------- */
+  .set-card{
+    background: var(--card); border:1px solid var(--line); border-radius:14px;
+    padding:16px 18px; margin-bottom:12px; box-shadow: var(--shadow); max-width:560px;
+  }
+  .set-card h3{ margin:0 0 4px; font-family:'Zilla Slab'; font-size:17px; }
+  .set-card p.note{ font-size:12.5px; color:var(--ink-soft); margin:0 0 12px; line-height:1.55; }
+  .set-row{ display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-bottom:10px; }
+  .set-row label{ font-size:12.5px; font-weight:600; min-width:110px; }
+  select, input[type="number"]{
+    font-family:'Inter'; font-size:13px; padding:9px 11px; border-radius:10px;
+    border:1px solid var(--line); background: var(--paper); color:var(--ink); max-width:100%;
+  }
+  input[type="range"]{ flex:1; min-width:150px; accent-color: var(--jade); }
+  .range-val{ font-size:12.5px; color:var(--seal); font-weight:700; min-width:44px; }
+  .warn{ font-size:12px; color: var(--seal); font-weight:600; }
+  .ok-note{ font-size:12px; color: var(--jade); font-weight:600; min-height:16px; }
+
+  footer{ text-align:center; padding: 18px 20px 26px; font-size:11.5px; color: var(--ink-soft); }
+
+  @media (max-width:480px){
+    .grid{ grid-template-columns: repeat(auto-fill, minmax(108px,1fr)); }
+    .detail-head .zi{ font-size:44px; }
+    .task-card .zi{ font-size:50px; }
+    .stat .num{ font-size:19px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="stamp">學</div>
+  <h1 class="title" id="pageTitle">Character Memory Lab</h1>
+  <p class="subtitle" id="pageSubtitle"></p>
+</header>
+
+<main>
+
+  <!-- ================= TODAY ================= -->
+  <div id="todayView" class="view active">
+    <div class="stat-row">
+      <div class="stat due"><div class="num" id="statDue">0</div><div class="lbl">Due</div></div>
+      <div class="stat"><div class="num" id="statNew">0</div><div class="lbl">New</div></div>
+      <div class="stat done"><div class="num" id="statDone">0</div><div class="lbl">Done today</div></div>
+      <div class="stat"><div class="num" id="statStreak">0</div><div class="lbl">Day streak</div></div>
+    </div>
+
+    <div id="sessionStart" class="session-start">
+      <div class="big-zi">今</div>
+      <h2 style="font-family:'Zilla Slab';font-size:21px;margin:8px 0 0;">Today's session</h2>
+      <p id="sessionStartNote"></p>
+      <button class="btn primary big" id="startSessionBtn">Start session</button>
+    </div>
+
+    <div id="sessionRun" class="task-wrap" style="display:none;">
+      <div class="task-bar">
+        <div class="meta"><span id="taskCounter"></span><span id="taskWordLevel"></span></div>
+        <div class="bar"><span id="taskProgress"></span></div>
+      </div>
+      <div class="task-card" id="taskCard"></div>
+      <div class="task-actions" id="taskActions"></div>
+      <button class="btn" id="endSessionBtn" style="margin-top:16px;">End session</button>
+    </div>
+
+    <div id="sessionDone" style="display:none;">
+      <div class="done-card">
+        <div class="big-zi">好</div>
+        <h2 style="font-family:'Zilla Slab';font-size:21px;margin:8px 0 6px;">Session finished</h2>
+        <p id="doneNote" style="font-size:13.5px;color:var(--ink-soft);line-height:1.6;"></p>
+        <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:14px;">
+          <button class="btn primary" id="againSessionBtn">Study more</button>
+          <button class="btn" id="goLearnBtn">Browse words</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= LEARN ================= -->
+  <div id="learnView" class="view">
+    <div class="seg" id="learnSeg">
+      <button class="active" data-mode="list">Word list</button>
+      <button data-mode="cards">Flashcards</button>
+    </div>
+
+    <div id="learnList">
+      <div class="controls">
+        <div class="search-wrap">
+          <input id="searchBox" type="text" placeholder="Search Chinese, pinyin, English or Khmer...">
+        </div>
+        <span id="wordsLevelChips" style="display:contents;"></span>
+      </div>
+      <p class="count-note" id="countNote"></p>
+      <div class="grid" id="wordGrid"></div>
+    </div>
+
+    <div id="learnCards" style="display:none;">
+      <p class="intro-text" style="margin-bottom:14px;">Try to answer <em>before</em> you flip. Guessing first is what builds the memory. This is browsing only, it does not change your review schedule.</p>
+      <div class="front-pick">
+        <span class="front-pick-label">Show first</span>
+        <div class="seg" id="frontSeg" style="margin-bottom:0;">
+          <button class="active" data-front="zi">汉字</button>
+          <button data-front="py">Pinyin</button>
+          <button data-front="kh">ខ្មែរ</button>
+        </div>
+      </div>
+      <div class="controls" style="margin-bottom:6px;">
+        <span id="studyLevelChips" style="display:contents;"></span>
+      </div>
+      <div class="study-wrap">
+        <div class="flashcard" id="flashcard">
+          <div class="fc-front fc-front--zi" id="fc-front">你</div>
+          <div class="prompt-hint hint" id="fcHint">Tap to reveal pinyin, meaning and Khmer</div>
+          <div class="revealed">
+            <div class="zi hanzi" id="fc-zi"></div>
+            <div class="py" id="fc-py"></div>
+            <div class="en" id="fc-en"></div>
+            <div class="kh" id="fc-kh"></div>
+          </div>
+        </div>
+        <div class="study-controls">
+          <button class="btn" id="prevBtn">&larr; Prev</button>
+          <button class="btn primary" id="shuffleBtn">Shuffle</button>
+          <button class="btn" id="detailBtn">Full card</button>
+          <button class="btn" id="nextBtn">Next &rarr;</button>
+        </div>
+        <p class="progress-note" id="progressNote"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= PRACTICE ================= -->
+  <div id="practiceView" class="view">
+    <div class="seg" id="practiceSeg">
+      <button class="active" data-pane="paneFamilies">Sound &amp; radicals</button>
+      <button data-pane="paneStructures">Structures</button>
+      <button data-pane="paneCloze">Sentences</button>
+    </div>
+
+    <div id="paneFamilies" class="pane">
+      <h2 class="section-title">Sound-clue families (形声字)</h2>
+      <p class="intro-text">Each group shares one component that gives the SOUND. A different piece gives the MEANING. Learn the group once and you get several characters at a time.</p>
+      <div id="patternGroupsWrap" style="margin-top:16px;"></div>
+      <h2 class="section-title" style="margin-top:28px;">Meaning-clue families (radicals)</h2>
+      <p class="intro-text">These do not share a sound. They share a MEANING radical. Once you know a radical you can guess what a new character is about before you can say it.</p>
+      <div id="radicalGroupsWrap" style="margin-top:16px;"></div>
+    </div>
+
+    <div id="paneStructures" class="pane" style="display:none;">
+      <h2 class="section-title">Character structures (汉字结构)</h2>
+      <p class="intro-text">Before you learn the parts, learn the shape. Every character is laid out in one of these ways. Red lines are a wrapping part. Green blocks are the pieces inside. Characters shown in red are in this lesson, tap them.</p>
+      <div class="struct-grid" id="structGrid" style="margin-top:16px;"></div>
+    </div>
+
+    <div id="paneCloze" class="pane" style="display:none;">
+      <h2 class="section-title">Fill the blank</h2>
+      <p class="intro-text">Read the sentence and pick the word that belongs in the gap. Wrong answers here also push that word back into your review queue.</p>
+      <div class="cloze-wrap" style="margin-top:16px;">
+        <div class="cloze-card" id="clozeCard"></div>
+        <p class="score-note" id="clozeScore"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= YOU ================= -->
+  <div id="youView" class="view">
+    <h2 class="section-title">You</h2>
+
+    <div class="set-card">
+      <h3>Chinese voice</h3>
+      <p class="note">Pick the voice used for every 🔊 button and for listening tasks. If the list is empty or has no Chinese voice, install one in your system settings, then reload this page.</p>
+      <div class="set-row">
+        <label for="voicePicker">Voice</label>
+        <select id="voicePicker"></select>
+      </div>
+      <div class="set-row">
+        <label for="rateSlider">Speed</label>
+        <input type="range" id="rateSlider" min="0.5" max="1.2" step="0.05" value="0.85">
+        <span class="range-val" id="rateVal">0.85x</span>
+      </div>
+      <div class="set-row">
+        <label for="pitchSlider">Pitch</label>
+        <input type="range" id="pitchSlider" min="0.6" max="1.4" step="0.05" value="1">
+        <span class="range-val" id="pitchVal">1.00</span>
+      </div>
+      <div class="set-row">
+        <button class="btn primary" id="voiceTestBtn">Test the voice</button>
+        <span class="hanzi" style="font-size:17px;">你好，我在学中文。</span>
+      </div>
+      <p class="warn" id="voiceWarn" style="display:none;">No Chinese voice found in this browser.</p>
+    </div>
+
+    <div class="set-card">
+      <h3>Session</h3>
+      <p class="note">How much new material to take on each day. Reviews that are already due are always shown first.</p>
+      <div class="set-row">
+        <label for="newLimit">New words / day</label>
+        <input type="number" id="newLimit" min="0" max="50" step="1" value="8">
+      </div>
+      <div class="set-row">
+        <label for="sessionCap">Cards / session</label>
+        <input type="number" id="sessionCap" min="5" max="100" step="5" value="25">
+      </div>
+    </div>
+
+    <div class="set-card">
+      <h3>Backup</h3>
+      <p class="note">Your progress lives only in this browser. Clearing browser data will erase it. Export a backup file now and then, especially before you clear anything.</p>
+      <div class="set-row">
+        <button class="btn primary" id="exportBtn">Export backup</button>
+        <button class="btn" id="importBtn">Import backup</button>
+        <input type="file" id="importFile" accept="application/json,.json" style="display:none;">
+      </div>
+      <p class="ok-note" id="backupNote"></p>
+    </div>
+
+    <div class="set-card">
+      <h3>Progress</h3>
+      <p class="note" id="progressSummary"></p>
+      <div class="set-row">
+        <button class="btn" id="resetBtn">Reset all progress</button>
+        <span class="warn" id="resetWarn" style="display:none;">This cannot be undone. Click again to confirm.</span>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<nav class="bottom">
+  <button class="nav-btn active" data-view="todayView"><span class="nav-zi">今</span>Today<span class="nav-badge" id="navDueBadge" style="display:none;">0</span></button>
+  <button class="nav-btn" data-view="learnView"><span class="nav-zi">學</span>Learn</button>
+  <button class="nav-btn" data-view="practiceView"><span class="nav-zi">練</span>Practice</button>
+  <button class="nav-btn" data-view="youView"><span class="nav-zi">我</span>You</button>
+</nav>
+
+<div id="overlay">
+  <div class="detail-card">
+    <button class="close-btn" id="closeDetail">&times;</button>
+    <div id="detailContent"></div>
+  </div>
+</div>
+
+<footer id="pageFooter"></footer>
+
+<script>
+// ============================================================
+// DATA — replace ONLY the object between the two markers below.
+// Keep "const DB = " and the trailing ";" exactly as they are.
+// Schema: references/data-schema.md
+// ============================================================
+const DB = /*__DB_JSON_START__*/{
+  "meta": {
+    "id": "boya-l16",
+    "title": "Boya Lesson 16 · Character Memory Lab",
+    "subtitle": "26 words · every character broken into its story · water, knife, and hand meaning families",
+    "footer": "Built for Koko · Chinese & English & Khmer study aid · Khmer translations are best-effort, please verify with a native speaker"
+  },
+  "words": [
+    {
+      "id": 1,
+      "level": "Boya L16",
+      "chinese": "句",
+      "pinyin": "jù",
+      "english": "measure word (for sentences)",
+      "khmer": "ប្រយោគ",
+      "breakdown": "-",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "我一句话都不想说。",
+          "py": "Wǒ yí jù huà dōu bù xiǎng shuō.",
+          "en": "I don't want to say a single word."
+        },
+        {
+          "level": "HSK1",
+          "cn": "请再说一句。",
+          "py": "Qǐng zài shuō yí jù.",
+          "en": "Please say it once more."
+        },
+        {
+          "level": "HSK1",
+          "cn": "这句话很简单。",
+          "py": "Zhè jù huà hěn jiǎndān.",
+          "en": "This sentence is very simple."
+        },
+        {
+          "level": "HSK2",
+          "cn": "老师在黑板上写了一句重要的话。",
+          "py": "Lǎoshī zài hēibǎn shang xiěle yí jù zhòngyào de huà.",
+          "en": "The teacher wrote an important sentence on the blackboard."
+        },
+        {
+          "level": "HSK2",
+          "cn": "虽然只是一句话，但是让我想了很久。",
+          "py": "Suīrán zhǐshì yí jù huà, dànshì ràng wǒ xiǎngle hěn jiǔ.",
+          "en": "Although it was just one sentence, it made me think for a long time."
+        }
+      ],
+      "chars": [
+        "句"
+      ]
+    },
+    {
+      "id": 2,
+      "level": "Boya L16",
+      "chinese": "留下",
+      "pinyin": "liúxià",
+      "english": "to leave behind",
+      "khmer": "ទុកចោល",
+      "breakdown": "留(stay)+下(down)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "他把钱包留下了。",
+          "py": "Tā bǎ qiánbāo liúxiàle.",
+          "en": "He left his wallet behind."
+        },
+        {
+          "level": "HSK1",
+          "cn": "请把作业留下。",
+          "py": "Qǐng bǎ zuòyè liúxià.",
+          "en": "Please leave your homework here."
+        },
+        {
+          "level": "HSK1",
+          "cn": "妈妈给我留下了一些钱。",
+          "py": "Māma gěi wǒ liúxiàle yìxiē qián.",
+          "en": "Mom left me some money."
+        },
+        {
+          "level": "HSK2",
+          "cn": "这位学生给老师留下了深刻的印象。",
+          "py": "Zhè wèi xuéshēng gěi lǎoshī liúxiàle shēnkè de yìnxiàng.",
+          "en": "This student left a deep impression on the teacher."
+        },
+        {
+          "level": "HSK2",
+          "cn": "除了照片，他什么都没留下。",
+          "py": "Chúle zhàopiàn, tā shénme dōu méi liúxià.",
+          "en": "Except for photos, he left nothing behind."
+        }
+      ],
+      "chars": [
+        "留",
+        "下"
+      ]
+    },
+    {
+      "id": 3,
+      "level": "Boya L16",
+      "chinese": "深刻",
+      "pinyin": "shēnkè",
+      "english": "deep, profound",
+      "khmer": "ជ្រាលជ្រៅ",
+      "breakdown": "深(deep)+刻(carve/moment)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "我对他印象很深刻。",
+          "py": "Wǒ duì tā yìnxiàng hěn shēnkè.",
+          "en": "I have a deep impression of him."
+        },
+        {
+          "level": "HSK1",
+          "cn": "这本书的内容很深刻。",
+          "py": "Zhè běn shū de nèiróng hěn shēnkè.",
+          "en": "This book's content is very profound."
+        },
+        {
+          "level": "HSK1",
+          "cn": "老师说的话很深刻。",
+          "py": "Lǎoshī shuō de huà hěn shēnkè.",
+          "en": "What the teacher said was very profound."
+        },
+        {
+          "level": "HSK2",
+          "cn": "这次经历给他留下了深刻的教训。",
+          "py": "Zhè cì jīnglì gěi tā liúxiàle shēnkè de jiàoxùn.",
+          "en": "This experience gave him a profound lesson."
+        },
+        {
+          "level": "HSK2",
+          "cn": "虽然电影很短，但是意义很深刻。",
+          "py": "Suīrán diànyǐng hěn duǎn, dànshì yìyì hěn shēnkè.",
+          "en": "Although the movie is short, its meaning is very profound."
+        }
+      ],
+      "chars": [
+        "深",
+        "刻"
+      ]
+    },
+    {
+      "id": 4,
+      "level": "Boya L16",
+      "chinese": "印象",
+      "pinyin": "yìnxiàng",
+      "english": "impression",
+      "khmer": "ចំណាប់អារម្មណ៍",
+      "breakdown": "印(stamp)+象(image)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "我对这个人没什么印象。",
+          "py": "Wǒ duì zhège rén méi shénme yìnxiàng.",
+          "en": "I don't have much impression of this person."
+        },
+        {
+          "level": "HSK1",
+          "cn": "他给我的第一印象很好。",
+          "py": "Tā gěi wǒ de dì-yī yìnxiàng hěn hǎo.",
+          "en": "He gave me a good first impression."
+        },
+        {
+          "level": "HSK1",
+          "cn": "我对北京的印象很深。",
+          "py": "Wǒ duì Běijīng de yìnxiàng hěn shēn.",
+          "en": "My impression of Beijing is deep."
+        },
+        {
+          "level": "HSK2",
+          "cn": "这位老师给学生留下了很好的印象。",
+          "py": "Zhè wèi lǎoshī gěi xuéshēng liúxiàle hěn hǎo de yìnxiàng.",
+          "en": "This teacher left a very good impression on the students."
+        },
+        {
+          "level": "HSK2",
+          "cn": "因为他很有礼貌，所以给大家留下了好印象。",
+          "py": "Yīnwèi tā hěn yǒu lǐmào, suǒyǐ gěi dàjiā liúxiàle hǎo yìnxiàng.",
+          "en": "Because he is very polite, he left everyone a good impression."
+        }
+      ],
+      "chars": [
+        "印",
+        "象"
+      ]
+    },
+    {
+      "id": 5,
+      "level": "Boya L16",
+      "chinese": "香蕉",
+      "pinyin": "xiāngjiāo",
+      "english": "banana",
+      "khmer": "ចេក",
+      "breakdown": "香(fragrant)+蕉(banana plant)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "妹妹最喜欢的水果是香蕉。",
+          "py": "Mèimei zuì xǐhuan de shuǐguǒ shì xiāngjiāo.",
+          "en": "My little sister's favorite fruit is banana."
+        },
+        {
+          "level": "HSK1",
+          "cn": "我每天早上吃一个香蕉。",
+          "py": "Wǒ měitiān zǎoshang chī yí ge xiāngjiāo.",
+          "en": "I eat a banana every morning."
+        },
+        {
+          "level": "HSK1",
+          "cn": "这个香蕉很甜。",
+          "py": "Zhège xiāngjiāo hěn tián.",
+          "en": "This banana is very sweet."
+        },
+        {
+          "level": "HSK2",
+          "cn": "猴子喜欢吃香蕉，因为香蕉又甜又软。",
+          "py": "Hóuzi xǐhuan chī xiāngjiāo, yīnwèi xiāngjiāo yòu tián yòu ruǎn.",
+          "en": "Monkeys like eating bananas because bananas are both sweet and soft."
+        },
+        {
+          "level": "HSK2",
+          "cn": "除了苹果，妈妈还买了一些香蕉。",
+          "py": "Chúle píngguǒ, māma hái mǎile yìxiē xiāngjiāo.",
+          "en": "Besides apples, mom also bought some bananas."
+        }
+      ],
+      "chars": [
+        "香",
+        "蕉"
+      ]
+    },
+    {
+      "id": 6,
+      "level": "Boya L16",
+      "chinese": "总是",
+      "pinyin": "zǒngshì",
+      "english": "always",
+      "khmer": "ជានិច្ច",
+      "breakdown": "总(always/general)+是(is)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "他上课总是迟到。",
+          "py": "Tā shàngkè zǒngshì chídào.",
+          "en": "He is always late for class."
+        },
+        {
+          "level": "HSK1",
+          "cn": "妈妈总是很忙。",
+          "py": "Māma zǒngshì hěn máng.",
+          "en": "Mom is always busy."
+        },
+        {
+          "level": "HSK1",
+          "cn": "我总是忘记带手机。",
+          "py": "Wǒ zǒngshì wàngjì dài shǒujī.",
+          "en": "I always forget to bring my phone."
+        },
+        {
+          "level": "HSK2",
+          "cn": "虽然他总是迟到，但是老师还是很喜欢他。",
+          "py": "Suīrán tā zǒngshì chídào, dànshì lǎoshī háishi hěn xǐhuan tā.",
+          "en": "Although he is always late, the teacher still likes him."
+        },
+        {
+          "level": "HSK2",
+          "cn": "他总是从多个角度考虑问题。",
+          "py": "Tā zǒngshì cóng duō ge jiǎodù kǎolǜ wèntí.",
+          "en": "He always considers problems from multiple angles."
+        }
+      ],
+      "chars": [
+        "总",
+        "是"
+      ]
+    },
+    {
+      "id": 7,
+      "level": "Boya L16",
+      "chinese": "尾巴",
+      "pinyin": "wěiba",
+      "english": "tail",
+      "khmer": "កន្ទុយ",
+      "breakdown": "尾(tail)+巴(tail-shape)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "兔子的尾巴很短。",
+          "py": "Tùzi de wěiba hěn duǎn.",
+          "en": "The rabbit's tail is very short."
+        },
+        {
+          "level": "HSK1",
+          "cn": "狗的尾巴很长。",
+          "py": "Gǒu de wěiba hěn cháng.",
+          "en": "The dog's tail is very long."
+        },
+        {
+          "level": "HSK1",
+          "cn": "小猫的尾巴在动。",
+          "py": "Xiǎo māo de wěiba zài dòng.",
+          "en": "The kitten's tail is moving."
+        },
+        {
+          "level": "HSK2",
+          "cn": "猴子用尾巴挂在树上。",
+          "py": "Hóuzi yòng wěiba guà zài shù shàng.",
+          "en": "The monkey hangs on the tree using its tail."
+        },
+        {
+          "level": "HSK2",
+          "cn": "虽然它没有尾巴，但是跑得很快。",
+          "py": "Suīrán tā méiyǒu wěiba, dànshì pǎo de hěn kuài.",
+          "en": "Although it has no tail, it runs very fast."
+        }
+      ],
+      "chars": [
+        "尾",
+        "巴"
+      ]
+    },
+    {
+      "id": 8,
+      "level": "Boya L16",
+      "chinese": "剥",
+      "pinyin": "bāo",
+      "english": "to peel",
+      "khmer": "បក",
+      "breakdown": "-",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "请帮我剥一根香蕉。",
+          "py": "Qǐng bāng wǒ bāo yì gēn xiāngjiāo.",
+          "en": "Please help me peel a banana."
+        },
+        {
+          "level": "HSK1",
+          "cn": "我在剥鸡蛋。",
+          "py": "Wǒ zài bāo jīdàn.",
+          "en": "I am peeling an egg."
+        },
+        {
+          "level": "HSK1",
+          "cn": "妹妹不会剥橘子。",
+          "py": "Mèimei bú huì bāo júzi.",
+          "en": "Little sister doesn't know how to peel an orange."
+        },
+        {
+          "level": "HSK2",
+          "cn": "剥香蕉的时候要从头儿开始。",
+          "py": "Bāo xiāngjiāo de shíhou yào cóng tóur kāishǐ.",
+          "en": "When peeling a banana, you should start from the top."
+        },
+        {
+          "level": "HSK2",
+          "cn": "因为皮太厚，所以剥起来很慢。",
+          "py": "Yīnwèi pí tài hòu, suǒyǐ bāo qǐlái hěn màn.",
+          "en": "Because the skin is too thick, peeling it is slow."
+        }
+      ],
+      "chars": [
+        "剥"
+      ]
+    },
+    {
+      "id": 9,
+      "level": "Boya L16",
+      "chinese": "细",
+      "pinyin": "xì",
+      "english": "thin",
+      "khmer": "ស្តើង",
+      "breakdown": "-",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "妹妹很瘦腰也很细。",
+          "py": "Mèimei hěn shòu yāo yě hěn xì.",
+          "en": "Little sister is thin, and her waist is also slender."
+        },
+        {
+          "level": "HSK1",
+          "cn": "这根线很细。",
+          "py": "Zhè gēn xiàn hěn xì.",
+          "en": "This thread is very thin."
+        },
+        {
+          "level": "HSK1",
+          "cn": "他的字写得很细。",
+          "py": "Tā de zì xiě de hěn xì.",
+          "en": "His handwriting is written very fine."
+        },
+        {
+          "level": "HSK2",
+          "cn": "比起以前，她现在更细了。",
+          "py": "Bǐ qǐ yǐqián, tā xiànzài gèng xì le.",
+          "en": "Compared to before, she is even thinner now."
+        },
+        {
+          "level": "HSK2",
+          "cn": "虽然线很细，但是很结实。",
+          "py": "Suīrán xiàn hěn xì, dànshì hěn jiēshi.",
+          "en": "Although the thread is thin, it is very sturdy."
+        }
+      ],
+      "chars": [
+        "细"
+      ]
+    },
+    {
+      "id": 10,
+      "level": "Boya L16",
+      "chinese": "头儿",
+      "pinyin": "tóur",
+      "english": "top, end",
+      "khmer": "ចុង",
+      "breakdown": "头(head/top)+儿(suffix)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "你吃香蕉从哪头儿开始？",
+          "py": "Nǐ chī xiāngjiāo cóng nǎ tóur kāishǐ?",
+          "en": "Which end do you start from when eating a banana?"
+        },
+        {
+          "level": "HSK1",
+          "cn": "绳子的这头儿很短。",
+          "py": "Shéngzi de zhè tóur hěn duǎn.",
+          "en": "This end of the rope is short."
+        },
+        {
+          "level": "HSK1",
+          "cn": "排队要从队伍的头儿开始。",
+          "py": "Páiduì yào cóng duìwu de tóur kāishǐ.",
+          "en": "Lining up should start from the head of the line."
+        },
+        {
+          "level": "HSK2",
+          "cn": "这件事从头儿到尾我都记得。",
+          "py": "Zhè jiàn shì cóng tóur dào wěi wǒ dōu jìde.",
+          "en": "I remember this matter from start to end."
+        },
+        {
+          "level": "HSK2",
+          "cn": "除了这头儿，那头儿也断了。",
+          "py": "Chúle zhè tóur, nà tóur yě duànle.",
+          "en": "Besides this end, that end also broke."
+        }
+      ],
+      "chars": [
+        "头",
+        "儿"
+      ]
+    },
+    {
+      "id": 11,
+      "level": "Boya L16",
+      "chinese": "差别",
+      "pinyin": "chābié",
+      "english": "difference",
+      "khmer": "ភាពខុសគ្នា",
+      "breakdown": "差(difference)+别(separate)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "以前的中国和现在的中国差别很大。",
+          "py": "Yǐqián de Zhōngguó hé xiànzài de Zhōngguó chābié hěn dà.",
+          "en": "The China of the past and the China of today are very different."
+        },
+        {
+          "level": "HSK1",
+          "cn": "这两个词的差别不大。",
+          "py": "Zhè liǎng ge cí de chābié bú dà.",
+          "en": "The difference between these two words isn't big."
+        },
+        {
+          "level": "HSK1",
+          "cn": "他们俩没有什么差别。",
+          "py": "Tāmen liǎ méiyǒu shénme chābié.",
+          "en": "There isn't much difference between the two of them."
+        },
+        {
+          "level": "HSK2",
+          "cn": "虽然价格差别很大，但是质量差不多。",
+          "py": "Suīrán jiàgé chābié hěn dà, dànshì zhìliàng chàbuduō.",
+          "en": "Although the price difference is big, the quality is about the same."
+        },
+        {
+          "level": "HSK2",
+          "cn": "从不同的角度看，差别就更明显了。",
+          "py": "Cóng bùtóng de jiǎodù kàn, chābié jiù gèng míngxiǎn le.",
+          "en": "Seen from different angles, the difference becomes even more obvious."
+        }
+      ],
+      "chars": [
+        "差",
+        "别"
+      ]
+    },
+    {
+      "id": 12,
+      "level": "Boya L16",
+      "chinese": "启发",
+      "pinyin": "qǐfā",
+      "english": "to enlighten, to inspire",
+      "khmer": "ជម្រុញគំនិត",
+      "breakdown": "启(open)+发(emit)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "老师应该去启发学生们努力学习。",
+          "py": "Lǎoshī yīnggāi qù qǐfā xuéshengmen nǔlì xuéxí.",
+          "en": "Teachers should inspire students to study hard."
+        },
+        {
+          "level": "HSK1",
+          "cn": "这本书给了我很多启发。",
+          "py": "Zhè běn shū gěile wǒ hěn duō qǐfā.",
+          "en": "This book gave me a lot of inspiration."
+        },
+        {
+          "level": "HSK1",
+          "cn": "他的话启发了我。",
+          "py": "Tā de huà qǐfāle wǒ.",
+          "en": "His words inspired me."
+        },
+        {
+          "level": "HSK2",
+          "cn": "因为这次旅行，我得到了新的启发。",
+          "py": "Yīnwèi zhè cì lǚxíng, wǒ dédàole xīn de qǐfā.",
+          "en": "Because of this trip, I gained new inspiration."
+        },
+        {
+          "level": "HSK2",
+          "cn": "老师用一个故事启发了我们的想法。",
+          "py": "Lǎoshī yòng yí ge gùshi qǐfāle wǒmen de xiǎngfǎ.",
+          "en": "The teacher used a story to inspire our ideas."
+        }
+      ],
+      "chars": [
+        "启",
+        "发"
+      ]
+    },
+    {
+      "id": 13,
+      "level": "Boya L16",
+      "chinese": "改变",
+      "pinyin": "gǎibiàn",
+      "english": "to change",
+      "khmer": "ផ្លាស់ប្តូរ",
+      "breakdown": "改(correct)+变(transform)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "改变自己的坏习惯是很难的事情。",
+          "py": "Gǎibiàn zìjǐ de huài xíguàn shì hěn nán de shìqing.",
+          "en": "Changing one's own bad habits is a very difficult thing."
+        },
+        {
+          "level": "HSK1",
+          "cn": "他改变了自己的想法。",
+          "py": "Tā gǎibiànle zìjǐ de xiǎngfǎ.",
+          "en": "He changed his own idea."
+        },
+        {
+          "level": "HSK1",
+          "cn": "这座城市改变了很多。",
+          "py": "Zhè zuò chéngshì gǎibiànle hěn duō.",
+          "en": "This city has changed a lot."
+        },
+        {
+          "level": "HSK2",
+          "cn": "虽然改变很难，但是必须要做。",
+          "py": "Suīrán gǎibiàn hěn nán, dànshì bìxū yào zuò.",
+          "en": "Although change is hard, it must be done."
+        },
+        {
+          "level": "HSK2",
+          "cn": "因为一次失败，他改变了做事的方式。",
+          "py": "Yīnwèi yí cì shībài, tā gǎibiànle zuòshì de fāngshì.",
+          "en": "Because of one failure, he changed his way of doing things."
+        }
+      ],
+      "chars": [
+        "改",
+        "变"
+      ]
+    },
+    {
+      "id": 14,
+      "level": "Boya L16",
+      "chinese": "方式",
+      "pinyin": "fāngshì",
+      "english": "way, method",
+      "khmer": "វិធី",
+      "breakdown": "方(square/way)+式(style)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "每个学生都有自己的学习方式。",
+          "py": "Měi ge xuésheng dōu yǒu zìjǐ de xuéxí fāngshì.",
+          "en": "Every student has their own way of studying."
+        },
+        {
+          "level": "HSK1",
+          "cn": "这是一种好方式。",
+          "py": "Zhè shì yì zhǒng hǎo fāngshì.",
+          "en": "This is a good method."
+        },
+        {
+          "level": "HSK1",
+          "cn": "他说话的方式很特别。",
+          "py": "Tā shuōhuà de fāngshì hěn tèbié.",
+          "en": "His way of speaking is very special."
+        },
+        {
+          "level": "HSK2",
+          "cn": "除了这种方式，还有别的方式吗？",
+          "py": "Chúle zhè zhǒng fāngshì, hái yǒu bié de fāngshì ma?",
+          "en": "Besides this method, is there another way?"
+        },
+        {
+          "level": "HSK2",
+          "cn": "因为生活方式不同，所以他们常常吵架。",
+          "py": "Yīnwèi shēnghuó fāngshì bùtóng, suǒyǐ tāmen chángcháng chǎojià.",
+          "en": "Because their lifestyles are different, they often argue."
+        }
+      ],
+      "chars": [
+        "方",
+        "式"
+      ]
+    },
+    {
+      "id": 15,
+      "level": "Boya L16",
+      "chinese": "戒烟",
+      "pinyin": "jièyān",
+      "english": "to quit smoking",
+      "khmer": "ឈប់ជក់បារី",
+      "breakdown": "戒(quit/guard)+烟(smoke)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "爸爸想戒烟。",
+          "py": "Bàba xiǎng jièyān.",
+          "en": "Dad wants to quit smoking."
+        },
+        {
+          "level": "HSK1",
+          "cn": "戒烟对身体好。",
+          "py": "Jièyān duì shēntǐ hǎo.",
+          "en": "Quitting smoking is good for the body."
+        },
+        {
+          "level": "HSK1",
+          "cn": "他已经戒烟三年了。",
+          "py": "Tā yǐjīng jièyān sān nián le.",
+          "en": "He has already quit smoking for three years."
+        },
+        {
+          "level": "HSK2",
+          "cn": "虽然戒烟很难，但是为了健康必须要做。",
+          "py": "Suīrán jièyān hěn nán, dànshì wèile jiànkāng bìxū yào zuò.",
+          "en": "Although quitting smoking is hard, it must be done for health."
+        },
+        {
+          "level": "HSK2",
+          "cn": "因为咳嗽得厉害，所以他决定戒烟。",
+          "py": "Yīnwèi késou de lìhai, suǒyǐ tā juédìng jièyān.",
+          "en": "Because he coughed badly, he decided to quit smoking."
+        }
+      ],
+      "chars": [
+        "戒",
+        "烟"
+      ]
+    },
+    {
+      "id": 16,
+      "level": "Boya L16",
+      "chinese": "难受",
+      "pinyin": "nánshòu",
+      "english": "to feel unwell, to feel bad",
+      "khmer": "មិនស្រួលខ្លួន",
+      "breakdown": "难(difficult)+受(bear)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "生病的时候都会很难受。",
+          "py": "Shēngbìng de shíhou dōu huì hěn nánshòu.",
+          "en": "When you're sick, you always feel unwell."
+        },
+        {
+          "level": "HSK1",
+          "cn": "我今天肚子很难受。",
+          "py": "Wǒ jīntiān dùzi hěn nánshòu.",
+          "en": "My stomach feels bad today."
+        },
+        {
+          "level": "HSK1",
+          "cn": "听到这个消息，他很难受。",
+          "py": "Tīngdào zhège xiāoxi, tā hěn nánshòu.",
+          "en": "Hearing this news, he felt very bad."
+        },
+        {
+          "level": "HSK2",
+          "cn": "虽然很难受，但是他还是坚持上课。",
+          "py": "Suīrán hěn nánshòu, dànshì tā háishi jiānchí shàngkè.",
+          "en": "Although he felt very unwell, he still insisted on going to class."
+        },
+        {
+          "level": "HSK2",
+          "cn": "因为失败了，所以他心里很难受。",
+          "py": "Yīnwèi shībàile, suǒyǐ tā xīnli hěn nánshòu.",
+          "en": "Because he failed, he felt very bad inside."
+        }
+      ],
+      "chars": [
+        "难",
+        "受"
+      ]
+    },
+    {
+      "id": 17,
+      "level": "Boya L16",
+      "chinese": "活",
+      "pinyin": "huó",
+      "english": "to live",
+      "khmer": "រស់នៅ",
+      "breakdown": "-",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "我们应该努力让自己活的更好。",
+          "py": "Wǒmen yīnggāi nǔlì ràng zìjǐ huó de gèng hǎo.",
+          "en": "We should work hard to live better."
+        },
+        {
+          "level": "HSK1",
+          "cn": "这条鱼还活着。",
+          "py": "Zhè tiáo yú hái huózhe.",
+          "en": "This fish is still alive."
+        },
+        {
+          "level": "HSK1",
+          "cn": "他活了八十岁。",
+          "py": "Tā huóle bāshí suì.",
+          "en": "He lived to eighty years old."
+        },
+        {
+          "level": "HSK2",
+          "cn": "不管遇到什么困难，我们都要好好活着。",
+          "py": "Bùguǎn yùdào shénme kùnnan, wǒmen dōu yào hǎohāo huózhe.",
+          "en": "No matter what difficulty we meet, we must live well."
+        },
+        {
+          "level": "HSK2",
+          "cn": "他常说，人活着就要有目标。",
+          "py": "Tā cháng shuō, rén huózhe jiù yào yǒu mùbiāo.",
+          "en": "He often says, if a person is alive, they must have a goal."
+        }
+      ],
+      "chars": [
+        "活"
+      ]
+    },
+    {
+      "id": 18,
+      "level": "Boya L16",
+      "chinese": "万",
+      "pinyin": "wàn",
+      "english": "ten thousand",
+      "khmer": "មួយម៉ឺន",
+      "breakdown": "-",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "一万个理由。",
+          "py": "Yí wàn ge lǐyóu.",
+          "en": "Ten thousand reasons."
+        },
+        {
+          "level": "HSK1",
+          "cn": "这本书卖了一万本。",
+          "py": "Zhè běn shū màile yí wàn běn.",
+          "en": "This book sold ten thousand copies."
+        },
+        {
+          "level": "HSK1",
+          "cn": "他有十万块钱。",
+          "py": "Tā yǒu shí wàn kuài qián.",
+          "en": "He has one hundred thousand yuan."
+        },
+        {
+          "level": "HSK2",
+          "cn": "虽然只是一万个理由中的一个，但是很重要。",
+          "py": "Suīrán zhǐshì yí wàn ge lǐyóu zhōng de yí ge, dànshì hěn zhòngyào.",
+          "en": "Although it's just one of ten thousand reasons, it's important."
+        },
+        {
+          "level": "HSK2",
+          "cn": "这座城市大约有五万人。",
+          "py": "Zhè zuò chéngshì dàyuē yǒu wǔ wàn rén.",
+          "en": "This city has about fifty thousand people."
+        }
+      ],
+      "chars": [
+        "万"
+      ]
+    },
+    {
+      "id": 19,
+      "level": "Boya L16",
+      "chinese": "受罪",
+      "pinyin": "shòuzuì",
+      "english": "to suffer, torture",
+      "khmer": "រងទុក្ខ",
+      "breakdown": "受(endure)+罪(hardship)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "生病真受罪。",
+          "py": "Shēngbìng zhēn shòuzuì.",
+          "en": "Being sick is really torture."
+        },
+        {
+          "level": "HSK1",
+          "cn": "他每天工作到很晚，很受罪。",
+          "py": "Tā měitiān gōngzuò dào hěn wǎn, hěn shòuzuì.",
+          "en": "He works until very late every day, it's really hard."
+        },
+        {
+          "level": "HSK1",
+          "cn": "穿这双鞋走路很受罪。",
+          "py": "Chuān zhè shuāng xié zǒulù hěn shòuzuì.",
+          "en": "Wearing these shoes to walk is torture."
+        },
+        {
+          "level": "HSK2",
+          "cn": "死要面子活受罪。",
+          "py": "Sǐ yào miànzi huó shòuzuì.",
+          "en": "Insisting on face while suffering through life (idiom)."
+        },
+        {
+          "level": "HSK2",
+          "cn": "虽然很受罪，但是他还是坚持完成了任务。",
+          "py": "Suīrán hěn shòuzuì, dànshì tā háishi jiānchí wánchéngle rènwu.",
+          "en": "Although it was very hard, he still insisted on finishing the task."
+        }
+      ],
+      "chars": [
+        "受",
+        "罪"
+      ]
+    },
+    {
+      "id": 20,
+      "level": "Boya L16",
+      "chinese": "算了",
+      "pinyin": "suànle",
+      "english": "forget it, never mind",
+      "khmer": "ភ្លេចទៅ",
+      "breakdown": "算(calculate)+了(particle)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "喜欢说算了的人都不懂得坚持。",
+          "py": "Xǐhuan shuō suànle de rén dōu bù dǒngde jiānchí.",
+          "en": "People who like to say 'forget it' don't understand persistence."
+        },
+        {
+          "level": "HSK1",
+          "cn": "算了，我们不去了。",
+          "py": "Suànle, wǒmen bú qù le.",
+          "en": "Forget it, we're not going."
+        },
+        {
+          "level": "HSK1",
+          "cn": "算了吧，别生气了。",
+          "py": "Suànle ba, bié shēngqì le.",
+          "en": "Forget it, don't be angry anymore."
+        },
+        {
+          "level": "HSK2",
+          "cn": "虽然他很想道歉，但是最后还是算了。",
+          "py": "Suīrán tā hěn xiǎng dàoqiàn, dànshì zuìhòu háishi suànle.",
+          "en": "Although he really wanted to apologize, in the end he just let it go."
+        },
+        {
+          "level": "HSK2",
+          "cn": "因为找不到钥匙，所以他说算了，明天再找。",
+          "py": "Yīnwèi zhǎo bú dào yàoshi, suǒyǐ tā shuō suànle, míngtiān zài zhǎo.",
+          "en": "Because he couldn't find the key, he said forget it, he'd look again tomorrow."
+        }
+      ],
+      "chars": [
+        "算",
+        "了"
+      ]
+    },
+    {
+      "id": 21,
+      "level": "Boya L16",
+      "chinese": "失败",
+      "pinyin": "shībài",
+      "english": "to fail",
+      "khmer": "បរាជ័យ",
+      "breakdown": "失(lose)+败(defeat)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "失败是成功之母。",
+          "py": "Shībài shì chénggōng zhī mǔ.",
+          "en": "Failure is the mother of success."
+        },
+        {
+          "level": "HSK1",
+          "cn": "这次考试他失败了。",
+          "py": "Zhè cì kǎoshì tā shībàile.",
+          "en": "He failed this exam."
+        },
+        {
+          "level": "HSK1",
+          "cn": "不要怕失败。",
+          "py": "Bú yào pà shībài.",
+          "en": "Don't be afraid of failure."
+        },
+        {
+          "level": "HSK2",
+          "cn": "虽然失败了很多次，但是他没有放弃。",
+          "py": "Suīrán shībàile hěn duō cì, dànshì tā méiyǒu fàngqì.",
+          "en": "Although he failed many times, he didn't give up."
+        },
+        {
+          "level": "HSK2",
+          "cn": "因为准备不够，所以这次计划失败了。",
+          "py": "Yīnwèi zhǔnbèi bú gòu, suǒyǐ zhè cì jìhuà shībàile.",
+          "en": "Because the preparation wasn't enough, this plan failed."
+        }
+      ],
+      "chars": [
+        "失",
+        "败"
+      ]
+    },
+    {
+      "id": 22,
+      "level": "Boya L16",
+      "chinese": "想法",
+      "pinyin": "xiǎngfǎ",
+      "english": "idea",
+      "khmer": "គំនិត",
+      "breakdown": "想(think)+法(method)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "有好的想法就应该说出来。",
+          "py": "Yǒu hǎo de xiǎngfǎ jiù yīnggāi shuō chūlái.",
+          "en": "If you have a good idea, you should say it."
+        },
+        {
+          "level": "HSK1",
+          "cn": "我有一个想法。",
+          "py": "Wǒ yǒu yí ge xiǎngfǎ.",
+          "en": "I have an idea."
+        },
+        {
+          "level": "HSK1",
+          "cn": "他的想法很有意思。",
+          "py": "Tā de xiǎngfǎ hěn yǒuyìsi.",
+          "en": "His idea is very interesting."
+        },
+        {
+          "level": "HSK2",
+          "cn": "虽然大家的想法不同，但是目标是一样的。",
+          "py": "Suīrán dàjiā de xiǎngfǎ bùtóng, dànshì mùbiāo shì yíyàng de.",
+          "en": "Although everyone's ideas are different, the goal is the same."
+        },
+        {
+          "level": "HSK2",
+          "cn": "从不同的角度出发，会有不同的想法。",
+          "py": "Cóng bùtóng de jiǎodù chūfā, huì yǒu bùtóng de xiǎngfǎ.",
+          "en": "Starting from different angles, there will be different ideas."
+        }
+      ],
+      "chars": [
+        "想",
+        "法"
+      ]
+    },
+    {
+      "id": 23,
+      "level": "Boya L16",
+      "chinese": "道理",
+      "pinyin": "dàolǐ",
+      "english": "reason",
+      "khmer": "ហេតុផល",
+      "breakdown": "道(way)+理(logic)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "他是一个不讲道理的人。",
+          "py": "Tā shì yí ge bù jiǎng dàolǐ de rén.",
+          "en": "He is a person who doesn't listen to reason."
+        },
+        {
+          "level": "HSK1",
+          "cn": "这句话很有道理。",
+          "py": "Zhè jù huà hěn yǒu dàolǐ.",
+          "en": "This sentence makes a lot of sense."
+        },
+        {
+          "level": "HSK1",
+          "cn": "妈妈跟我讲了很多道理。",
+          "py": "Māma gēn wǒ jiǎngle hěn duō dàolǐ.",
+          "en": "Mom told me a lot of reasons/principles."
+        },
+        {
+          "level": "HSK2",
+          "cn": "虽然他年纪小，但是懂得很多道理。",
+          "py": "Suīrán tā niánjì xiǎo, dànshì dǒngde hěn duō dàolǐ.",
+          "en": "Although he is young, he understands a lot of principles."
+        },
+        {
+          "level": "HSK2",
+          "cn": "任何事情都有它的道理。",
+          "py": "Rènhé shìqing dōu yǒu tā de dàolǐ.",
+          "en": "Everything has its own reason."
+        }
+      ],
+      "chars": [
+        "道",
+        "理"
+      ]
+    },
+    {
+      "id": 24,
+      "level": "Boya L16",
+      "chinese": "任何",
+      "pinyin": "rènhé",
+      "english": "any",
+      "khmer": "ណាមួយ",
+      "breakdown": "任(any)+何(what/any)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "任何人都有责任保护大自然。",
+          "py": "Rènhé rén dōu yǒu zérèn bǎohù dàzìrán.",
+          "en": "Anyone has a responsibility to protect nature."
+        },
+        {
+          "level": "HSK1",
+          "cn": "任何时候都可以给我打电话。",
+          "py": "Rènhé shíhou dōu kěyǐ gěi wǒ dǎ diànhuà.",
+          "en": "You can call me at any time."
+        },
+        {
+          "level": "HSK1",
+          "cn": "我没有任何问题。",
+          "py": "Wǒ méiyǒu rènhé wèntí.",
+          "en": "I don't have any problems."
+        },
+        {
+          "level": "HSK2",
+          "cn": "不管任何理由，他都不能迟到。",
+          "py": "Bùguǎn rènhé lǐyóu, tā dōu bùnéng chídào.",
+          "en": "Whatever the reason, he cannot be late."
+        },
+        {
+          "level": "HSK2",
+          "cn": "任何事情都要从多个角度考虑。",
+          "py": "Rènhé shìqing dōu yào cóng duō ge jiǎodù kǎolǜ.",
+          "en": "Anything must be considered from multiple angles."
+        }
+      ],
+      "chars": [
+        "任",
+        "何"
+      ]
+    },
+    {
+      "id": 25,
+      "level": "Boya L16",
+      "chinese": "角度",
+      "pinyin": "jiǎodù",
+      "english": "angle",
+      "khmer": "មុំ",
+      "breakdown": "角(horn/angle)+度(degree)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "考虑事情的时候我们应该从多个角度。",
+          "py": "Kǎolǜ shìqing de shíhou wǒmen yīnggāi cóng duō ge jiǎodù.",
+          "en": "When considering things, we should look from multiple angles."
+        },
+        {
+          "level": "HSK1",
+          "cn": "这个角度不太好。",
+          "py": "Zhège jiǎodù bú tài hǎo.",
+          "en": "This angle isn't very good."
+        },
+        {
+          "level": "HSK1",
+          "cn": "请换一个角度拍照。",
+          "py": "Qǐng huàn yí ge jiǎodù pāizhào.",
+          "en": "Please change to another angle to take the photo."
+        },
+        {
+          "level": "HSK2",
+          "cn": "从这个角度看，问题就简单多了。",
+          "py": "Cóng zhège jiǎodù kàn, wèntí jiù jiǎndān duō le.",
+          "en": "Looking from this angle, the problem becomes much simpler."
+        },
+        {
+          "level": "HSK2",
+          "cn": "除了这个角度，还有别的角度可以考虑。",
+          "py": "Chúle zhège jiǎodù, hái yǒu bié de jiǎodù kěyǐ kǎolǜ.",
+          "en": "Besides this angle, there are other angles worth considering."
+        }
+      ],
+      "chars": [
+        "角",
+        "度"
+      ]
+    },
+    {
+      "id": 26,
+      "level": "Boya L16",
+      "chinese": "必须",
+      "pinyin": "bìxū",
+      "english": "must",
+      "khmer": "ត្រូវតែ",
+      "breakdown": "必(must)+须(must/should)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "学生必须好好学习。",
+          "py": "Xuésheng bìxū hǎohāo xuéxí.",
+          "en": "Students must study hard."
+        },
+        {
+          "level": "HSK1",
+          "cn": "你必须回家了。",
+          "py": "Nǐ bìxū huí jiā le.",
+          "en": "You must go home now."
+        },
+        {
+          "level": "HSK1",
+          "cn": "我们必须遵守规则。",
+          "py": "Wǒmen bìxū zūnshǒu guīzé.",
+          "en": "We must follow the rules."
+        },
+        {
+          "level": "HSK2",
+          "cn": "不管多忙，你都必须完成作业。",
+          "py": "Bùguǎn duō máng, nǐ dōu bìxū wánchéng zuòyè.",
+          "en": "No matter how busy you are, you must finish your homework."
+        },
+        {
+          "level": "HSK2",
+          "cn": "因为时间不多了，所以我们必须马上出发。",
+          "py": "Yīnwèi shíjiān bù duō le, suǒyǐ wǒmen bìxū mǎshàng chūfā.",
+          "en": "Because there isn't much time left, we must set off right away."
+        }
+      ],
+      "chars": [
+        "必",
+        "须"
+      ]
+    }
+  ],
+  "charInfo": {
+    "句": {
+      "type": "compound",
+      "parts": "勹(wrap/curve) + 口(mouth)",
+      "story": "A curved shape wrapping around a mouth — a stretch of speech folded into one sentence."
+    },
+    "留": {
+      "type": "whole",
+      "parts": "-",
+      "story": "-"
+    },
+    "下": {
+      "type": "pictograph",
+      "parts": "a short mark below a line",
+      "story": "A dot or mark placed under a horizontal line — showing 'below, down'."
+    },
+    "深": {
+      "type": "phono",
+      "parts": "氵(water, meaning) + 罙(sound clue, shēn)",
+      "story": "Water radical with a sound part — used for deep water, and now 'deep' in general."
+    },
+    "刻": {
+      "type": "phono",
+      "parts": "亥(sound clue, hài→kè) + 刂(knife, meaning: to carve)",
+      "story": "A knife radical with a sound part — carving marks into something, used for both 'to engrave' and 'a moment' (carved time marks)."
+    },
+    "印": {
+      "type": "compound",
+      "parts": "爪(a hand, top) + 卩(a kneeling person/seal shape)",
+      "story": "A hand pressing down onto a seal shape — to stamp something, 'to imprint, impression'."
+    },
+    "象": {
+      "type": "pictograph",
+      "parts": "trunk, ears, and legs",
+      "story": "An ancient picture of an elephant — trunk, big ears, and legs. Also used to mean 'image, appearance'."
+    },
+    "香": {
+      "type": "compound",
+      "parts": "禾(grain) + 日(originally 甘, sweet)",
+      "story": "Grain that tastes sweet — the smell of cooking rice or grain, 'fragrant'."
+    },
+    "蕉": {
+      "type": "phono",
+      "parts": "艹(plant, meaning) + 焦(sound clue, jiāo)",
+      "story": "Plant radical with a sound part — a fruiting plant, as in 香蕉 (banana)."
+    },
+    "总": {
+      "type": "whole",
+      "parts": "-",
+      "story": "-"
+    },
+    "是": {
+      "type": "compound",
+      "parts": "日(sun) + 正/疋(straight, correct)",
+      "story": "The sun standing straight overhead — originally 'correct, right', now used for 'is, to be'."
+    },
+    "尾": {
+      "type": "compound",
+      "parts": "尸(a body) + 毛(hair)",
+      "story": "A body shape with hair trailing off the end — an animal's tail."
+    },
+    "巴": {
+      "type": "pictograph",
+      "parts": "a coiled, curling shape",
+      "story": "An ancient picture of a coiled snake or curling tail; today used mostly for its sound, as in 尾巴 (tail) and 爸 (dad)."
+    },
+    "剥": {
+      "type": "whole",
+      "parts": "-",
+      "story": "-"
+    },
+    "细": {
+      "type": "phono",
+      "parts": "纟(silk thread, meaning) + 囟(old sound clue, now shaped like 田)",
+      "story": "Silk thread radical with an old sound part that now looks like 田 — a very thin thread, 'thin, fine, detailed'."
+    },
+    "头": {
+      "type": "phono",
+      "parts": "traditional 頭: 豆(sound clue, dòu) + 页(head, meaning)",
+      "story": "The traditional form paired a 'head' radical with a sound part; simplified down to 头, it still means 'head' or 'top/end'."
+    },
+    "儿": {
+      "type": "pictograph",
+      "parts": "the legs of a person",
+      "story": "A simplified picture of a person's legs — used for 'child, son', and as a soft suffix on other words."
+    },
+    "差": {
+      "type": "whole",
+      "parts": "-",
+      "story": "-"
+    },
+    "别": {
+      "type": "compound",
+      "parts": "另(other) + 刂(knife)",
+      "story": "A knife cutting things apart into separate piles — 'to separate', and by extension 'other' or 'don't'."
+    },
+    "启": {
+      "type": "compound",
+      "parts": "户(door) + 口(mouth)",
+      "story": "A door opening with a mouth speaking below it — opening something up, or opening someone's mind, 'to enlighten'."
+    },
+    "发": {
+      "type": "whole",
+      "parts": "-",
+      "story": "-"
+    },
+    "改": {
+      "type": "compound",
+      "parts": "己(oneself) + 攵(a hand with a stick, action)",
+      "story": "A guiding hand correcting oneself — 'to change, to correct'."
+    },
+    "变": {
+      "type": "whole",
+      "parts": "-",
+      "story": "-"
+    },
+    "方": {
+      "type": "pictograph",
+      "parts": "a plow blade or squared shape",
+      "story": "An old picture, likely a plow blade or a squared-off shape — used for 'square' and 'direction, way'."
+    },
+    "式": {
+      "type": "phono",
+      "parts": "工(work/tool, meaning) + 弋(sound clue, yì→shì)",
+      "story": "A 'work' radical with a sound part — a fixed pattern for making or doing something, 'style, way, formula'."
+    },
+    "戒": {
+      "type": "compound",
+      "parts": "廾(two hands) + 戈(a spear/weapon)",
+      "story": "Two hands holding a weapon up — staying on guard and warning oneself, 'to guard against, to quit'."
+    },
+    "烟": {
+      "type": "phono",
+      "parts": "火(fire, meaning) + 因(sound clue, yīn→yān)",
+      "story": "Fire radical with a sound part — smoke rising up from a flame, 'smoke, cigarette'."
+    },
+    "难": {
+      "type": "phono",
+      "parts": "隹(a bird, meaning) + traditional sound part 堇 (simplified to 又)",
+      "story": "Historically a 'bird' radical with a sound part, describing something hard to catch — 'difficult'."
+    },
+    "受": {
+      "type": "compound",
+      "parts": "爫(a hand, top) + 冖(an object) + 又(a hand, bottom)",
+      "story": "Two hands passing an object between them — giving and receiving, 'to receive, to bear, to suffer'."
+    },
+    "活": {
+      "type": "phono",
+      "parts": "氵(water, meaning) + 舌-shaped sound part (originally 昏/kuò)",
+      "story": "Water radical with a sound part that now looks like 'tongue' — flowing water, 'alive, to live'."
+    },
+    "万": {
+      "type": "whole",
+      "parts": "-",
+      "story": "-"
+    },
+    "罪": {
+      "type": "compound",
+      "parts": "罒(a net) + 非(wrong, not right)",
+      "story": "A net closing in on something 'not right' — being caught doing wrong, 'crime, sin'."
+    },
+    "算": {
+      "type": "compound",
+      "parts": "竹(bamboo, counting rods) + 目(an eye) + 廾(two hands)",
+      "story": "Bamboo counting rods handled by two hands under a watching eye — 'to calculate, to count'."
+    },
+    "了": {
+      "type": "whole",
+      "parts": "-",
+      "story": "-"
+    },
+    "失": {
+      "type": "pictograph",
+      "parts": "a hand with something slipping from it",
+      "story": "A picture of something slipping out of an open hand — 'to lose, to fail'."
+    },
+    "败": {
+      "type": "compound",
+      "parts": "贝(shell/money, valuable) + 攵(a hand with a stick, to strike)",
+      "story": "Striking something valuable and breaking it apart — 'to defeat, to fail'."
+    },
+    "想": {
+      "type": "phono",
+      "parts": "相(sound clue, xiāng→xiǎng) + 心(heart, meaning)",
+      "story": "A heart underneath a sound part — thinking and feeling with the heart, 'to think, an idea'."
+    },
+    "法": {
+      "type": "phono",
+      "parts": "氵(water, meaning) + 去(sound clue, qù→fǎ)",
+      "story": "Water radical with a sound part — water always finds a fair, level path, symbolizing 'law, method'."
+    },
+    "道": {
+      "type": "compound",
+      "parts": "辶(walking, a road) + 首(a head, to lead)",
+      "story": "A head leading the way along a road — 'path, way', and the philosophical 'Dao'."
+    },
+    "理": {
+      "type": "phono",
+      "parts": "王/玉(jade, meaning) + 里(sound clue, lǐ)",
+      "story": "Jade radical with a sound part — the natural grain lines inside jade, 'reason, logic, to manage'."
+    },
+    "任": {
+      "type": "phono",
+      "parts": "亻(a person, meaning) + 壬(sound clue, rén→rèn)",
+      "story": "A person radical with a sound part — a person entrusted with a duty, 'to appoint, responsibility, any'."
+    },
+    "何": {
+      "type": "phono",
+      "parts": "亻(a person, meaning) + 可(sound clue, kě→hé)",
+      "story": "A person radical with a sound part — originally 'to carry', later borrowed to mean 'what, how, any'."
+    },
+    "角": {
+      "type": "pictograph",
+      "parts": "a curved horn shape",
+      "story": "An old picture of an animal's horn — used for 'horn', and by shape, 'angle, corner'."
+    },
+    "度": {
+      "type": "compound",
+      "parts": "广(a shelter/covering shape) + 又(a hand)",
+      "story": "A hand measuring something under a shelter — 'degree, extent, measurement'."
+    },
+    "必": {
+      "type": "whole",
+      "parts": "-",
+      "story": "-"
+    },
+    "须": {
+      "type": "compound",
+      "parts": "页(a head/face) + 彡(strokes of hair)",
+      "story": "Whiskers drawn on a face — originally 'beard', later borrowed to mean 'must, should'."
+    }
+  },
+  "charToFamily": {},
+  "patternGroups": [],
+  "radicalGroups": [
+    {
+      "radical": "氵 (water)",
+      "meaning": "things related to water and its flow",
+      "members": [
+        "深",
+        "活",
+        "法"
+      ]
+    },
+    {
+      "radical": "亻 (person)",
+      "meaning": "things related to people and their roles",
+      "members": [
+        "任",
+        "何"
+      ]
+    },
+    {
+      "radical": "刂 (knife)",
+      "meaning": "actions done with a blade — cutting, carving, separating",
+      "members": [
+        "刻",
+        "别",
+        "剥"
+      ]
+    },
+    {
+      "radical": "攵 (a hand with a stick)",
+      "meaning": "actions caused by force, correction, or striking",
+      "members": [
+        "改",
+        "败"
+      ]
+    },
+    {
+      "radical": "又 (a hand)",
+      "meaning": "actions or ideas involving a hand",
+      "members": [
+        "受",
+        "度",
+        "难"
+      ]
+    },
+    {
+      "radical": "日 (sun)",
+      "meaning": "shapes built from or related to the sun/day",
+      "members": [
+        "是",
+        "香"
+      ]
+    }
+  ]
+}/*__DB_JSON_END__*/;
+</script>
+
+<script>
+"use strict";
+
+// ============================================================
+// 0. Character structures (汉字结构) — fixed reference content.
+//    Same for every lesson, so it is part of the template,
+//    NOT part of the generated data.
+// ============================================================
+const STRUCTURES = [
+  { name:"独体字", pinyin:"dútǐzì", en:"single unit", tier:"base",
+    hint:"One whole piece. It does not split into left/right or top/bottom. Usually the oldest, simplest characters, often pictures of real things.",
+    svg:`<rect x="8" y="8" width="48" height="48" rx="8" fill="var(--jade)" fill-opacity=".13" stroke="var(--line)" stroke-width="2"/>`,
+    members:["人","木","也","大","女","山","口","日","月","水","火","手"] },
+  { name:"左右结构", pinyin:"zuǒyòu jiégòu", en:"left – right", tier:"most common",
+    hint:"Two parts side by side. More than half of all characters. Usually the left part gives the meaning and the right part gives the sound.",
+    svg:`<rect x="8" y="8" width="20" height="48" rx="4" fill="var(--jade)" fill-opacity=".18"/><rect x="34" y="8" width="22" height="48" rx="4" fill="var(--jade)" fill-opacity=".18"/>`,
+    members:["他","你","的","好","江","说","妈","跑","树","谁","吗","地"] },
+  { name:"上下结构", pinyin:"shàngxià jiégòu", en:"top – bottom", tier:"most common",
+    hint:"Two parts stacked. The second most common shape. Often the top gives the meaning and the bottom gives the sound, or the other way round.",
+    svg:`<rect x="8" y="8" width="48" height="20" rx="4" fill="var(--jade)" fill-opacity=".18"/><rect x="8" y="36" width="48" height="20" rx="4" fill="var(--jade)" fill-opacity=".18"/>`,
+    members:["字","早","花","爸","是","想","意","男","苦","忘","念","室"] },
+  { name:"左中右结构", pinyin:"zuǒzhōngyòu", en:"left – middle – right", tier:"less common",
+    hint:"Three parts across: left, middle, right. A wider version of the left–right shape.",
+    svg:`<rect x="8" y="10" width="13" height="44" rx="3" fill="var(--jade)" fill-opacity=".18"/><rect x="25" y="10" width="14" height="44" rx="3" fill="var(--jade)" fill-opacity=".18"/><rect x="43" y="10" width="13" height="44" rx="3" fill="var(--jade)" fill-opacity=".18"/>`,
+    members:["谢","班","脚","湖","做","树"] },
+  { name:"上中下结构", pinyin:"shàngzhōngxià", en:"top – middle – bottom", tier:"less common",
+    hint:"Three parts stacked: top, middle, bottom. A taller version of the top–bottom shape.",
+    svg:`<rect x="10" y="8" width="44" height="13" rx="3" fill="var(--jade)" fill-opacity=".18"/><rect x="10" y="25" width="44" height="14" rx="3" fill="var(--jade)" fill-opacity=".18"/><rect x="10" y="43" width="44" height="13" rx="3" fill="var(--jade)" fill-opacity=".18"/>`,
+    members:["高","意","常","章","算","煮"] },
+  { name:"半包围 (左上)", pinyin:"bàn bāowéi", en:"wraps top-left", tier:"common",
+    hint:"One part wraps the top and left, the rest sits inside at the bottom-right. The wrapping part is usually 广 (shelter), 疒 (sickness) or 尸.",
+    svg:`<path d="M8,52 V8 H56" fill="none" stroke="var(--seal)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="26" y="26" width="26" height="26" rx="4" fill="var(--jade)" fill-opacity=".18"/>`,
+    members:["病","房","座","度","底","床","应","疼"] },
+  { name:"半包围 (左下)", pinyin:"bàn bāowéi", en:"wraps bottom-left", tier:"common",
+    hint:"One part wraps the left and bottom, the rest sits inside at the top-right. The wrapping part is almost always 辶 (movement / road).",
+    svg:`<path d="M8,8 V56 H56" fill="none" stroke="var(--seal)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="24" y="12" width="26" height="26" rx="4" fill="var(--jade)" fill-opacity=".18"/>`,
+    members:["这","过","还","送","进","道","远","建"] },
+  { name:"半包围 (右上)", pinyin:"bàn bāowéi", en:"wraps top-right", tier:"less common",
+    hint:"One part wraps the top and right, the rest sits inside at the bottom-left.",
+    svg:`<path d="M8,8 H56 V56" fill="none" stroke="var(--seal)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="12" y="24" width="26" height="26" rx="4" fill="var(--jade)" fill-opacity=".18"/>`,
+    members:["句","可","司"] },
+  { name:"半包围 (上开口)", pinyin:"bàn bāowéi", en:"three sides, open at bottom", tier:"common",
+    hint:"A frame around the top, left and right, open at the bottom. The wrapping part is usually 门 or 冂.",
+    svg:`<path d="M8,56 V8 H56 V56" fill="none" stroke="var(--seal)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="22" y="28" width="20" height="24" rx="4" fill="var(--jade)" fill-opacity=".18"/>`,
+    members:["问","同","用","内","周","闻"] },
+  { name:"半包围 (下开口)", pinyin:"bàn bāowéi", en:"three sides, open at top", tier:"less common",
+    hint:"A frame around the left, bottom and right, open at the top. The wrapping part is 凵.",
+    svg:`<path d="M8,8 V56 H56 V8" fill="none" stroke="var(--seal)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="22" y="12" width="20" height="24" rx="4" fill="var(--jade)" fill-opacity=".18"/>`,
+    members:["画","凶"] },
+  { name:"半包围 (右开口)", pinyin:"bàn bāowéi", en:"three sides, open at right", tier:"less common",
+    hint:"A frame around the top, left and bottom, open at the right. The wrapping part is 匚.",
+    svg:`<path d="M56,8 H8 V56 H56" fill="none" stroke="var(--seal)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="26" y="18" width="24" height="28" rx="4" fill="var(--jade)" fill-opacity=".18"/>`,
+    members:["区","医","巨"] },
+  { name:"全包围结构", pinyin:"quán bāowéi", en:"full enclosure", tier:"common",
+    hint:"A box 囗 fully surrounds the inside part on all four sides. Think of a wall around a courtyard.",
+    svg:`<rect x="8" y="8" width="48" height="48" rx="4" fill="none" stroke="var(--seal)" stroke-width="3.5"/><rect x="22" y="22" width="20" height="20" rx="3" fill="var(--jade)" fill-opacity=".2"/>`,
+    members:["国","回","园","图","因","四"] }
+];
+
+// ============================================================
+// 1. FSRS scheduler — ported from the main app's tested
+//    js/domain/logic.js. Pure functions, no DOM, no storage.
+// ============================================================
+const FSRS_W = [
+  0.40255, 1.18385, 3.173, 15.69105, 7.1949, 0.5345, 1.4604, 0.0046, 1.54575,
+  0.1192, 1.01925, 1.9395, 0.11, 0.29605, 2.2698, 0.2315, 2.9898, 0.51655, 0.6621
+];
+const FSRS_DECAY = -0.5;
+const FSRS_FACTOR = Math.pow(0.9, 1 / FSRS_DECAY) - 1;
+const TARGET_R = 0.9;
+const DAY = 86400000;
+
+const clampD = (d) => Math.min(10, Math.max(1, d));
+const clampS = (s) => Math.min(36500, Math.max(0.01, s));
+const initD = (g) => clampD(FSRS_W[4] - Math.exp(FSRS_W[5] * (g - 1)) + 1);
+
+function fsrsInterval(S) {
+  return (S / FSRS_FACTOR) * (Math.pow(TARGET_R, 1 / FSRS_DECAY) - 1);
+}
+
+function recallProb(state, now) {
+  if (!state || !state.S || !state.reps) return 0;
+  const t = Math.max(0, (now - (state.last || now)) / DAY);
+  return Math.pow(1 + FSRS_FACTOR * (t / state.S), FSRS_DECAY);
+}
+
+function fsrsUpdate(state, rating, now) {
+  const g = { again: 1, hard: 2, good: 3, easy: 4 }[rating];
+  if (!g) throw new Error("bad rating: " + rating);
+  const st = Object.assign({}, state);
+  const firstReview = st.state === "new" || !st.reps || !st.S;
+
+  if (firstReview) {
+    st.S = clampS(FSRS_W[g - 1]);
+    st.D = initD(g);
+  } else {
+    const t = Math.max(0, (now - (st.last || now)) / DAY);
+    const R = Math.pow(1 + FSRS_FACTOR * (t / st.S), FSRS_DECAY);
+    const deltaD = -FSRS_W[6] * (g - 3);
+    const Dp = st.D + (deltaD * (10 - st.D)) / 9;
+    st.D = clampD(FSRS_W[7] * initD(4) + (1 - FSRS_W[7]) * Dp);
+    if (g === 1) {
+      const Sf = FSRS_W[11] * Math.pow(st.D, -FSRS_W[12]) *
+        (Math.pow(st.S + 1, FSRS_W[13]) - 1) * Math.exp(FSRS_W[14] * (1 - R));
+      st.S = clampS(Math.min(Sf, st.S));
+      st.lapses = (st.lapses || 0) + 1;
+    } else {
+      const hard = g === 2 ? FSRS_W[15] : 1;
+      const easy = g === 4 ? FSRS_W[16] : 1;
+      const inc = Math.exp(FSRS_W[8]) * (11 - st.D) * Math.pow(st.S, -FSRS_W[9]) *
+        (Math.exp(FSRS_W[10] * (1 - R)) - 1) * hard * easy;
+      st.S = clampS(st.S * (1 + inc));
+    }
+  }
+  st.reps = (st.reps || 0) + 1;
+  st.last = now;
+  st.state = "review";
+  st.interval = fsrsInterval(st.S);
+  st.due = now + Math.max(0, st.interval) * DAY;
+  return st;
+}
+
+// New words get recognition first (see the story before producing it).
+// As reps grow the mix shifts toward recall and sentences.
+function pickTaskFromState(state, eligible, rng) {
+  rng = rng || Math.random;
+  eligible = eligible && eligible.length ? eligible : ["recognize"];
+  const isNew = !state || state.state === "new" || !state.reps;
+  if (isNew) return eligible.includes("recognize") ? "recognize" : eligible[0];
+  const elig = new Set(eligible);
+  const reps = state.reps || 0;
+  const pool = [];
+  const add = (t, n) => { if (elig.has(t)) for (let i = 0; i < n; i++) pool.push(t); };
+  if (reps < 2) { add("recognize", 3); add("listen", 1); }
+  else if (reps < 5) { add("recognize", 1); add("recall", 2); add("listen", 1); add("sentence", 1); }
+  else { add("recall", 3); add("sentence", 2); add("listen", 1); }
+  if (!pool.length) {
+    const arr = [...elig];
+    return arr[Math.floor(rng() * arr.length)];
+  }
+  let choices = pool;
+  if (state.lastTask) {
+    const alt = pool.filter((t) => t !== state.lastTask);
+    if (alt.length) choices = alt;
+  }
+  return choices[Math.floor(rng() * choices.length)];
+}
+
+// ============================================================
+// 2. Storage — namespaced per lab so two lesson pages opened
+//    from the same folder never share each other's progress.
+// ============================================================
+const LAB_ID = (DB.meta && DB.meta.id) || "lab";
+const K_SRS = "cml:" + LAB_ID + ":srs";
+const K_DAILY = "cml:" + LAB_ID + ":daily";
+const K_SET = "cml:" + LAB_ID + ":settings";
+
+const DEFAULT_SETTINGS = { voiceURI: "", rate: 0.85, pitch: 1, newLimit: 8, sessionCap: 25, frontMode: "zi" };
+
+function readJSON(key, fallback) {
+  try {
+    const raw = localStorage.getItem(key);
+    return raw ? JSON.parse(raw) : fallback;
+  } catch (e) { return fallback; }
+}
+function writeJSON(key, value) {
+  try { localStorage.setItem(key, JSON.stringify(value)); return true; }
+  catch (e) { return false; }
+}
+
+let srs = readJSON(K_SRS, {});
+let daily = readJSON(K_DAILY, { days: {} });
+let settings = Object.assign({}, DEFAULT_SETTINGS, readJSON(K_SET, {}));
+
+const saveSrs = () => writeJSON(K_SRS, srs);
+const saveDaily = () => writeJSON(K_DAILY, daily);
+const saveSettings = () => writeJSON(K_SET, settings);
+
+function newState() { return { state: "new", reps: 0, lapses: 0, S: 0, D: 0, due: 0, last: 0 }; }
+function stateOf(id) { return srs[id] || newState(); }
+
+function dayStr(ts) {
+  const d = new Date(ts);
+  return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+}
+function doneToday() { return daily.days[dayStr(Date.now())] || 0; }
+function bumpToday() {
+  const k = dayStr(Date.now());
+  daily.days[k] = (daily.days[k] || 0) + 1;
+  saveDaily();
+}
+function streakDays() {
+  let n = 0;
+  const cur = new Date();
+  for (;;) {
+    const k = dayStr(cur.getTime());
+    if (daily.days[k]) { n++; cur.setDate(cur.getDate() - 1); }
+    else break;
+    if (n > 3650) break;
+  }
+  return n;
+}
+
+// ============================================================
+// 3. Speech
+// ============================================================
+const hasTTS = typeof window !== "undefined" && "speechSynthesis" in window;
+let voices = [];
+
+function refreshVoices() {
+  if (!hasTTS) return;
+  voices = window.speechSynthesis.getVoices() || [];
+}
+function zhVoices() { return voices.filter((v) => v.lang && v.lang.toLowerCase().startsWith("zh")); }
+
+function pickVoice() {
+  if (!voices.length) return null;
+  if (settings.voiceURI) {
+    const chosen = voices.find((v) => v.voiceURI === settings.voiceURI);
+    if (chosen) return chosen;
+  }
+  const zh = zhVoices();
+  return zh.find((v) => v.lang === "zh-CN") || zh[0] || null;
+}
+
+function speak(text) {
+  if (!hasTTS || !text) return;
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = "zh-CN";
+  u.rate = Number(settings.rate) || 0.85;
+  u.pitch = Number(settings.pitch) || 1;
+  const v = pickVoice();
+  if (v) u.voice = v;
+  window.speechSynthesis.speak(u);
+}
+
+// ============================================================
+// 4. Small helpers
+// ============================================================
+const $ = (id) => document.getElementById(id);
+const words = DB.words || [];
+const byId = (id) => words.find((w) => w.id === id);
+
+function shuffle(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+function sample(arr, n) { return shuffle(arr.slice()).slice(0, n); }
+
+const typeLabel = {
+  pictograph: "Pictograph — no parts",
+  compound: "Meaning + Meaning",
+  phono: "Sound + Meaning",
+  whole: "Whole shape — no reliable split"
+};
+const typeClass = {
+  pictograph: "type-pictograph", compound: "type-compound",
+  phono: "type-phono", whole: "type-whole"
+};
+
+// An example usable as a fill-the-blank: it must actually contain the word.
+function clozeExample(w) {
+  const list = (w.examples || []).filter((ex) => ex && ex.cn && ex.cn.includes(w.chinese));
+  return list.length ? list[Math.floor(Math.random() * list.length)] : null;
+}
+
+function eligibleTasks(w) {
+  const out = ["recognize", "recall"];
+  if (hasTTS) out.push("listen");
+  if (words.length >= 4 && clozeExample(w)) out.push("sentence");
+  return out;
+}
+
+// ============================================================
+// 5. Navigation
+// ============================================================
+function switchView(viewId) {
+  document.querySelectorAll(".view").forEach((v) => v.classList.remove("active"));
+  const target = $(viewId);
+  if (target) target.classList.add("active");
+  document.querySelectorAll(".nav-btn").forEach((b) => b.classList.toggle("active", b.dataset.view === viewId));
+  window.scrollTo({ top: 0, behavior: "smooth" });
+  if (viewId === "todayView") renderToday();
+  if (viewId === "youView") renderSettings();
+}
+document.querySelectorAll(".nav-btn").forEach((b) => {
+  b.addEventListener("click", () => switchView(b.dataset.view));
+});
+
+// ============================================================
+// 6. TODAY — the mixed session
+// ============================================================
+let queue = [];
+let qIndex = 0;
+let sessionCount = 0;
+
+function dueWords(now) {
+  return words
+    .filter((w) => { const s = stateOf(w.id); return s.state === "review" && (s.due || 0) <= now; })
+    .sort((a, b) => (stateOf(a.id).due || 0) - (stateOf(b.id).due || 0));
+}
+function newWords() { return words.filter((w) => stateOf(w.id).state === "new"); }
+
+function newLeftToday() {
+  const usedToday = words.filter((w) => {
+    const s = stateOf(w.id);
+    return s.reps === 1 && s.last && dayStr(s.last) === dayStr(Date.now());
+  }).length;
+  return Math.max(0, (settings.newLimit || 0) - usedToday);
+}
+
+// Mix reviews and new words: three due, then one new, and repeat.
+function buildQueue() {
+  const now = Date.now();
+  const due = dueWords(now);
+  const fresh = newWords().slice(0, newLeftToday());
+  const out = [];
+  let i = 0, j = 0;
+  while (i < due.length || j < fresh.length) {
+    for (let k = 0; k < 3 && i < due.length; k++) out.push(due[i++]);
+    if (j < fresh.length) out.push(fresh[j++]);
+  }
+  const cap = Math.max(1, settings.sessionCap || 25);
+  queue = out.slice(0, cap).map((w) => ({
+    word: w,
+    task: pickTaskFromState(stateOf(w.id), eligibleTasks(w))
+  }));
+  qIndex = 0;
+  sessionCount = 0;
+}
+
+function renderToday() {
+  const now = Date.now();
+  const due = dueWords(now).length;
+  const fresh = Math.min(newWords().length, newLeftToday());
+  $("statDue").textContent = due;
+  $("statNew").textContent = fresh;
+  $("statDone").textContent = doneToday();
+  $("statStreak").textContent = streakDays();
+
+  const badge = $("navDueBadge");
+  if (due + fresh > 0) { badge.textContent = due + fresh; badge.style.display = ""; }
+  else badge.style.display = "none";
+
+  const note = $("sessionStartNote");
+  const btn = $("startSessionBtn");
+  if (!words.length) {
+    note.textContent = "This lab has no words in it yet.";
+    btn.disabled = true;
+  } else if (due + fresh === 0) {
+    note.textContent = "Nothing is due right now. That is the scheduler doing its job, not a bug. Come back later, or browse the words in Learn.";
+    btn.disabled = false;
+    btn.textContent = "Study ahead anyway";
+  } else {
+    note.textContent = due + " word" + (due === 1 ? "" : "s") + " to review and " + fresh + " new word" + (fresh === 1 ? "" : "s") + " waiting. One session mixes reading, meaning, listening and sentences.";
+    btn.disabled = false;
+    btn.textContent = "Start session";
+  }
+}
+
+function startSession(force) {
+  buildQueue();
+  if (!queue.length && force) {
+    // "Study ahead": nothing is due, so take the weakest cards.
+    const pool = words.slice().sort((a, b) => recallProb(stateOf(a.id), Date.now()) - recallProb(stateOf(b.id), Date.now()));
+    queue = pool.slice(0, Math.min(10, pool.length)).map((w) => ({
+      word: w, task: pickTaskFromState(stateOf(w.id), eligibleTasks(w))
+    }));
+    qIndex = 0; sessionCount = 0;
+  }
+  if (!queue.length) { renderToday(); return; }
+  $("sessionStart").style.display = "none";
+  $("sessionDone").style.display = "none";
+  $("sessionRun").style.display = "";
+  renderTask();
+}
+
+function endSession() {
+  $("sessionRun").style.display = "none";
+  $("sessionStart").style.display = "none";
+  $("sessionDone").style.display = "";
+  $("doneNote").textContent = sessionCount + " card" + (sessionCount === 1 ? "" : "s") +
+    " reviewed. " + doneToday() + " today in total. Day streak: " + streakDays() + ".";
+  renderToday();
+}
+
+function renderTask() {
+  if (qIndex >= queue.length) { endSession(); return; }
+  const item = queue[qIndex];
+  const w = item.word;
+  const card = $("taskCard");
+  const actions = $("taskActions");
+
+  $("taskCounter").textContent = "Card " + (qIndex + 1) + " of " + queue.length;
+  $("taskWordLevel").textContent = w.level || "";
+  $("taskProgress").style.width = Math.round((qIndex / queue.length) * 100) + "%";
+  actions.innerHTML = "";
+
+  if (item.task === "recognize") renderRecognize(w, card, actions);
+  else if (item.task === "recall") renderRecall(w, card, actions);
+  else if (item.task === "listen") renderListen(w, card, actions);
+  else renderSentence(w, card, actions);
+}
+
+function answerBlockHTML(w) {
+  return `
+    <div class="py">${w.pinyin}</div>
+    <div class="en">${w.english}</div>
+    <div class="kh">${w.khmer || ""}</div>`;
+}
+
+function rateRowHTML(suggest) {
+  const b = (r, label, sub) =>
+    `<button class="rate-btn" data-rate="${r}"${r === suggest ? ' style="border-color:var(--seal);color:var(--seal)"' : ""}>${label}<small>${sub}</small></button>`;
+  return `<div class="rate-row">
+    ${b("again", "Again", "forgot")}
+    ${b("hard", "Hard", "struggled")}
+    ${b("good", "Good", "got it")}
+    ${b("easy", "Easy", "too easy")}
+  </div>`;
+}
+
+function wireRateRow(w, container) {
+  container.querySelectorAll(".rate-btn").forEach((btn) => {
+    btn.addEventListener("click", () => applyRating(w, btn.dataset.rate));
+  });
+}
+
+function applyRating(w, rating) {
+  const now = Date.now();
+  const prev = stateOf(w.id);
+  const next = fsrsUpdate(prev, rating, now);
+  next.lastTask = queue[qIndex] ? queue[qIndex].task : prev.lastTask;
+  srs[w.id] = next;
+  saveSrs();
+  bumpToday();
+  sessionCount++;
+  qIndex++;
+  renderTask();
+}
+
+function renderRecognize(w, card, actions) {
+  card.innerHTML = `
+    <span class="task-kind recognize">Read it</span>
+    <div class="zi hanzi">${w.chinese}</div>
+    <div class="hint">What does this mean? Say it out loud first.</div>
+    <div class="task-hidden" id="revealBlock">${answerBlockHTML(w)}</div>`;
+  actions.innerHTML = `<button class="btn primary big" id="revealBtn">Show answer</button>`;
+  $("revealBtn").addEventListener("click", () => {
+    $("revealBlock").classList.remove("task-hidden");
+    speak(w.chinese);
+    actions.innerHTML = rateRowHTML("good");
+    wireRateRow(w, actions);
+  });
+}
+
+function renderRecall(w, card, actions) {
+  card.innerHTML = `
+    <span class="task-kind recall">Produce it</span>
+    <div class="prompt-en">${w.english}</div>
+    <div class="prompt-kh">${w.khmer || ""}</div>
+    <div class="hint">Which Chinese word is this? Say it, then check.</div>
+    <div class="task-hidden" id="revealBlock">
+      <div class="zi hanzi" style="margin-top:10px;">${w.chinese}</div>
+      <div class="py">${w.pinyin}</div>
+    </div>`;
+  actions.innerHTML = `<button class="btn primary big" id="revealBtn">Show answer</button>`;
+  $("revealBtn").addEventListener("click", () => {
+    $("revealBlock").classList.remove("task-hidden");
+    speak(w.chinese);
+    actions.innerHTML = rateRowHTML("good");
+    wireRateRow(w, actions);
+  });
+}
+
+function renderListen(w, card, actions) {
+  const others = sample(words.filter((x) => x.id !== w.id), 3);
+  const opts = shuffle(others.concat([w]));
+  card.innerHTML = `
+    <span class="task-kind listen">Listen</span>
+    <button class="speak-btn xl" id="replayBtn" title="Play again">🔊</button>
+    <div class="hint">Listen, then pick the meaning.</div>
+    <div class="choices" id="choiceWrap">
+      ${opts.map((o) => `<button class="choice" data-id="${o.id}">${o.english}</button>`).join("")}
+    </div>
+    <div class="task-hidden" id="revealBlock">
+      <div class="zi hanzi" style="font-size:40px;margin-top:12px;">${w.chinese}</div>
+      ${answerBlockHTML(w)}
+    </div>`;
+  speak(w.chinese);
+  $("replayBtn").addEventListener("click", () => speak(w.chinese));
+  wireChoices(w, card, actions);
+}
+
+function renderSentence(w, card, actions) {
+  const ex = clozeExample(w);
+  if (!ex) { queue[qIndex].task = "recognize"; renderTask(); return; }
+  const blanked = ex.cn.replace(w.chinese, `<span class="cloze-blank">?</span>`);
+  const others = sample(words.filter((x) => x.id !== w.id), 3);
+  const opts = shuffle(others.concat([w]));
+  card.innerHTML = `
+    <span class="task-kind sentence">Fill the blank</span>
+    <div class="cloze-sentence hanzi">${blanked}</div>
+    <div class="cloze-en">${ex.en}</div>
+    <div class="choices" id="choiceWrap">
+      ${opts.map((o) => `<button class="choice" data-id="${o.id}"><span class="zi hanzi">${o.chinese}</span><br><span style="font-size:11px;color:var(--ink-soft)">${o.pinyin}</span></button>`).join("")}
+    </div>
+    <div class="task-hidden" id="revealBlock">
+      <div class="py" style="margin-top:12px;">${ex.py}</div>
+      ${answerBlockHTML(w)}
+    </div>`;
+  wireChoices(w, card, actions);
+}
+
+// Shared grading for the two multiple-choice tasks.
+function wireChoices(w, card, actions) {
+  const wrap = $("choiceWrap");
+  wrap.querySelectorAll(".choice").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const chosen = parseInt(btn.dataset.id, 10);
+      const right = chosen === w.id;
+      wrap.querySelectorAll(".choice").forEach((b) => {
+        b.disabled = true;
+        if (parseInt(b.dataset.id, 10) === w.id) b.classList.add("correct");
+        else if (b === btn) b.classList.add("wrong");
+      });
+      $("revealBlock").classList.remove("task-hidden");
+      speak(w.chinese);
+      actions.innerHTML = rateRowHTML(right ? "good" : "again");
+      wireRateRow(w, actions);
+    });
+  });
+}
+
+$("startSessionBtn").addEventListener("click", () => startSession(true));
+$("endSessionBtn").addEventListener("click", endSession);
+$("againSessionBtn").addEventListener("click", () => startSession(true));
+$("goLearnBtn").addEventListener("click", () => switchView("learnView"));
+
+// ============================================================
+// 7. LEARN — word list, flashcards, word detail
+// ============================================================
+let currentLevel = "ALL";
+let currentSearch = "";
+const imageCache = {};
+
+function buildLevelChips(containerId, chipClass, onChange) {
+  const levels = [...new Set(words.map((w) => w.level))].filter(Boolean);
+  const container = $(containerId);
+  if (!container) return;
+  container.innerHTML =
+    '<button class="filter-chip ' + chipClass + ' active" data-level="ALL">All</button>' +
+    levels.map((lv) => '<button class="filter-chip ' + chipClass + '" data-level="' + lv + '">' + lv + "</button>").join("");
+  container.querySelectorAll("." + chipClass).forEach((btn) => {
+    btn.addEventListener("click", () => {
+      container.querySelectorAll("." + chipClass).forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+      onChange(btn.dataset.level);
+    });
+  });
+}
+
+function matchesFilter(w) {
+  if (currentLevel !== "ALL" && w.level !== currentLevel) return false;
+  if (!currentSearch) return true;
+  const s = currentSearch.toLowerCase();
+  return w.chinese.includes(currentSearch) ||
+    w.pinyin.toLowerCase().includes(s) ||
+    w.english.toLowerCase().includes(s) ||
+    (w.khmer && w.khmer.includes(currentSearch)) ||
+    (w.breakdown && w.breakdown.toLowerCase().includes(s));
+}
+
+function renderGrid() {
+  const grid = $("wordGrid");
+  const now = Date.now();
+  const filtered = words.filter(matchesFilter);
+  $("countNote").textContent = filtered.length ? filtered.length + " words" : "No matching words found";
+  if (!filtered.length) {
+    grid.innerHTML = '<div class="empty-note">Nothing matches that search.</div>';
+    return;
+  }
+  grid.innerHTML = filtered.map((w) => {
+    const pct = Math.round(recallProb(stateOf(w.id), now) * 100);
+    return `
+      <div class="word-card" data-id="${w.id}">
+        <div class="zi hanzi">${w.chinese}</div>
+        <div class="py">${w.pinyin}</div>
+        <div class="en">${w.english}</div>
+        <div class="level-tag">${w.level || ""}</div>
+        <div class="mini-bar"><span style="width:${pct}%"></span></div>
+      </div>`;
+  }).join("");
+  grid.querySelectorAll(".word-card").forEach((c) => {
+    c.addEventListener("click", () => {
+      const id = parseInt(c.dataset.id, 10);
+      speak((byId(id) || {}).chinese);
+      openDetail(id);
+    });
+  });
+}
+
+function charStoryHTML(ch) {
+  const info = (DB.charInfo || {})[ch];
+  if (!info) return "";
+  const families = (DB.charToFamily || {})[ch] || [];
+  const famHTML = families.map((f) =>
+    `<span class="family-chip" data-family="${f}">Part of the ${f.replace("The ", "").replace(" sound family", "")} family &rarr;</span>`
+  ).join(" ");
+  return `
+    <div class="char-story-card">
+      <div class="big-zi hanzi">${ch}
+        <button class="speak-btn small" data-speak="${ch}" style="display:block;margin:6px auto 0;">🔊</button>
+      </div>
+      <div class="char-story-body">
+        <span class="type-badge ${typeClass[info.type] || "type-whole"}">${typeLabel[info.type] || ""}</span>
+        ${info.parts && info.parts !== "-" ? `<div class="parts-line"><strong>Parts:</strong> ${info.parts}</div>` : ""}
+        <div class="story-line">${info.story}</div>
+        ${famHTML}
+      </div>
+    </div>`;
+}
+
+// The character web: other words in this lab that share a character.
+function relatedWordsHTML(w) {
+  const mine = new Set(w.chars || []);
+  const related = words.filter((x) => x.id !== w.id && (x.chars || []).some((c) => mine.has(c))).slice(0, 12);
+  if (!related.length) {
+    return `<p class="empty-note">No other word in this lab shares a character with ${w.chinese} yet. As you add more lessons, this web fills in.</p>`;
+  }
+  return `<div class="web-row">` + related.map((x) => {
+    const zi = (x.chars || []).map((c) => (mine.has(c) ? `<mark>${c}</mark>` : c)).join("");
+    return `<div class="web-pill" data-id="${x.id}">
+      <div class="zi hanzi">${zi}</div>
+      <div class="py">${x.pinyin}</div>
+      <div class="en">${x.english}</div>
+    </div>`;
+  }).join("") + `</div>`;
+}
+
+function exampleBoxHTML(ex) {
+  const badge = ex.level ? `<span class="level-badge level-badge-${String(ex.level).toLowerCase()}">${ex.level}</span>` : "";
+  return `
+    <div class="example-box">
+      ${badge}
+      <div class="cn hanzi">${ex.cn} <button class="speak-btn small" data-speak="${ex.cn}">🔊</button></div>
+      <div class="py">${ex.py}</div>
+      <div class="en">${ex.en}</div>
+    </div>`;
+}
+
+function cleanImageQuery(english) {
+  let t = (english || "").replace(/\([^)]*\)/g, "").trim();
+  return t.split(",")[0].trim();
+}
+
+async function loadWordImage(w) {
+  const wrap = $("wordImageWrap");
+  if (!wrap) return;
+  const term = cleanImageQuery(w.english);
+  if (!term) { wrap.innerHTML = `<p class="image-none">No picture found for this word.</p>`; return; }
+  if (imageCache[term]) { renderWordImage(wrap, term, imageCache[term], 0); return; }
+  try {
+    const params = new URLSearchParams({
+      action: "query", generator: "search", gsrsearch: term, gsrnamespace: "6",
+      gsrlimit: "8", prop: "imageinfo", iiprop: "url|extmetadata",
+      iiurlwidth: "320", format: "json", origin: "*"
+    });
+    const res = await fetch("https://commons.wikimedia.org/w/api.php?" + params.toString());
+    const data = await res.json();
+    const pages = (data.query && data.query.pages) || {};
+    const results = Object.values(pages)
+      .filter((p) => p.imageinfo && p.imageinfo[0] && p.imageinfo[0].thumburl)
+      .filter((p) => /\.(jpe?g|png|webp)$/i.test(p.title || ""))
+      .sort((a, b) => (a.index || 99) - (b.index || 99))
+      .map((p) => ({ thumb: p.imageinfo[0].thumburl, page: p.imageinfo[0].descriptionurl }));
+    imageCache[term] = results;
+    if ($("wordImageWrap") === wrap) renderWordImage(wrap, term, results, 0);
+  } catch (err) {
+    wrap.innerHTML = `<p class="image-none">Could not reach the picture search. Check your internet connection.</p>`;
+  }
+}
+
+function renderWordImage(wrap, term, results, index) {
+  if (!results.length) { wrap.innerHTML = `<p class="image-none">No picture found for "${term}".</p>`; return; }
+  const i = index % results.length;
+  const r = results[i];
+  wrap.innerHTML = `
+    <img class="word-image" src="${r.thumb}" alt="${term}" loading="lazy" />
+    <div class="image-caption">
+      <span>photo: &ldquo;${term}&rdquo; &middot; <a href="${r.page}" target="_blank" rel="noopener">Wikimedia Commons</a></span>
+      ${results.length > 1 ? `<button type="button" class="img-shuffle-btn">try another</button>` : ""}
+    </div>`;
+  const sb = wrap.querySelector(".img-shuffle-btn");
+  if (sb) sb.addEventListener("click", () => renderWordImage(wrap, term, results, i + 1));
+  const img = wrap.querySelector(".word-image");
+  if (img) img.addEventListener("error", () => renderWordImage(wrap, term, results.filter((x) => x !== r), 0));
+}
+
+function openDetail(id) {
+  const w = byId(id);
+  if (!w) return;
+  const uniqueChars = [...new Set(w.chars || [])];
+  const st = stateOf(w.id);
+  const pct = Math.round(recallProb(st, Date.now()) * 100);
+  const stateNote = st.state === "new" ? "not studied yet"
+    : "seen " + st.reps + "x · next review in " + Math.max(0, Math.round((st.due - Date.now()) / DAY)) + " day(s)";
+
+  $("detailContent").innerHTML = `
+    <div class="detail-head">
+      <div class="zi-row">
+        <div class="zi hanzi">${w.chinese}</div>
+        <button class="speak-btn" data-speak="${w.chinese}">🔊</button>
+      </div>
+      <div class="py">${w.pinyin}</div>
+      <div class="en">${w.english}</div>
+      <div class="kh">${w.khmer || ""}</div>
+      <div class="strength-wrap">
+        <div class="lbl"><span>Memory strength</span><span>${pct}%</span></div>
+        <div class="bar"><span style="width:${pct}%"></span></div>
+        <div class="lbl" style="margin-top:4px;"><span>${stateNote}</span></div>
+      </div>
+    </div>
+    <div class="section-label">Picture</div>
+    <div id="wordImageWrap" class="word-image-wrap"><p class="image-loading">Looking for a picture&hellip;</p></div>
+    <div class="section-label">Examples</div>
+    ${(w.examples || []).map(exampleBoxHTML).join("")}
+    <div class="section-label">How to remember it</div>
+    ${w.breakdown && w.breakdown !== "-"
+      ? `<div class="parts-line" style="margin-bottom:8px;"><strong>Word breakdown:</strong> ${w.breakdown}</div>` : ""}
+    ${uniqueChars.map(charStoryHTML).join("")}
+    <div class="section-label">Character web — words that share a piece</div>
+    ${relatedWordsHTML(w)}`;
+
+  $("overlay").classList.add("show");
+  loadWordImage(w);
+
+  document.querySelectorAll("#detailContent [data-speak]").forEach((btn) => {
+    btn.addEventListener("click", (e) => { e.stopPropagation(); speak(btn.dataset.speak); });
+  });
+  document.querySelectorAll("#detailContent .web-pill").forEach((p) => {
+    p.addEventListener("click", () => openDetail(parseInt(p.dataset.id, 10)));
+  });
+  document.querySelectorAll("#detailContent .family-chip").forEach((chip) => {
+    chip.addEventListener("click", () => {
+      closeDetail();
+      switchView("practiceView");
+      showPane("paneFamilies");
+      setTimeout(() => {
+        const t = document.querySelector(`[data-group-title="${chip.dataset.family}"]`);
+        if (t) t.scrollIntoView({ behavior: "smooth", block: "center" });
+      }, 120);
+    });
+  });
+}
+
+function closeDetail() { $("overlay").classList.remove("show"); }
+$("closeDetail").addEventListener("click", closeDetail);
+$("overlay").addEventListener("click", (e) => { if (e.target.id === "overlay") closeDetail(); });
+document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeDetail(); });
+
+$("searchBox").addEventListener("input", (e) => { currentSearch = e.target.value.trim(); renderGrid(); });
+
+document.querySelectorAll("#learnSeg button").forEach((b) => {
+  b.addEventListener("click", () => {
+    document.querySelectorAll("#learnSeg button").forEach((x) => x.classList.remove("active"));
+    b.classList.add("active");
+    const cards = b.dataset.mode === "cards";
+    $("learnList").style.display = cards ? "none" : "";
+    $("learnCards").style.display = cards ? "" : "none";
+    if (cards) renderFlashcard();
+  });
+});
+
+// --- flashcards (browsing only, no effect on the schedule) ---
+let studyLevel = "ALL";
+let studyList = words.slice();
+let studyIndex = 0;
+
+// Which side is shown before the flip: the characters, the pinyin, or the
+// Khmer. Flipping always reveals the other three, so each choice trains a
+// different direction: reading, pronunciation, and Khmer -> Chinese.
+const FRONT_HINT = {
+  zi: "Tap to reveal pinyin, meaning and Khmer",
+  py: "Tap to reveal the characters, meaning and Khmer",
+  kh: "Tap to reveal the characters, pinyin and meaning"
+};
+let frontMode = ["zi", "py", "kh"].includes(settings.frontMode) ? settings.frontMode : "zi";
+
+function buildStudyList() {
+  studyList = studyLevel === "ALL" ? words.slice() : words.filter((w) => w.level === studyLevel);
+  studyIndex = 0;
+  renderFlashcard();
+}
+function renderFlashcard() {
+  const card = $("flashcard");
+  const front = $("fc-front");
+  if (!studyList.length) {
+    front.textContent = "—";
+    $("progressNote").textContent = "No words in this filter.";
+    return;
+  }
+  const w = studyList[studyIndex];
+  card.classList.remove("flipped");
+
+  front.className = "fc-front fc-front--" + frontMode;
+  front.textContent = frontMode === "zi" ? w.chinese
+    : frontMode === "py" ? w.pinyin
+    : (w.khmer || "—");
+  $("fcHint").textContent = FRONT_HINT[frontMode];
+
+  $("fc-zi").textContent = w.chinese;
+  $("fc-py").textContent = w.pinyin;
+  $("fc-en").textContent = w.english;
+  $("fc-kh").textContent = w.khmer || "";
+  // Do not repeat on the back whatever is already showing on the front.
+  $("fc-zi").style.display = frontMode === "zi" ? "none" : "";
+  $("fc-py").style.display = frontMode === "py" ? "none" : "";
+  $("fc-kh").style.display = frontMode === "kh" ? "none" : "";
+
+  $("progressNote").textContent = (studyIndex + 1) + " / " + studyList.length;
+}
+
+document.querySelectorAll("#frontSeg button").forEach((b) => {
+  b.addEventListener("click", () => {
+    document.querySelectorAll("#frontSeg button").forEach((x) => x.classList.remove("active"));
+    b.classList.add("active");
+    frontMode = b.dataset.front;
+    settings.frontMode = frontMode;
+    saveSettings();
+    renderFlashcard();
+  });
+});
+$("flashcard").addEventListener("click", () => {
+  const card = $("flashcard");
+  card.classList.toggle("flipped");
+  if (card.classList.contains("flipped") && studyList.length) speak(studyList[studyIndex].chinese);
+});
+$("nextBtn").addEventListener("click", () => {
+  if (!studyList.length) return;
+  studyIndex = (studyIndex + 1) % studyList.length; renderFlashcard();
+});
+$("prevBtn").addEventListener("click", () => {
+  if (!studyList.length) return;
+  studyIndex = (studyIndex - 1 + studyList.length) % studyList.length; renderFlashcard();
+});
+$("shuffleBtn").addEventListener("click", () => { shuffle(studyList); studyIndex = 0; renderFlashcard(); });
+$("detailBtn").addEventListener("click", () => { if (studyList.length) openDetail(studyList[studyIndex].id); });
+
+// ============================================================
+// 8. PRACTICE
+// ============================================================
+function showPane(paneId) {
+  document.querySelectorAll("#practiceView .pane").forEach((p) => { p.style.display = "none"; });
+  const t = $(paneId);
+  if (t) t.style.display = "";
+  document.querySelectorAll("#practiceSeg button").forEach((b) => b.classList.toggle("active", b.dataset.pane === paneId));
+  if (paneId === "paneCloze") nextCloze();
+}
+document.querySelectorAll("#practiceSeg button").forEach((b) => {
+  b.addEventListener("click", () => showPane(b.dataset.pane));
+});
+
+function renderPatterns() {
+  const wrap = $("patternGroupsWrap");
+  const groups = DB.patternGroups || [];
+  wrap.innerHTML = groups.length ? groups.map((g) => `
+    <div class="pattern-group" data-group-title="${g.title}">
+      <span class="sound-tag hanzi">${g.sound_component}</span>
+      <h3>${g.title}</h3>
+      <p class="explain">${g.explain}</p>
+      <div class="member-row">
+        ${g.members.map((m) => `
+          <div class="member-pill" data-lookup="${m[0]}">
+            <div class="zi hanzi">${m[0]}</div>
+            <div class="py">${m[1]}</div>
+            <div class="gloss">${m[3]}</div>
+          </div>`).join("")}
+      </div>
+    </div>`).join("")
+    : `<p class="empty-note">No sound families in this lesson. That is honest, not a gap: a family needs at least two characters here that share the same sound part.</p>`;
+
+  wrap.querySelectorAll(".member-pill").forEach((p) => {
+    p.addEventListener("click", () => {
+      const ch = p.dataset.lookup;
+      speak(ch);
+      const w = words.find((x) => (x.chars || []).includes(ch));
+      if (w) openDetail(w.id);
+    });
+  });
+
+  const radWrap = $("radicalGroupsWrap");
+  const rads = DB.radicalGroups || [];
+  radWrap.innerHTML = rads.length ? rads.map((g) => `
+    <div class="radical-group">
+      <span class="rad-tag hanzi">${g.radical}</span>
+      <span style="font-size:12.5px;color:var(--ink-soft);"> — ${g.meaning}</span>
+      <div class="rad-members hanzi">${g.members.join(" ")}</div>
+    </div>`).join("")
+    : `<p class="empty-note">No meaning radicals shared by two or more characters in this lesson.</p>`;
+}
+
+function renderStructures() {
+  const inLab = new Set();
+  words.forEach((w) => (w.chars || []).forEach((c) => inLab.add(c)));
+  $("structGrid").innerHTML = STRUCTURES.map((s) => `
+    <div class="struct-card">
+      <div class="struct-head">
+        <svg width="56" height="56" viewBox="0 0 64 64">${s.svg}</svg>
+        <div>
+          <div class="struct-name hanzi">${s.name}</div>
+          <div class="struct-py">${s.pinyin}</div>
+          <div class="struct-en">${s.en}</div>
+          <span class="struct-tier">${s.tier}</span>
+        </div>
+      </div>
+      <p class="struct-hint">${s.hint}</p>
+      <div class="struct-members">
+        ${s.members.map((c) => `<div class="struct-zi${inLab.has(c) ? " in-lab" : ""}" data-ch="${c}">${c}</div>`).join("")}
+      </div>
+    </div>`).join("");
+  $("structGrid").querySelectorAll(".struct-zi.in-lab").forEach((el) => {
+    el.addEventListener("click", () => {
+      const w = words.find((x) => (x.chars || []).includes(el.dataset.ch));
+      if (w) { speak(el.dataset.ch); openDetail(w.id); }
+    });
+  });
+}
+
+// --- Sentence cloze practice ---
+let clozeRight = 0, clozeTotal = 0;
+
+function clozePool() { return words.filter((w) => clozeExample(w)); }
+
+function nextCloze() {
+  const card = $("clozeCard");
+  const pool = clozePool();
+  if (pool.length < 4) {
+    card.innerHTML = `<p class="empty-note">This lesson needs at least 4 words with example sentences before fill-the-blank works.</p>`;
+    $("clozeScore").textContent = "";
+    return;
+  }
+  const w = pool[Math.floor(Math.random() * pool.length)];
+  const ex = clozeExample(w);
+  const opts = shuffle(sample(words.filter((x) => x.id !== w.id), 3).concat([w]));
+  card.innerHTML = `
+    <div class="cloze-sentence hanzi">${ex.cn.replace(w.chinese, `<span class="cloze-blank">?</span>`)}</div>
+    <div class="cloze-en">${ex.en}</div>
+    <div class="choices" id="clozeChoices">
+      ${opts.map((o) => `<button class="choice" data-id="${o.id}"><span class="zi hanzi">${o.chinese}</span><br><span style="font-size:11px;color:var(--ink-soft)">${o.pinyin}</span></button>`).join("")}
+    </div>
+    <div class="task-hidden" id="clozeReveal">
+      <div class="py" style="font-size:14px;color:var(--ink-soft);margin-top:12px;font-style:italic;">${ex.py}</div>
+      <div style="font-size:13px;color:var(--ink);margin-top:4px;">${w.chinese} · ${w.pinyin} · ${w.english}</div>
+    </div>
+    <div class="task-actions" id="clozeActions"></div>`;
+
+  card.querySelectorAll("#clozeChoices .choice").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const right = parseInt(btn.dataset.id, 10) === w.id;
+      clozeTotal++;
+      if (right) clozeRight++;
+      card.querySelectorAll(".choice").forEach((b) => {
+        b.disabled = true;
+        if (parseInt(b.dataset.id, 10) === w.id) b.classList.add("correct");
+        else if (b === btn) b.classList.add("wrong");
+      });
+      $("clozeReveal").classList.remove("task-hidden");
+      speak(ex.cn);
+      // A miss here pulls the word forward in the review queue.
+      if (!right) {
+        const st = stateOf(w.id);
+        if (st.state === "review") { st.due = Date.now(); srs[w.id] = st; saveSrs(); renderToday(); }
+      }
+      $("clozeActions").innerHTML = `<button class="btn primary" id="clozeNext">Next sentence</button>
+        <button class="btn" id="clozeOpen">Open word card</button>`;
+      $("clozeNext").addEventListener("click", nextCloze);
+      $("clozeOpen").addEventListener("click", () => openDetail(w.id));
+      $("clozeScore").textContent = clozeRight + " right out of " + clozeTotal;
+    });
+  });
+  $("clozeScore").textContent = clozeTotal ? clozeRight + " right out of " + clozeTotal : "";
+}
+
+// ============================================================
+// 9. YOU — settings, backup, reset
+// ============================================================
+function renderVoicePicker() {
+  const sel = $("voicePicker");
+  const zh = zhVoices();
+  const list = zh.length ? zh : voices;
+  sel.innerHTML = list.length
+    ? list.map((v) => `<option value="${v.voiceURI}">${v.name} (${v.lang})</option>`).join("")
+    : `<option value="">No voices available</option>`;
+  const current = pickVoice();
+  if (current) sel.value = current.voiceURI;
+  $("voiceWarn").style.display = zh.length ? "none" : "";
+}
+
+function renderSettings() {
+  renderVoicePicker();
+  $("rateSlider").value = settings.rate;
+  $("rateVal").textContent = Number(settings.rate).toFixed(2) + "x";
+  $("pitchSlider").value = settings.pitch;
+  $("pitchVal").textContent = Number(settings.pitch).toFixed(2);
+  $("newLimit").value = settings.newLimit;
+  $("sessionCap").value = settings.sessionCap;
+
+  const now = Date.now();
+  const learned = words.filter((w) => stateOf(w.id).state === "review").length;
+  const strong = words.filter((w) => recallProb(stateOf(w.id), now) >= 0.9).length;
+  $("progressSummary").textContent =
+    words.length + " words in this lab. " + learned + " started, " + strong +
+    " currently strong (90% or better). Day streak: " + streakDays() + ".";
+}
+
+$("voicePicker").addEventListener("change", (e) => { settings.voiceURI = e.target.value; saveSettings(); });
+$("rateSlider").addEventListener("input", (e) => {
+  settings.rate = parseFloat(e.target.value);
+  $("rateVal").textContent = settings.rate.toFixed(2) + "x";
+  saveSettings();
+});
+$("pitchSlider").addEventListener("input", (e) => {
+  settings.pitch = parseFloat(e.target.value);
+  $("pitchVal").textContent = settings.pitch.toFixed(2);
+  saveSettings();
+});
+$("voiceTestBtn").addEventListener("click", () => speak("你好，我在学中文。"));
+$("newLimit").addEventListener("change", (e) => {
+  settings.newLimit = Math.max(0, Math.min(50, parseInt(e.target.value, 10) || 0));
+  e.target.value = settings.newLimit; saveSettings(); renderToday();
+});
+$("sessionCap").addEventListener("change", (e) => {
+  settings.sessionCap = Math.max(5, Math.min(100, parseInt(e.target.value, 10) || 25));
+  e.target.value = settings.sessionCap; saveSettings();
+});
+
+$("exportBtn").addEventListener("click", () => {
+  const payload = { app: "character-memory-lab", labId: LAB_ID, exportedAt: new Date().toISOString(), srs, daily, settings };
+  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = LAB_ID + "-progress-" + dayStr(Date.now()) + ".json";
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+  $("backupNote").textContent = "Backup file saved to your downloads.";
+});
+
+$("importBtn").addEventListener("click", () => $("importFile").click());
+$("importFile").addEventListener("change", (e) => {
+  const file = e.target.files && e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    try {
+      const data = JSON.parse(reader.result);
+      if (!data || !data.srs) throw new Error("no progress in this file");
+      srs = data.srs; saveSrs();
+      if (data.daily) { daily = data.daily; saveDaily(); }
+      if (data.settings) { settings = Object.assign({}, DEFAULT_SETTINGS, data.settings); saveSettings(); }
+      const mismatch = data.labId && data.labId !== LAB_ID;
+      $("backupNote").textContent = "Backup restored." + (mismatch ? " Note: this backup came from a different lab (" + data.labId + "), so some words may not match." : "");
+      renderSettings(); renderToday(); renderGrid();
+    } catch (err) {
+      $("backupNote").textContent = "Could not read that file: " + err.message;
+    }
+  };
+  reader.readAsText(file);
+  e.target.value = "";
+});
+
+let resetArmed = false;
+$("resetBtn").addEventListener("click", () => {
+  if (!resetArmed) {
+    resetArmed = true;
+    $("resetWarn").style.display = "";
+    setTimeout(() => { resetArmed = false; $("resetWarn").style.display = "none"; }, 6000);
+    return;
+  }
+  srs = {}; daily = { days: {} };
+  saveSrs(); saveDaily();
+  resetArmed = false;
+  $("resetWarn").style.display = "none";
+  $("backupNote").textContent = "All progress cleared.";
+  renderSettings(); renderToday(); renderGrid();
+});
+
+// ============================================================
+// 10. Boot
+// ============================================================
+(function init() {
+  const meta = DB.meta || {};
+  if (meta.title) { document.title = meta.title; $("pageTitle").textContent = meta.title; }
+  $("pageSubtitle").textContent = meta.subtitle || "";
+  $("pageFooter").textContent = meta.footer || "";
+
+  if (hasTTS) {
+    refreshVoices();
+    window.speechSynthesis.onvoiceschanged = () => { refreshVoices(); renderVoicePicker(); };
+  }
+
+  buildLevelChips("wordsLevelChips", "words-chip", (lv) => { currentLevel = lv; renderGrid(); });
+  buildLevelChips("studyLevelChips", "study-chip", (lv) => { studyLevel = lv; buildStudyList(); });
+
+  document.querySelectorAll("#frontSeg button").forEach((b) => {
+    b.classList.toggle("active", b.dataset.front === frontMode);
+  });
+
+  renderGrid();
+  renderFlashcard();
+  renderPatterns();
+  renderStructures();
+  renderToday();
+  renderSettings();
+})();
+</script>
+</body>
+</html>
