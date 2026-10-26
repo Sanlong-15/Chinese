@@ -7,8 +7,8 @@ const DB = /*__DB_JSON_START__*/{
   "meta": {
     "id": "koko-chinese-lab",
     "title": "Koko's Chinese Memory Lab",
-    "subtitle": "305 words",
-    "footer": "Boya L16-18, GCP8 L1-L6.1, Midterm & Final Boya · Built for Koko"
+    "subtitle": "375 words",
+    "footer": "Boya L16-18, GCP8 L1-L8, Midterm & Final Boya · Built for Koko"
   },
   "words": [
     {
@@ -13887,6 +13887,3175 @@ const DB = /*__DB_JSON_START__*/{
         "享",
         "受"
       ]
+    },
+    {
+      "id": 306,
+      "level": "GCP8 L7",
+      "chinese": "大学",
+      "pinyin": "dàxué",
+      "english": "university",
+      "khmer": "សាកលវិទ្យាល័យ",
+      "breakdown": "大(big)+学(study)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "哥哥在北京的一所大学读书。",
+          "py": "Gēge zài Běijīng de yì suǒ dàxué dúshū.",
+          "en": "Older brother studies at a university in Beijing."
+        },
+        {
+          "level": "HSK1",
+          "cn": "这所大学非常漂亮。",
+          "py": "Zhè suǒ dàxué fēicháng piàoliang.",
+          "en": "This university is very beautiful."
+        },
+        {
+          "level": "HSK1",
+          "cn": "他的梦想是考上一所好大学。",
+          "py": "Tā de mèngxiǎng shì kǎo shàng yì suǒ hǎo dàxué.",
+          "en": "His dream is to be admitted to a good university."
+        },
+        {
+          "level": "HSK2",
+          "cn": "虽然大学里的学业很紧张，但他依然积极参加各种社团活动。",
+          "py": "Suīrán dàxué lǐ de xuéyè hěn jǐnzhāng, dàn tā yīrán jījí cānjiā gè zhǒng shètuán huódòng.",
+          "en": "Although university studies are demanding, he still actively participates in various club activities."
+        },
+        {
+          "level": "HSK2",
+          "cn": "大学四年不仅增长了他的专业知识，也培养了他独立思考的能力。",
+          "py": "Dàxué sì nián bùjǐn zēngzhǎngle tā de zhuānyè zhīshi, yě péiyǎngle tā dúlì sīkǎo de nénglì.",
+          "en": "The four years of university not only enhanced his professional knowledge, but also cultivated his independent thinking ability."
+        }
+      ],
+      "chars": [
+        "大",
+        "学"
+      ]
+    },
+    {
+      "id": 307,
+      "level": "GCP8 L7",
+      "chinese": "方面",
+      "pinyin": "fāngmiàn",
+      "english": "aspect",
+      "khmer": "ផ្នែក",
+      "breakdown": "方(direction)+面(side)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "他在很多方面都做得很好。",
+          "py": "Tā zài hěn duō fāngmiàn dōu zuò de hěn hǎo.",
+          "en": "He does very well in many aspects."
+        },
+        {
+          "level": "HSK1",
+          "cn": "你觉得哪方面最困难？",
+          "py": "Nǐ juéde nǎ fāngmiàn zuì kùnnan?",
+          "en": "Which aspect do you think is the most difficult?"
+        },
+        {
+          "level": "HSK1",
+          "cn": "我们要在生活方面互相照顾。",
+          "py": "Wǒmen yào zài shēnghuó fāngmiàn hùxiāng zhàogù.",
+          "en": "We should take care of each other in aspects of daily life."
+        },
+        {
+          "level": "HSK2",
+          "cn": "虽然在技术方面遇到了一些挑战，但是团队依然按时完成了任务。",
+          "py": "Suīrán zài jìshù fāngmiàn yùdàole yìxiē tiǎozhàn, dànshì tuánduì yīrán ànshí wánchéngle rènwu.",
+          "en": "Although encountering challenges in technical aspects, the team still completed the task on time."
+        },
+        {
+          "level": "HSK2",
+          "cn": "除了学习成绩以外，学校还非常注重培养学生在道德修养方面的品质。",
+          "py": "Chúle xuéxí chéngjì yǐwài, xuéxiào hái fēicháng zhùzhòng péiyǎng xuésheng zài dàodé xiūyǎng fāngmiàn de pǐnzhì.",
+          "en": "In addition to academic performance, the school also places great emphasis on cultivating students' moral qualities."
+        }
+      ],
+      "chars": [
+        "方",
+        "面"
+      ]
+    },
+    {
+      "id": 308,
+      "level": "GCP8 L7",
+      "chinese": "突出",
+      "pinyin": "tūchū",
+      "english": "outstanding",
+      "khmer": "លេចធ្លោ",
+      "breakdown": "突(burst out)+出(come out)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "他的工作表现十分突出。",
+          "py": "Tā de gōngzuò biǎoxiàn shífēn tūchū.",
+          "en": "His work performance is very outstanding."
+        },
+        {
+          "level": "HSK1",
+          "cn": "小明在班里的成绩很突出。",
+          "py": "Xiǎomíng zài bān lǐ de chéngjì hěn tūchū.",
+          "en": "Xiaoming's grades in class are very prominent."
+        },
+        {
+          "level": "HSK1",
+          "cn": "这幅画的重点非常突出。",
+          "py": "Zhè fú huà de zhòngdiǎn fēicháng tūchū.",
+          "en": "The focus of this painting is very prominent."
+        },
+        {
+          "level": "HSK2",
+          "cn": "虽然他是新来的员工，但是他在解决技术难题上的表现格外突出。",
+          "py": "Suīrán tā shì xīn lái de yuángōng, dànshì tā zài jiějué jìshù nántí shang de biǎoxiàn géwài tūchū.",
+          "en": "Although he is a new employee, his performance in resolving technical difficulties is particularly outstanding."
+        },
+        {
+          "level": "HSK2",
+          "cn": "因为在科研领域取得了突出的成就，他获得了国家颁发的科技大奖。",
+          "py": "Yīnwèi zài kēyán lǐngyù qǔdéle tūchū de chéngjiù, tā huòdéle guójiā bānfā de kējì dàjiǎng.",
+          "en": "Because he achieved outstanding results in scientific research, he won a national science and technology award."
+        }
+      ],
+      "chars": [
+        "突",
+        "出"
+      ]
+    },
+    {
+      "id": 309,
+      "level": "GCP8 L7",
+      "chinese": "请",
+      "pinyin": "qǐng",
+      "english": "engage",
+      "khmer": "អញ្ជើញ",
+      "breakdown": "-",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "请大家安静坐好。",
+          "py": "Qǐng dàjiā ānjìng zuò hǎo.",
+          "en": "Please sit down quietly, everyone."
+        },
+        {
+          "level": "HSK1",
+          "cn": "我们请他来给我们做讲座。",
+          "py": "Wǒmen qǐng tā lái gěi wǒmen zuò jiǎngzuò.",
+          "en": "We invited him to give us a lecture."
+        },
+        {
+          "level": "HSK1",
+          "cn": "我想请一位中文老师辅导我。",
+          "py": "Wǒ xiǎng qǐng yí wèi Zhōngwén lǎoshī fǔdǎo wǒ.",
+          "en": "I want to engage a Chinese tutor to help me."
+        },
+        {
+          "level": "HSK2",
+          "cn": "虽然公司预算有限，但是经理依然决定请专业顾问来指导业务。",
+          "py": "Suīrán gōngsī yùsuàn yǒuxiàn, dànshì jīnglǐ yīrán juédìng qǐng zhuānyè gùwèn lái zhǐdǎo yèwù.",
+          "en": "Although the company budget was limited, the manager still decided to engage a professional consultant to guide the business."
+        },
+        {
+          "level": "HSK2",
+          "cn": "为了提高团队的科研水平，研究所特别聘请了几位海归博士加入实验室。",
+          "py": "Wèile tígāo tuánduì de kēyán shuǐpíng, yánjiūsuǒ tèbié pìnqǐngle jǐ wèi hǎiguī bóshì jiārù shíyànshì.",
+          "en": "To raise the team's research capability, the institute specifically engaged several returning Ph.D. scholars to join the lab."
+        }
+      ],
+      "chars": [
+        "请"
+      ]
+    },
+    {
+      "id": 310,
+      "level": "GCP8 L7",
+      "chinese": "职位",
+      "pinyin": "zhíwèi",
+      "english": "job position",
+      "khmer": "មុខតំណែង",
+      "breakdown": "职(duty)+位(position)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "他在公司申请了一个新职位。",
+          "py": "Tā zài gōngsī shēnqǐngle yí gè xīn zhíwèi.",
+          "en": "He applied for a new job position in the company."
+        },
+        {
+          "level": "HSK1",
+          "cn": "这个职位的工作内容很简单。",
+          "py": "Zhège zhíwèi de gōngzuò nèiróng hěn jiǎndān.",
+          "en": "The work content for this position is very simple."
+        },
+        {
+          "level": "HSK1",
+          "cn": "她非常适合这个经理职位。",
+          "py": "Tā fēicháng shìhé zhège jīnglǐ zhíwèi.",
+          "en": "She is very suitable for this manager position."
+        },
+        {
+          "level": "HSK2",
+          "cn": "虽然这个职位责任很重，但是薪水和福利待遇都非常优厚。",
+          "py": "Suīrán zhège zhíwèi zérèn hěn zhòng, dànshì xīnshui hé fúlì dàiyù dōu fēicháng yōuhòu.",
+          "en": "Although this position carries heavy responsibilities, the salary and benefits are very generous."
+        },
+        {
+          "level": "HSK2",
+          "cn": "经过几轮严格的面试选拔，他终于获得了心仪已久的管理职位。",
+          "py": "Jīngguò jǐ lún yángé de miànshì xuǎnbá, tā zhōngyú huòdéle xīnyí yǐ jiǔ de guǎnlǐ zhíwèi.",
+          "en": "After several rounds of strict interview selection, he finally secured the managerial position he had long desired."
+        }
+      ],
+      "chars": [
+        "职",
+        "位"
+      ]
+    },
+    {
+      "id": 311,
+      "level": "GCP8 L7",
+      "chinese": "强",
+      "pinyin": "qiáng",
+      "english": "capable",
+      "khmer": "ពូកែ",
+      "breakdown": "-",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "他的动手能力非常强。",
+          "py": "Tā de dòngshǒu nénglì fēicháng qiáng.",
+          "en": "His hands-on ability is very strong."
+        },
+        {
+          "level": "HSK1",
+          "cn": "今天外面的风很强。",
+          "py": "Jīntiān wàimiàn de fēng hěn qiáng.",
+          "en": "The wind outside today is very strong."
+        },
+        {
+          "level": "HSK1",
+          "cn": "我们队伍的实力比去年更强。",
+          "py": "Wǒmen duìwu de shílì bǐ qùnián gèng qiáng.",
+          "en": "Our team's strength is stronger than last year."
+        },
+        {
+          "level": "HSK2",
+          "cn": "虽然他身体看起来瘦弱，但是意志力却比任何人都要坚强。",
+          "py": "Suīrán tā shēntǐ kàn qǐlái shòuruò, dànshì yìzhìlì què bǐ rènhé rén dōu yào jiānqiáng.",
+          "en": "Although he appears physically frail, his willpower is stronger than anyone's."
+        },
+        {
+          "level": "HSK2",
+          "cn": "招聘单位不仅看重文凭，更看重应聘者是否具有强烈的责任感和解决问题的能力。",
+          "py": "Zhāopìn dānwèi bùjǐn kànzhòng wénpíng, gèng kànzhòng yìngpìnzhě shìfǒu jùyǒu qiángliè de zérèngǎn hé jiějué wèntí de nénglì.",
+          "en": "Recruiting units not only value diplomas, but care even more whether applicants have a strong sense of responsibility and problem-solving skills."
+        }
+      ],
+      "chars": [
+        "强"
+      ]
+    },
+    {
+      "id": 312,
+      "level": "GCP8 L7",
+      "chinese": "列入",
+      "pinyin": "lièrù",
+      "english": "include",
+      "khmer": "រាប់បញ្ចូល",
+      "breakdown": "列(list)+入(enter)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "请把这件事列入明天的计划中。",
+          "py": "Qǐng bǎ zhè jiàn shì lièrù míngtiān de jìhuà zhōng.",
+          "en": "Please include this matter in tomorrow's plan."
+        },
+        {
+          "level": "HSK1",
+          "cn": "这个项目被列入学校的重点课程。",
+          "py": "Zhège xiàngmù bèi lièrù xuéxiào de zhòngdiǎn kèchéng.",
+          "en": "This project was included in the school's core curriculum."
+        },
+        {
+          "level": "HSK1",
+          "cn": "他的名字被列入获奖名单。",
+          "py": "Tā de míngzi bèi lièrù huòjiǎng míngdān.",
+          "en": "His name was included in the list of winners."
+        },
+        {
+          "level": "HSK2",
+          "cn": "虽然这项议题争议很大，但委员会最终还是决定将其列入考量范围。",
+          "py": "Suīrán zhè xiàng yìtí zhēngyì hěn dà, dàn wěiyuánhuì zuìzhōng háishi juédìng jiāng qí lièrù kǎoliáng fànwéi.",
+          "en": "Although this topic was controversial, the committee ultimately decided to include it in their scope of consideration."
+        },
+        {
+          "level": "HSK2",
+          "cn": "因为保护传统文化至关重要，京剧早已被列入联合国非物质文化遗产名录。",
+          "py": "Yīnwèi bǎohù chuántǒng wénhuà zhìguān zhòngyào, jīngjù zǎoyǐ bèi lièrù Liánhéguó fēiwùzhì wénhuà yíchǎn mínglù.",
+          "en": "Because preserving traditional culture is vital, Beijing opera has long been included in UNESCO's Intangible Cultural Heritage list."
+        }
+      ],
+      "chars": [
+        "列",
+        "入"
+      ]
+    },
+    {
+      "id": 313,
+      "level": "GCP8 L7",
+      "chinese": "考量",
+      "pinyin": "kǎoliáng",
+      "english": "consideration",
+      "khmer": "ការពិចារណា",
+      "breakdown": "考(examine)+量(measure)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "我们需要多方面进行认真考量。",
+          "py": "Wǒmen xūyào duō fāngmiàn jìnxíng rènzhēn kǎoliáng.",
+          "en": "We need to conduct careful consideration across many aspects."
+        },
+        {
+          "level": "HSK1",
+          "cn": "这是经过充分考量做出的决定。",
+          "py": "Zhè shì jīngguò chōngfèn kǎoliáng zuò chū de juédìng.",
+          "en": "This is a decision made after thorough consideration."
+        },
+        {
+          "level": "HSK1",
+          "cn": "安全性是购买房屋的重要考量。",
+          "py": "Ānquánxìng shì gòumǎi fángwū de zhòngyào kǎoliáng.",
+          "en": "Safety is an important consideration when buying a house."
+        },
+        {
+          "level": "HSK2",
+          "cn": "虽然方案成本略有超标，但在综合考量品质之后公司依然予以批准。",
+          "py": "Suīrán fāng'àn chéngběn lüè yǒu chāobiāo, dàn zài zōnghé kǎoliáng pǐnzhì zhīhòu gōngsī yīrán yǔyǐ pīzhǔn.",
+          "en": "Although the proposal cost slightly exceeded the budget, after comprehensive consideration of quality the company still approved it."
+        },
+        {
+          "level": "HSK2",
+          "cn": "在选择报考哪所大学时，除了在校成绩，未来的就业前途也是必须慎重考量的因素。",
+          "py": "Zài xuǎnzé bàokǎo nǎ suǒ dàxué shí, chúle zàixiào chéngjì, wèilái de jiùyè qiántú yě shì bìxū shènzhòng kǎoliáng de yīnsù.",
+          "en": "When choosing which university to apply for, in addition to school grades, future career prospects are also factors that must be carefully considered."
+        }
+      ],
+      "chars": [
+        "考",
+        "量"
+      ]
+    },
+    {
+      "id": 314,
+      "level": "GCP8 L7",
+      "chinese": "观念",
+      "pinyin": "guānniàn",
+      "english": "concept",
+      "khmer": "ទស្សនៈ",
+      "breakdown": "观(view)+念(thought)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "他的生活观念非常现代。",
+          "py": "Tā de shēnghuó guānniàn fēicháng xiàndài.",
+          "en": "His concept of life is very modern."
+        },
+        {
+          "level": "HSK1",
+          "cn": "我们应该树立健康的消费观念。",
+          "py": "Wǒmen yīnggāi shùlì jiànkāng de xiāofèi guānniàn.",
+          "en": "We should establish a healthy concept of consumption."
+        },
+        {
+          "level": "HSK1",
+          "cn": "大家对这件事情的观念完全不同。",
+          "py": "Dàjiā duì zhè jiàn shìqing de guānniàn wánquán bùtóng.",
+          "en": "Everyone's concepts regarding this matter are completely different."
+        },
+        {
+          "level": "HSK2",
+          "cn": "虽然两代人在很多观念上存在差异，但是通过耐心沟通依然能够互相理解。",
+          "py": "Suīrán liǎng dài rén zài hěn duō guānniàn shang cúnzài chāyì, dànshì tōngguò nàixīn gōutōng yīrán nénggòu hùxiāng lǐjiě.",
+          "en": "Although the two generations differ on many concepts, patient communication still enables mutual understanding."
+        },
+        {
+          "level": "HSK2",
+          "cn": "随着社会的不断发展进步，人们对于成功和幸福的观念也在发生深刻的转变。",
+          "py": "Suízhe shèhuì de búduàn fāzhǎn jìnbù, rénmen duìyú chénggōng hé xìngfú de guānniàn yě zài fāshēng shēnkè de zhuǎnbiàn.",
+          "en": "With continuous social progress, people's concepts of success and happiness are also undergoing profound transformation."
+        }
+      ],
+      "chars": [
+        "观",
+        "念"
+      ]
+    },
+    {
+      "id": 315,
+      "level": "GCP8 L7",
+      "chinese": "人品",
+      "pinyin": "rénpǐn",
+      "english": "moral character",
+      "khmer": "គុណធម៌",
+      "breakdown": "人(person)+品(quality)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "老李的人品受到了大家的一致赞扬。",
+          "py": "Lǎo Lǐ de rénpǐn shòudàole dàjiā de yízhì zànyáng.",
+          "en": "Old Li's moral character received unanimous praise from everyone."
+        },
+        {
+          "level": "HSK1",
+          "cn": "交朋友最重要的就是看人品。",
+          "py": "Jiāo péngyou zuì zhòngyào de jiù shì kàn rénpǐn.",
+          "en": "When making friends, the most important thing is looking at moral character."
+        },
+        {
+          "level": "HSK1",
+          "cn": "他不仅聪明，而且人品很好。",
+          "py": "Tā bùjǐn cōngming, érqiě rénpǐn hěn hǎo.",
+          "en": "He is not only smart, but also has very good moral character."
+        },
+        {
+          "level": "HSK2",
+          "cn": "虽然他在专业技能上还有待提升，但诚实守信的人品赢得了领导的信任。",
+          "py": "Suīrán tā zài zhuānyè jìnéng shang hái yǒudài tíshēng, dàn chéngshí shǒuxìn de rénpǐn yíngdéle lǐngdǎo de xìnrèn.",
+          "en": "Although his professional skills need improvement, his honest and trustworthy character won leadership's trust."
+        },
+        {
+          "level": "HSK2",
+          "cn": "评判一个人的价值不能仅仅看学历和金钱，更要考量他的人品与责任担当。",
+          "py": "Píngpàn yí gè rén de jiàzhí bù néng jǐnjǐn kàn xuélì hé jīnqián, gèng yào kǎoliáng tā de rénpǐn yǔ zérèn dāndāng.",
+          "en": "Judging a person's worth cannot rely merely on academic credentials and money; one must consider their moral character and responsibility."
+        }
+      ],
+      "chars": [
+        "人",
+        "品"
+      ]
+    },
+    {
+      "id": 316,
+      "level": "GCP8 L7",
+      "chinese": "在校成绩",
+      "pinyin": "zàixiàochéngjì",
+      "english": "school grades",
+      "khmer": "ពិន្ទុនៅសាលា",
+      "breakdown": "在(at)+校(school)+成(become)+绩(achievement)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "她的在校成绩一直名列前茅。",
+          "py": "Tā de zàixiàochéngjì yìzhí mínglièqiánmáo.",
+          "en": "Her school grades have always been at the top."
+        },
+        {
+          "level": "HSK1",
+          "cn": "申请奖学金需要看在校成绩。",
+          "py": "Shēnqǐng jiǎngxuéjīn xūyào kàn zàixiàochéngjì.",
+          "en": "Applying for scholarships requires reviewing school grades."
+        },
+        {
+          "level": "HSK1",
+          "cn": "老师说他的在校成绩进步很大。",
+          "py": "Lǎoshī shuō tā de zàixiàochéngjì jìnbù hěn dà.",
+          "en": "The teacher said his school grades have improved greatly."
+        },
+        {
+          "level": "HSK2",
+          "cn": "虽然他的在校成绩非常优异，但他依然保持谦虚谨慎的治学态度。",
+          "py": "Suīrán tā de zàixiàochéngjì fēicháng yōuyì, dàn tā yīrán bǎochí qiānxū jǐnshèn de zhìxué tàidu.",
+          "en": "Although his school grades are very outstanding, he still maintains a humble and modest attitude toward studying."
+        },
+        {
+          "level": "HSK2",
+          "cn": "世界名校在录取新生时，不仅重点审查在校成绩，还会综合考量学生的实践经验。",
+          "py": "Shìjiè míngxiào zài lùqǔ xīnshēng shí, bùjǐn zhòngdiǎn shěnchá zàixiàochéngjì, hái huì zōnghé kǎoliáng xuésheng de shíjiàn jīngyàn.",
+          "en": "When elite universities admit students, they examine not only school grades, but also evaluate students' practical experience."
+        }
+      ],
+      "chars": [
+        "在",
+        "校",
+        "成",
+        "绩"
+      ]
+    },
+    {
+      "id": 317,
+      "level": "GCP8 L7",
+      "chinese": "名校",
+      "pinyin": "míngxiào",
+      "english": "prestigious school",
+      "khmer": "សាលាល្បី",
+      "breakdown": "名(famous)+校(school)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "清华大学是中国著名的名校。",
+          "py": "Qīnghuá Dàxué shì Zhōngguó zhùmíng de míngxiào.",
+          "en": "Tsinghua University is a famous prestigious school in China."
+        },
+        {
+          "level": "HSK1",
+          "cn": "很多学生都希望考进名校。",
+          "py": "Hěn duō xuésheng dōu xīwàng kǎo jìn míngxiào.",
+          "en": "Many students hope to be admitted to a prestigious school."
+        },
+        {
+          "level": "HSK1",
+          "cn": "这所名校有上百年的历史。",
+          "py": "Zhè suǒ míngxiào yǒu shàng bǎi nián de lìshǐ.",
+          "en": "This prestigious school has a history of over a hundred years."
+        },
+        {
+          "level": "HSK2",
+          "cn": "虽然进入名校学习非常光荣，但是随之而来的学业竞争也格外激烈。",
+          "py": "Suīrán jìnrù míngxiào xuéxí fēicháng guāngróng, dànshì suí zhī ér lái de xuéyè jìngzhēng yě géwài jīliè.",
+          "en": "Although entering an elite university is honorable, the accompanying academic competition is especially fierce."
+        },
+        {
+          "level": "HSK2",
+          "cn": "名校不仅拥有雄厚的师资力量，更为青年学子的未来发展提供了广阔的平台。",
+          "py": "Míngxiào bùjǐn yōngyǒu xiónghòu de shīzī lìliàng, gèng wèi qīngnián xuézǐ de wèilái fāzhǎn tígōngle guǎngkuò de píngtái.",
+          "en": "Prestigious schools possess rich faculty resources and provide broad platforms for students' future development."
+        }
+      ],
+      "chars": [
+        "名",
+        "校"
+      ]
+    },
+    {
+      "id": 318,
+      "level": "GCP8 L7",
+      "chinese": "纪录",
+      "pinyin": "jìlù",
+      "english": "record",
+      "khmer": "កំណត់ត្រា",
+      "breakdown": "纪(record)+录(write down)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "他打破了学校长跑比赛的纪录。",
+          "py": "Tā dǎpòle xuéxiào chángpǎo bǐsài de jìlù.",
+          "en": "He broke the school's distance running record."
+        },
+        {
+          "level": "HSK1",
+          "cn": "请把今天会议的纪录整理好。",
+          "py": "Qǐng bǎ jīntiān huìyì de jìlù zhěnglǐ hǎo.",
+          "en": "Please sort out the record of today's meeting."
+        },
+        {
+          "level": "HSK1",
+          "cn": "这是历史上的最高纪录。",
+          "py": "Zhè shì lìshǐ shang de zuì gāo jìlù.",
+          "en": "This is the highest record in history."
+        },
+        {
+          "level": "HSK2",
+          "cn": "虽然天气非常炎热，但运动员们顽强拼搏，再次刷新了世界纪录。",
+          "py": "Suīrán tiānqì fēicháng yánrè, dàn yùndòngyuánmen wánqiáng pīnbó, zàicì shuāxīnle shìjiè jìlù.",
+          "en": "Although the weather was scorchingly hot, athletes persevered and broke the world record once again."
+        },
+        {
+          "level": "HSK2",
+          "cn": "这本珍贵的文献完整纪录了百年前京剧剧团在各地巡回表演的历史细节。",
+          "py": "Zhè běn zhēnguì de wénxiàn wánzhěng jìlùle bǎi nián qián jīngjù jùtuán zài gèdì xúnhuí biǎoyǎn de lìshǐ xìjié.",
+          "en": "This precious document completely recorded the historical details of opera troupes touring a century ago."
+        }
+      ],
+      "chars": [
+        "纪",
+        "录"
+      ]
+    },
+    {
+      "id": 319,
+      "level": "GCP8 L7",
+      "chinese": "标准",
+      "pinyin": "biāozhǔn",
+      "english": "standard",
+      "khmer": "ស្តង់ដារ",
+      "breakdown": "标(mark)+准(standard)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "他的普通话说得非常标准。",
+          "py": "Tā de pǔtōnghuà shuō de fēicháng biāozhǔn.",
+          "en": "He speaks Mandarin very standardly."
+        },
+        {
+          "level": "HSK1",
+          "cn": "这是判断好坏的唯一标准。",
+          "py": "Zhè shì pànduàn hǎohuài de wéiyī biāozhǔn.",
+          "en": "This is the only standard to judge good or bad."
+        },
+        {
+          "level": "HSK1",
+          "cn": "每个岗位的要求都有明确标准。",
+          "py": "Měi gè gǎngwèi de yāoqiú dōu yǒu míngquè biāozhǔn.",
+          "en": "Every job post's requirements have clear standards."
+        },
+        {
+          "level": "HSK2",
+          "cn": "虽然评选标准非常严格，但是所有候选人都欣然接受评定结果。",
+          "py": "Suīrán píngxuǎn biāozhǔn fēicháng yángé, dànshì suǒyǒu hòuxuǎnrén dōu xīnrán jiēshòu píngdìng jiéguǒ.",
+          "en": "Although selection standards were very strict, all candidates gladly accepted the evaluation outcome."
+        },
+        {
+          "level": "HSK2",
+          "cn": "名校在招生录取时制定了全面的评估标准，将德才兼备作为最核心的要求。",
+          "py": "Míngxiào zài zhāoshēng lùqǔ shí zhìdìngle quánmiàn de pínggū biāozhǔn, jiāng décáijiānbèi zuòwéi zuì héxīn de yāoqiú.",
+          "en": "Prestigious schools formulate comprehensive evaluation standards for admissions, taking both virtue and talent as core requirements."
+        }
+      ],
+      "chars": [
+        "标",
+        "准"
+      ]
+    },
+    {
+      "id": 320,
+      "level": "GCP8 L7",
+      "chinese": "入学考试",
+      "pinyin": "rùxuékǎoshì",
+      "english": "entrance exam",
+      "khmer": "ការប្រឡងចូលរៀន",
+      "breakdown": "入(enter)+学(school)+考(test)+试(exam)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "下周我们要参加大学入学考试。",
+          "py": "Xià zhōu wǒmen yào cānjiā dàxué rùxuékǎoshì.",
+          "en": "Next week we will take the college entrance exam."
+        },
+        {
+          "level": "HSK1",
+          "cn": "入学考试的题目并不简单。",
+          "py": "Rùxuékǎoshì de tímù bìng bù jiǎndān.",
+          "en": "The questions on the entrance exam are not simple."
+        },
+        {
+          "level": "HSK1",
+          "cn": "为了准备入学考试，他每天看书到深夜。",
+          "py": "Wèile zhǔnbèi rùxuékǎoshì, tā měitiān kàn shū dào shēnyè.",
+          "en": "To prepare for the entrance exam, he reads late every night."
+        },
+        {
+          "level": "HSK2",
+          "cn": "虽然入学考试竞争非常激烈，但只要平时勤奋踏实就一定能够取得好成绩。",
+          "py": "Suīrán rùxuékǎoshì jìngzhēng fēicháng jīliè, dàn zhǐyào píngshí qínfèn tàshi jiù yídìng nénggòu qǔdé hǎo chéngjì.",
+          "en": "Although entrance exam competition is fierce, consistent diligence will surely bring good results."
+        },
+        {
+          "level": "HSK2",
+          "cn": "这所著名名校的入学考试除了笔试科目，还特别增设了考量综合素质的面试环节。",
+          "py": "Zhè suǒ zhùmíng míngxiào de rùxuékǎoshì chúle bǐshì kēmù, hái tèbié zēngshèle kǎoliáng zōnghé sùzhì de miànshì huánjié.",
+          "en": "In addition to written tests, this famous university's entrance exam includes an interview assessing comprehensive qualities."
+        }
+      ],
+      "chars": [
+        "入",
+        "学",
+        "考",
+        "试"
+      ]
+    },
+    {
+      "id": 321,
+      "level": "GCP8 L7",
+      "chinese": "奖学金",
+      "pinyin": "jiǎngxuéjīn",
+      "english": "scholarship",
+      "khmer": "អាហារូបករណ៍",
+      "breakdown": "奖(reward)+学(study)+金(money)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "他凭借优异成绩获得了奖学金。",
+          "py": "Tā píngjiè yōuyì chéngjì huòdéle jiǎngxuéjīn.",
+          "en": "He earned a scholarship thanks to his excellent grades."
+        },
+        {
+          "level": "HSK1",
+          "cn": "这笔奖学金解决了他的学费问题。",
+          "py": "Zhè bǐ jiǎngxuéjīn jiějuéle tā de xuéfèi wèntí.",
+          "en": "This scholarship resolved his tuition fee issue."
+        },
+        {
+          "level": "HSK1",
+          "cn": "学校每年都给优秀学生发放奖学金。",
+          "py": "Xuéxiào měinián dōu gěi yōuxiù xuésheng fāfàng jiǎngxuéjīn.",
+          "en": "The school awards scholarships to outstanding students every year."
+        },
+        {
+          "level": "HSK2",
+          "cn": "虽然家庭经济条件并不富裕，但他依靠自己努力赢得了全额奖学金。",
+          "py": "Suīrán jiātíng jīngjì tiáojiàn bìng bù fùyù, dàn tā yīkào zìjǐ nǔlì yíngdéle quán'é jiǎngxuéjīn.",
+          "en": "Although his family finances were modest, through hard work he won a full scholarship."
+        },
+        {
+          "level": "HSK2",
+          "cn": "为了鼓励更多青年从事文史科研，基金会特别设立了专项研究生奖学金。",
+          "py": "Wèile gǔlì gèng duō qīngnián cóngshì wénshǐ kēyán, jījīnhuì tèbié shèlìle zhuānxiàng yánjiūshēng jiǎngxuéjīn.",
+          "en": "To encourage young people to pursue literature and history research, the foundation established a special graduate scholarship."
+        }
+      ],
+      "chars": [
+        "奖",
+        "学",
+        "金"
+      ]
+    },
+    {
+      "id": 322,
+      "level": "GCP8 L7",
+      "chinese": "科目",
+      "pinyin": "kēmù",
+      "english": "subject",
+      "khmer": "មុខវិជ្ជា",
+      "breakdown": "科(branch)+目(item)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "数学是我最喜欢的科目。",
+          "py": "Shùxué shì wǒ zuì xǐhuan de kēmù.",
+          "en": "Mathematics is my favorite subject."
+        },
+        {
+          "level": "HSK1",
+          "cn": "考试一共有五个主要科目。",
+          "py": "Kǎoshì yí gòng yǒu wǔ gè zhǔyào kēmù.",
+          "en": "The examination has five major subjects in total."
+        },
+        {
+          "level": "HSK1",
+          "cn": "这个新学期你选了哪些科目？",
+          "py": "Zhège xīn xuéqī nǐ xuǎnle nǎxiē kēmù?",
+          "en": "Which subjects did you choose this new semester?"
+        },
+        {
+          "level": "HSK2",
+          "cn": "虽然文史科目需要背诵很多内容，但只要理解了历史脉络就会变得很有趣。",
+          "py": "Suīrán wénshǐ kēmù xūyào bèisòng hěn duō nèiróng, dàn zhǐyào lǐjiěle lìshǐ màiluò jiù huì biàn de hěn yǒuqù.",
+          "en": "Although humanities subjects require memorizing, understanding the historical context makes them very interesting."
+        },
+        {
+          "level": "HSK2",
+          "cn": "大学各个专业科目设置非常丰富，为学生们提供了跨学科自由探索的广阔空间。",
+          "py": "Dàxué gè gè zhuānyè kēmù shèzhì fēicháng fēngfù, wèi xuéshengmen tígōngle kuà xuékē zìyóu tànsuǒ de guǎngkuò kōngjiān.",
+          "en": "University major course offerings are diverse, giving students broad room for cross-disciplinary exploration."
+        }
+      ],
+      "chars": [
+        "科",
+        "目"
+      ]
+    },
+    {
+      "id": 323,
+      "level": "GCP8 L7",
+      "chinese": "文史",
+      "pinyin": "wénshǐ",
+      "english": "literature and history",
+      "khmer": "អក្សរសាស្ត្រនិងប្រវត្តិសាស្ត្រ",
+      "breakdown": "文(literature)+史(history)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "他对中国文史知识很感兴趣。",
+          "py": "Tā duì Zhōngguó wénshǐ zhīshi hěn gǎn xìngqù.",
+          "en": "He is very interested in Chinese literature and history."
+        },
+        {
+          "level": "HSK1",
+          "cn": "这所大学的文史学院非常有名。",
+          "py": "Zhè suǒ dàxué de wénshǐ xuéyuàn fēicháng yǒumíng.",
+          "en": "The college of literature and history at this university is very famous."
+        },
+        {
+          "level": "HSK1",
+          "cn": "多读文史书籍能开阔眼界。",
+          "py": "Duō dú wénshǐ shūjí néng kāikuò yǎnjiè.",
+          "en": "Reading more literature and history books broadens horizons."
+        },
+        {
+          "level": "HSK2",
+          "cn": "虽然文史研究需要耗费大量的时间查阅古籍，但他乐此不疲。",
+          "py": "Suīrán wénshǐ yánjiū xūyào hàofèi dàliàng de shíjiān cháyuè gǔjí, dàn tā lècǐbùpí.",
+          "en": "Although literature and history research demands immense time checking ancient books, he never tires of it."
+        },
+        {
+          "level": "HSK2",
+          "cn": "精通文史不仅能够加深对民族传统的认识，更能提升一个人的文化底蕴和思想境界。",
+          "py": "Jīngtōng wénshǐ bùjǐn nénggòu jiāshēn duì mínzú chuántǒng de rènshi, gèng néng tíshēng yí gè rén de wénhuà dǐyùn hé sīxiǎng jìngjiè.",
+          "en": "Mastering literature and history deepens awareness of traditions and elevates cultural grounding."
+        }
+      ],
+      "chars": [
+        "文",
+        "史"
+      ]
+    },
+    {
+      "id": 324,
+      "level": "GCP8 L7",
+      "chinese": "理解力",
+      "pinyin": "lǐjiělì",
+      "english": "comprehension",
+      "khmer": "សមត្ថភាពយល់ដឹង",
+      "breakdown": "理(logic)+解(understand)+力(power)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "这个孩子的语言理解力很强。",
+          "py": "Zhège háizi de yǔyán lǐjiělì hěn qiáng.",
+          "en": "This child's language comprehension ability is very strong."
+        },
+        {
+          "level": "HSK1",
+          "cn": "阅读好文章可以提高理解力。",
+          "py": "Yuèdú hǎo wénzhāng kěyǐ tígāo lǐjiělì.",
+          "en": "Reading good articles can improve comprehension ability."
+        },
+        {
+          "level": "HSK1",
+          "cn": "题目考查的是学生的逻辑理解力。",
+          "py": "Tímù kǎochá de shì xuésheng de luóji lǐjiělì.",
+          "en": "The questions test the students' logical comprehension."
+        },
+        {
+          "level": "HSK2",
+          "cn": "虽然这篇哲学论文概念艰深，但他凭借敏锐的理解力很快抓住了核心论点。",
+          "py": "Suīrán zhè piān zhéxué lùnwén gàiniàn jiānshēn, dàn tā píngjiè mǐnruì de lǐjiělì hěn kuài zhuāzhùle héxīn lùndiǎn.",
+          "en": "Although this philosophy paper was conceptual, with keen comprehension he quickly grasped the core argument."
+        },
+        {
+          "level": "HSK2",
+          "cn": "优秀的翻译官不仅需要过硬的记忆力，更需要对不同文化语境具备深刻的理解力。",
+          "py": "Yōuxiù de fānyìguān bùjǐn xūyào guòyìng de jìyìlì, gèng xūyào duì bùtóng wénhuà yǔjìng jùbèi shēnkè de lǐjiělì.",
+          "en": "An excellent interpreter requires not only solid memory, but also deep comprehension of cultural contexts."
+        }
+      ],
+      "chars": [
+        "理",
+        "解",
+        "力"
+      ]
+    },
+    {
+      "id": 325,
+      "level": "GCP8 L7",
+      "chinese": "人格",
+      "pinyin": "réngé",
+      "english": "personality",
+      "khmer": "បុគ្គលិកលក្ខណៈ",
+      "breakdown": "人(person)+格(pattern)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "他拥有独立而健全的人格。",
+          "py": "Tā yōngyǒu dúlì ér jiànquán de réngé.",
+          "en": "He possesses an independent and sound personality."
+        },
+        {
+          "level": "HSK1",
+          "cn": "老师的人格魅力深深吸引了我们。",
+          "py": "Lǎoshī de réngé mèilì shēnshēn xīyǐnle wǒmen.",
+          "en": "The teacher's personal charisma deeply attracted us."
+        },
+        {
+          "level": "HSK1",
+          "cn": "每个人的人格都应当受到尊重。",
+          "py": "Měi gè rén de réngé dōu yīngdāng shòudào zūnzhòng.",
+          "en": "Everyone's moral dignity should be respected."
+        },
+        {
+          "level": "HSK2",
+          "cn": "虽然生活环境不断改变，但他高尚的人格和做人原则却始终如一。",
+          "py": "Suīrán shēnghuó huánjìng búduàn gǎibiàn, dàn tā gāoshàng de réngé hé zuòrén yuánzé què shǐzhōng rúyī.",
+          "en": "Although living circumstances changed, his noble personality and principles remained consistent throughout."
+        },
+        {
+          "level": "HSK2",
+          "cn": "学校教育的终极目标，不仅在于传授专业知识，更在于塑造具有健全人格的公民。",
+          "py": "Xuéxiào jiàoyù de zhōngjí mùbiāo, bùjǐn zàiyú chuánshòu zhuānyè zhīshi, gèng zàiyú shùzào jùyǒu jiànquán réngé de gōngmín.",
+          "en": "The ultimate goal of education lies not only in imparting knowledge, but in shaping citizens of sound personality."
+        }
+      ],
+      "chars": [
+        "人",
+        "格"
+      ]
+    },
+    {
+      "id": 326,
+      "level": "GCP8 L7",
+      "chinese": "将来",
+      "pinyin": "jiānglái",
+      "english": "future",
+      "khmer": "អនាគត",
+      "breakdown": "将(will)+来(come)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "你将来打算做什么工作？",
+          "py": "Nǐ jiānglái dǎsuàn zuò shénme gōngzuò?",
+          "en": "What job do you plan to do in the future?"
+        },
+        {
+          "level": "HSK1",
+          "cn": "我相信我们将来的生活会越来越好。",
+          "py": "Wǒ xiāngxìn wǒmen jiānglái de shēnghuó huì yuè lái yuè hǎo.",
+          "en": "I believe our life in the future will get better and better."
+        },
+        {
+          "level": "HSK1",
+          "cn": "我们要为将来的发展打好基础。",
+          "py": "Wǒmen yào wèi jiānglái de fāzhǎn dǎ hǎo jīchǔ.",
+          "en": "We must lay a solid foundation for future development."
+        },
+        {
+          "level": "HSK2",
+          "cn": "虽然现在学习过程很辛苦，但这些积累必将成为将来事业成功的坚实后盾。",
+          "py": "Suīrán xiànzài xuéxí guòchéng hěn xīnkǔ, dàn zhèxiē jīlěi bì jiāng chéngwéi jiānglái shìyè chénggōng de jiānshí hòudùn.",
+          "en": "Although studying now is arduous, this accumulation will surely become solid backing for future success."
+        },
+        {
+          "level": "HSK2",
+          "cn": "不论将来身在何方，我们永远都不会忘记母校老师们的悉心教诲与关怀。",
+          "py": "Búlùn jiānglái shēn zài héfāng, wǒmen yǒngyuǎn dōu bú huì wàngjì mǔxiào lǎoshīmen de xīxīn jiàohuì yǔ guānhuái.",
+          "en": "No matter where we are in the future, we will never forget the care and teachings of our alma mater's teachers."
+        }
+      ],
+      "chars": [
+        "将",
+        "来"
+      ]
+    },
+    {
+      "id": 327,
+      "level": "GCP8 L7",
+      "chinese": "笨",
+      "pinyin": "bèn",
+      "english": "stupid",
+      "khmer": "ល្ងង់",
+      "breakdown": "-",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "他不笨，只是不够努力。",
+          "py": "Tā bú bèn, zhǐshì bú gòu nǔlì.",
+          "en": "He is not stupid; he just doesn't work hard enough."
+        },
+        {
+          "level": "HSK1",
+          "cn": "这个笨办法有时候很管用。",
+          "py": "Zhège bèn bànfǎ yǒushíhou hěn guǎnyòng.",
+          "en": "This clumsy method is sometimes very effective."
+        },
+        {
+          "level": "HSK1",
+          "cn": "别说自己笨，多练习就会了。",
+          "py": "Bié shuō zìjǐ bèn, duō liànxí jiù huì le.",
+          "en": "Don't call yourself stupid; you'll get it with practice."
+        },
+        {
+          "level": "HSK2",
+          "cn": "虽然动作看起来有点笨拙，但他凭借耐心最终顺利完成了模型组装。",
+          "py": "Suīrán dòngzuò kàn qǐlái yǒudiǎn bènzhuō, dàn tā píngjiè nàixīn zuìzhōng shùnlì wánchéngle móxíng zǔzhuāng.",
+          "en": "Although his movements appeared a bit clumsy, with patience he smoothly finished assembling the model."
+        },
+        {
+          "level": "HSK2",
+          "cn": "天底下没有真正笨的学生，只要找到正确的学习方法并坚持勤奋，每个人都能取得进步。",
+          "py": "Tiān dǐxia méiyǒu zhēnzhèng bèn de xuésheng, zhǐyào zhǎodào zhèngquè de xuéxí fāngfǎ bìng jiānchí qínfèn, měi gè rén dōu néng qǔdé jìnbù.",
+          "en": "There are no truly stupid students in the world; with the right method and diligence, everyone can progress."
+        }
+      ],
+      "chars": [
+        "笨"
+      ]
+    },
+    {
+      "id": 328,
+      "level": "GCP8 L7",
+      "chinese": "正确",
+      "pinyin": "zhèngquè",
+      "english": "correct",
+      "khmer": "ត្រឹមត្រូវ",
+      "breakdown": "正(upright)+确(firm)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "你的回答是完全正确的。",
+          "py": "Nǐ de huídá shì wánquán zhèngquè de.",
+          "en": "Your answer is completely correct."
+        },
+        {
+          "level": "HSK1",
+          "cn": "请选择一个正确的答案。",
+          "py": "Qǐng xuǎnzé yí gè zhèngquè de dá'àn.",
+          "en": "Please choose a correct answer."
+        },
+        {
+          "level": "HSK1",
+          "cn": "掌握正确的方法能节省很多时间。",
+          "py": "Zhǎngwò zhèngquè de fāngfǎ néng jiéshěng hěn duō shíjiān.",
+          "en": "Mastering correct methods can save a lot of time."
+        },
+        {
+          "level": "HSK2",
+          "cn": "虽然做出了艰难的抉择，但后来的事实证明他的判断是完全正确的。",
+          "py": "Suīrán zuò chūle jiānnán de juézé, dàn hòulái de shìshí zhèngmíng tā de pànduàn shì wánquán zhèngquè de.",
+          "en": "Although making a difficult choice, later facts proved that his judgement was completely correct."
+        },
+        {
+          "level": "HSK2",
+          "cn": "面对纷繁复杂的网络信息，我们必须具备独立思考的能力，树立正确的世界观与价值观。",
+          "py": "Miànduì fēnfán fùzá de wǎngluò xìnxī, wǒmen bìxū jùbèi dúlì sīkǎo de nénglì, shùlì zhèngquè de shìjièguān yǔ jiàzhíguān.",
+          "en": "Facing complex online information, we must think independently and establish correct worldviews and values."
+        }
+      ],
+      "chars": [
+        "正",
+        "确"
+      ]
+    },
+    {
+      "id": 329,
+      "level": "GCP8 L7",
+      "chinese": "看不起",
+      "pinyin": "kànbuqǐ",
+      "english": "despise",
+      "khmer": "មើលងាយ",
+      "breakdown": "看(look)+不(not)+起(up)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "我们绝不能看不起别人。",
+          "py": "Wǒmen jué bù néng kànbuqǐ biérén.",
+          "en": "We must never look down upon other people."
+        },
+        {
+          "level": "HSK1",
+          "cn": "他虽然贫穷，但从不让人看不起。",
+          "py": "Tā suīrán pínqióng, dàn cóng bù ràng rén kànbuqǐ.",
+          "en": "Although poor, he never lets anyone despise him."
+        },
+        {
+          "level": "HSK1",
+          "cn": "不要因为一件小事就看不起他。",
+          "py": "Bú yào yīnwèi yí jiàn xiǎoshì jiù kànbuqǐ tā.",
+          "en": "Do not look down on him over a small matter."
+        },
+        {
+          "level": "HSK2",
+          "cn": "虽然身处逆境生活艰辛，但是他凭借勤奋自强，让那些曾经看不起他的人刮目相看。",
+          "py": "Suīrán shēn chǔ nìjìng shēnghuó jiānxīn, dànshì tā píngjiè qínfèn zìqiáng, ràng nàxiē céngjīng kànbuqǐ tā de rén guāmùxiāngkàn.",
+          "en": "Although living in hardship, through diligence and self-reliance he made those who once despised him look at him anew."
+        },
+        {
+          "level": "HSK2",
+          "cn": "真正的君子不论贫富地位高低，都以平等礼貌之心待人，从不会看不起任何普通人。",
+          "py": "Zhēnzhèng de jūnzǐ búlùn pínfù dìwèi gāodī, dōu yǐ píngděng lǐmào zhī xīn dài rén, cóng bú huì kànbuqǐ rènhé pǔtōng rén.",
+          "en": "A true gentleman treats people equally with courtesy regardless of wealth, and never looks down on anyone."
+        }
+      ],
+      "chars": [
+        "看",
+        "不",
+        "起"
+      ]
+    },
+    {
+      "id": 330,
+      "level": "GCP8 L7",
+      "chinese": "记忆力",
+      "pinyin": "jìyìlì",
+      "english": "memory",
+      "khmer": "ការចងចាំ",
+      "breakdown": "记(remember)+忆(recall)+力(power)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "老爷爷的记忆力非常惊人。",
+          "py": "Lǎoyéye de jìyìlì fēicháng jīngrén.",
+          "en": "Grandpa's memory is very astonishing."
+        },
+        {
+          "level": "HSK1",
+          "cn": "经常用脑可以增强记忆力。",
+          "py": "Jīngcháng yòng nǎo kěyǐ zēngqiáng jìyìlì.",
+          "en": "Using your brain frequently can enhance memory."
+        },
+        {
+          "level": "HSK1",
+          "cn": "我的记忆力好像没有以前好了。",
+          "py": "Wǒ de jìyìlì hǎoxiàng méiyǒu yǐqián hǎo le.",
+          "en": "My memory does not seem as good as before."
+        },
+        {
+          "level": "HSK2",
+          "cn": "虽然随着年龄增长记忆力会有所减退，但持之以恒的阅读依然能保持头脑敏锐。",
+          "py": "Suīrán suízhe niánlíng zēngzhǎng jìyìlì huì yǒusuǒ jiǎntuì, dàn chízhīyǐhéng de yuèdú yīrán néng bǎochí tóunǎo mǐnruì.",
+          "en": "Although memory declines with age, persistent reading keeps the mind sharp."
+        },
+        {
+          "level": "HSK2",
+          "cn": "在文史学科的学习中，光靠死记硬背的记忆力远远不够，深刻的理解力才是掌握知识的关键。",
+          "py": "Zài wénshǐ xuékē de xuéxí zhōng, guāng kào sǐjìyìngbèi de jìyìlì yuǎnyuǎn bú gòu, shēnkè de lǐjiělì cái shì zhǎngwò zhīshi de guānjiàn.",
+          "en": "In humanities studies, rote memory alone is not enough; deep comprehension is the key to mastering knowledge."
+        }
+      ],
+      "chars": [
+        "记",
+        "忆",
+        "力"
+      ]
+    },
+    {
+      "id": 331,
+      "level": "GCP8 L7",
+      "chinese": "前途",
+      "pinyin": "qiántú",
+      "english": "future prospects",
+      "khmer": "អនាគតរុងរឿង",
+      "breakdown": "前(ahead)+途(road)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "大家都在为美好的前途奋斗。",
+          "py": "Dàjiā dōu zài wèi měihǎo de qiántú fèndòu.",
+          "en": "Everyone is striving for a bright future."
+        },
+        {
+          "level": "HSK1",
+          "cn": "老师说他是一个很有前途的年轻人。",
+          "py": "Lǎoshī shuō tā shì yí gè hěn yǒu qiántú de niánqīngrén.",
+          "en": "The teacher said he is a young man with great future prospects."
+        },
+        {
+          "level": "HSK1",
+          "cn": "科学研究是一条充满前途的道路。",
+          "py": "Kēxué yánjiū shì yì tiáo chōngmǎn qiántú de dàolù.",
+          "en": "Scientific research is a path full of bright prospects."
+        },
+        {
+          "level": "HSK2",
+          "cn": "虽然创业初期的前途充满了未知，但他凭借敏锐的商业眼光闯出了一片天地。",
+          "py": "Suīrán chuàngyè chūqī de qiántú chōngmǎnle wèizhī, dàn tā píngjiè mǐnruì de shāngyè yǎnguāng chuǎng chūle yí piàn tiāndì.",
+          "en": "Although early venture prospects were uncertain, through keen business vision he carved out success."
+        },
+        {
+          "level": "HSK2",
+          "cn": "青年人只要树立正确的人生目标并脚踏实地前行，就必定能够拥有光明灿烂的锦绣前途。",
+          "py": "Qīngniánrén zhǐyào shùlì zhèngquè de rénshēng mùbiāo bìng jiǎotàshídì qiánxíng, jiù bìdìng nénggòu yōngyǒu guāngmíng cànlàn de jǐnxiù qiántú.",
+          "en": "As long as young people set correct goals and act down to earth, they will surely enjoy splendid future prospects."
+        }
+      ],
+      "chars": [
+        "前",
+        "途"
+      ]
+    },
+    {
+      "id": 332,
+      "level": "GCP8 L7",
+      "chinese": "学历",
+      "pinyin": "xuélì",
+      "english": "educational background",
+      "khmer": "កម្រិតសិក្សា",
+      "breakdown": "学(study)+历(record)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "他的最高学历是硕士研究生。",
+          "py": "Tā de zuì gāo xuélì shì shuòshì yánjiūshēng.",
+          "en": "His highest educational background is a master's degree candidate."
+        },
+        {
+          "level": "HSK1",
+          "cn": "找工作时不仅需要看学历。",
+          "py": "Zhǎo gōngzuò shí bùjǐn xūyào kàn xuélì.",
+          "en": "Looking for a job doesn't solely depend on academic qualifications."
+        },
+        {
+          "level": "HSK1",
+          "cn": "这份表格需要填写本人的学历。",
+          "py": "Zhè fèn biǎogé xūyào tiánxiě běnrén de xuélì.",
+          "en": "This form requires filling in one's educational background."
+        },
+        {
+          "level": "HSK2",
+          "cn": "虽然高学历是进入名企的敲门砖，但真正决定职业高度的还是实际工作能力。",
+          "py": "Suīrán gāo xuélì shì jìnrù míngqǐ de qiāoménzhuān, dàn zhēnzhèng juédìng zhíyè gāodù de háishi shíjì gōngzuò nénglì.",
+          "en": "Although high educational credentials open doors, actual working ability determines career heights."
+        },
+        {
+          "level": "HSK2",
+          "cn": "现代企业在招聘重要职位时，除了考量应聘者的学历背景，更加看重其人品道德与团队协作精神。",
+          "py": "Xiàndài qǐyè zài zhāopìn zhòngyào zhíwèi shí, chúle kǎoliáng yìngpìnzhě de xuélì bèijǐng, gèngjiā kànzhòng qí rénpǐn dàodé yǔ tuánduì xiézuò jīngshén.",
+          "en": "When recruiting for important positions, modern enterprises evaluate character and teamwork beyond academic background."
+        }
+      ],
+      "chars": [
+        "学",
+        "历"
+      ]
+    },
+    {
+      "id": 333,
+      "level": "GCP8 L7",
+      "chinese": "学位",
+      "pinyin": "xuéwèi",
+      "english": "academic degree",
+      "khmer": "សញ្ញាបត្រ",
+      "breakdown": "学(study)+位(status)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "他去年顺利获得了学士学位。",
+          "py": "Tā qùnián shùnlì huòdéle xuéshì xuéwèi.",
+          "en": "He successfully obtained his bachelor's degree last year."
+        },
+        {
+          "level": "HSK1",
+          "cn": "攻读博士学位需要付出多年心血。",
+          "py": "Gōngdú bóshì xuéwèi xūyào fùchū duō nián xīnxuè.",
+          "en": "Pursuing a doctoral degree requires years of dedicated effort."
+        },
+        {
+          "level": "HSK1",
+          "cn": "他在名校获得了双学位。",
+          "py": "Tā zài míngxiào huòdéle shuāng xuéwèi.",
+          "en": "He obtained a dual degree at a prestigious university."
+        },
+        {
+          "level": "HSK2",
+          "cn": "虽然攻读医学学位过程漫长而艰苦，但他从未动摇过救死扶伤的崇高理想。",
+          "py": "Suīrán gōngdú yīxué xuéwèi guòchéng màncháng ér jiānkǔ, dàn tā cóngwèi dòngyáoguò jiùsǐfúshāng de chónggāo lǐxiǎng.",
+          "en": "Although pursuing a medical degree is long and arduous, he never wavered in his noble ideal of saving lives."
+        },
+        {
+          "level": "HSK2",
+          "cn": "经过四年的刻苦攻读和严格的论文答辩，全班同学如愿以偿地获得了大学学士学位。",
+          "py": "Jīngguò sì nián de kèkǔ gōngdú hé yángé de lùnwén dábbiàn, quán bān tóngxué rúyuànyǐcháng de huòdéle dàxué xuéshì xuéwèi.",
+          "en": "After four years of study and rigorous thesis defense, the whole class achieved their bachelor's degrees."
+        }
+      ],
+      "chars": [
+        "学",
+        "位"
+      ]
+    },
+    {
+      "id": 334,
+      "level": "GCP8 L7",
+      "chinese": "开朗",
+      "pinyin": "kāilǎng",
+      "english": "cheerful",
+      "khmer": "រីករាយ",
+      "breakdown": "开(open)+朗(bright)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "她是一个性格非常开朗的女孩。",
+          "py": "Tā shì yí gè xìnggé fēicháng kāilǎng de nǚhái.",
+          "en": "She is a very cheerful and outgoing girl."
+        },
+        {
+          "level": "HSK1",
+          "cn": "只要和开朗的人在一起，心情就会变好。",
+          "py": "Zhǐyào hé kāilǎng de rén zài yìqǐ, xīnqíng jiù huì biàn hǎo.",
+          "en": "Being with cheerful people makes one's mood better."
+        },
+        {
+          "level": "HSK1",
+          "cn": "他的笑容总是那么开朗阳光。",
+          "py": "Tā de xiàoróng zǒngshì nàme kāilǎng yángguāng.",
+          "en": "His smile is always so cheerful and bright."
+        },
+        {
+          "level": "HSK2",
+          "cn": "虽然童年生活经历坎坷，但他始终保持着积极开朗的人格特质。",
+          "py": "Suīrán tóngnián shēnghuó jīnglì kǎnkě, dàn tā shǐzhōng bǎochízhe jījí kāilǎng de réngé tèzhì.",
+          "en": "Although his childhood was rough, he always maintained a positive and cheerful personality."
+        },
+        {
+          "level": "HSK2",
+          "cn": "因为性格活泼开朗且乐于助人，所以他在大学班级里深得老师和同学们的喜爱。",
+          "py": "Yīnwèi xìnggé huópo kāilǎng qiě lèyúzhùrén, suǒyǐ tā zài dàxué bānjí lǐ shēn dé lǎoshī hé tóngxuémen de xǐ'ài.",
+          "en": "Because he is lively, cheerful, and helpful, he is deeply loved by teachers and classmates in his college class."
+        }
+      ],
+      "chars": [
+        "开",
+        "朗"
+      ]
+    },
+    {
+      "id": 335,
+      "level": "GCP8 L7",
+      "chinese": "乐观",
+      "pinyin": "lèguān",
+      "english": "optimistic",
+      "khmer": "សុទិដ្ឋិនិយម",
+      "breakdown": "乐(joy)+观(view)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "我们要对生活保持乐观态度。",
+          "py": "Wǒmen yào duì shēnghuó bǎochí lèguān tàidu.",
+          "en": "We should maintain an optimistic attitude toward life."
+        },
+        {
+          "level": "HSK1",
+          "cn": "他是一个天生乐观的人。",
+          "py": "Tā shì yí gè tiānshēng lèguān de rén.",
+          "en": "He is a naturally optimistic person."
+        },
+        {
+          "level": "HSK1",
+          "cn": "医生对病人的病情持乐观态度。",
+          "py": "Yīshēng duì bìngrén de bìngqíng chí lèguān tàidu.",
+          "en": "The doctor holds an optimistic view on the patient's condition."
+        },
+        {
+          "level": "HSK2",
+          "cn": "虽然遭遇了意想不到的挫折，但他依然用乐观豁达的心态笑对人生风雨。",
+          "py": "Suīrán zāoyùle yìxiǎngbùdào de cuòzhé, dàn tā yīrán yòng lèguān huòdá de xīntài xiào duì rénshēng fēngyǔ.",
+          "en": "Although meeting unexpected setbacks, he smiled at life's storms with an optimistic and open mindset."
+        },
+        {
+          "level": "HSK2",
+          "cn": "与悲观消极相比，乐观向上的人往往更容易在逆境中发现转机并最终赢得成功。",
+          "py": "Yǔ bēiguān xiāojí xiāngbǐ, lèguān xiàngshàng de rén wǎngwǎng gèng róngyì zài nìjìng zhōng fāxiàn zhuǎnjī bìng zuìzhōng yíngdé chénggōng.",
+          "en": "Compared to pessimism, optimistic people are more likely to find turning points in adversity and achieve success."
+        }
+      ],
+      "chars": [
+        "乐",
+        "观"
+      ]
+    },
+    {
+      "id": 336,
+      "level": "GCP8 L7",
+      "chinese": "勤奋",
+      "pinyin": "qínfèn",
+      "english": "diligent",
+      "khmer": "ឧស្សាហ៍ព្យាយាម",
+      "breakdown": "勤(diligent)+奋(strive)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "他在学习上非常勤奋努力。",
+          "py": "Tā zài xuéxí shang fēicháng qínfèn nǔlì.",
+          "en": "He is very diligent and hardworking in his studies."
+        },
+        {
+          "level": "HSK1",
+          "cn": "勤奋是通向成功的唯一捷径。",
+          "py": "Qínfèn shì tōng xiàng chénggōng de wéiyī jiéjìng.",
+          "en": "Diligence is the only true shortcut to success."
+        },
+        {
+          "level": "HSK1",
+          "cn": "全班同学都在勤奋复习迎考。",
+          "py": "Quán bān tóngxué dōu zài qínfèn fùxí yíng kǎo.",
+          "en": "All classmates are diligently reviewing for the exam."
+        },
+        {
+          "level": "HSK2",
+          "cn": "虽然起点比别人落后，但他依靠超乎常人的勤奋最终考入了理想的名校。",
+          "py": "Suīrán qǐdiǎn bǐ biérén luòhòu, dàn tā yīkào chāohū chángrén de qínfèn zuìzhōng kǎo rùle lǐxiǎng de míngxiào.",
+          "en": "Although starting behind others, through extraordinary diligence he entered his ideal university."
+        },
+        {
+          "level": "HSK2",
+          "cn": "任何卓越成就的背后都离不开日复一日的勤奋付出，天才出于勤奋便是这个道理。",
+          "py": "Rènhé zhuóyuè chéngjiù de bèihòu dōu lí bù kāi rì fù yí rì de qínfèn fùchū, tiāncái chū yú qínfèn biàn shì zhège dàolǐ.",
+          "en": "Behind every outstanding achievement lies daily diligent effort; genius comes from diligence."
+        }
+      ],
+      "chars": [
+        "勤",
+        "奋"
+      ]
+    },
+    {
+      "id": 337,
+      "level": "GCP8 L7",
+      "chinese": "悲观",
+      "pinyin": "bēiguān",
+      "english": "pessimistic",
+      "khmer": "ទុទ្ទិដ្ឋិនិយម",
+      "breakdown": "悲(sorrow)+观(view)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "请不要对未来感到太悲观。",
+          "py": "Qǐng bú yào duì wèilái gǎndào tài bēiguān.",
+          "en": "Please do not feel too pessimistic about the future."
+        },
+        {
+          "level": "HSK1",
+          "cn": "悲观的情绪会影响工作效率。",
+          "py": "Bēiguān de qíngxù huì yǐngxiǎng gōngzuò xiàolǜ.",
+          "en": "Pessimistic emotions will affect work efficiency."
+        },
+        {
+          "level": "HSK1",
+          "cn": "他看问题的方式总是有点悲观。",
+          "py": "Tā kàn wèntí de fāngshì zǒngshì yǒudiǎn bēiguān.",
+          "en": "His way of looking at issues is always a bit pessimistic."
+        },
+        {
+          "level": "HSK2",
+          "cn": "虽然面临着暂时的困难，但是大家并不悲观，坚信一定能找到化解之道。",
+          "py": "Suīrán miànlínzhe zànshí de kùnnan, dànshì dàjiā bìng bù bēiguān, jiānxìn yídìng néng zhǎodào huàjiě zhī dào.",
+          "en": "Although facing temporary difficulties, no one was pessimistic, believing a solution would be found."
+        },
+        {
+          "level": "HSK2",
+          "cn": "遇事与其一味悲观抱怨，不如调整观念积极寻找对策，把绊脚石变成垫脚石。",
+          "py": "Yù shì yǔqí yíwèi bēiguān bàoyuàn, bùrú tiáozhěng guānniàn jījí xúnzhǎo duìcè, bǎ bànjiǎoshí biànchéng diànjiǎoshí.",
+          "en": "Rather than complaining pessimistically when facing adversity, adjusting one's mindset to seek remedies turns stumbling blocks into stepping stones."
+        }
+      ],
+      "chars": [
+        "悲",
+        "观"
+      ]
+    },
+    {
+      "id": 338,
+      "level": "GCP8 L7",
+      "chinese": "懒惰",
+      "pinyin": "lǎnduò",
+      "english": "lazy",
+      "khmer": "ខ្ជិលច្រអូស",
+      "breakdown": "懒(lazy)+惰(sluggish)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "懒惰会让人一事无成。",
+          "py": "Lǎnduò huì ràng rén yíshìwúchéng.",
+          "en": "Laziness will leave a person with no achievements."
+        },
+        {
+          "level": "HSK1",
+          "cn": "我们应该改掉懒惰的坏毛病。",
+          "py": "Wǒmen yīnggāi gǎi diào lǎnduò de huài máobìng.",
+          "en": "We should get rid of the bad habit of laziness."
+        },
+        {
+          "level": "HSK1",
+          "cn": "他今天特别想偷懒，显得很懒惰。",
+          "py": "Tā jīntiān tèbié xiǎng tōulǎn, xiǎnde hěn lǎnduò.",
+          "en": "He especially wanted to slack off today and looked very lazy."
+        },
+        {
+          "level": "HSK2",
+          "cn": "虽然聪明过人，但是因为长期懒惰成性，他的在校成绩一落千丈。",
+          "py": "Suīrán cōngming guò rén, dànshì yīnwèi chángqī lǎnduò chéngxìng, tā de zàixiàochéngjì yíluòqiānzhàng.",
+          "en": "Although unusually clever, because of chronic laziness his school grades plummeted."
+        },
+        {
+          "level": "HSK2",
+          "cn": "勤奋与懒惰往往只在一念之间，克服心中的懒惰便是通向人生自主的第一步。",
+          "py": "Qínfèn yǔ lǎnduò wǎngwǎng zhǐ zài yí niàn zhī jiān, kèfú xīn zhōng de lǎnduò biàn shì tōng xiàng rénshēng zìzhǔ de dì-yī bù.",
+          "en": "Diligence and laziness are separated only by a thought; overcoming inner laziness is the first step toward self-mastery."
+        }
+      ],
+      "chars": [
+        "懒",
+        "惰"
+      ]
+    },
+    {
+      "id": 339,
+      "level": "GCP8 L7",
+      "chinese": "精明",
+      "pinyin": "jīngmíng",
+      "english": "astute",
+      "khmer": "ឆ្លាតវៃ",
+      "breakdown": "精(refined)+明(clear)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "他是一个精明的商人。",
+          "py": "Tā shì yí gè jīngmíng de shāngrén.",
+          "en": "He is a shrewd and astute merchant."
+        },
+        {
+          "level": "HSK1",
+          "cn": "在处理账目方面她非常精明。",
+          "py": "Zài chǔlǐ zhàngmù fāngmiàn tā fēicháng jīngmíng.",
+          "en": "She is very sharp and astute in managing accounts."
+        },
+        {
+          "level": "HSK1",
+          "cn": "大家都知道老李精明能干。",
+          "py": "Dàjiā dōu zhīdào Lǎo Lǐ jīngmíng nénggàn.",
+          "en": "Everyone knows Old Li is astute and capable."
+        },
+        {
+          "level": "HSK2",
+          "cn": "虽然他在商场谈判中格外精明，但是在待人接物上却非常讲究诚信与公道。",
+          "py": "Suīrán tā zài shāngchǎng tánpàn zhōng géwài jīngmíng, dànshì zài dài rén jiē wù shang què fēicháng jiǎngjiu chéngxìn yǔ gōngdào.",
+          "en": "Although exceptionally astute in negotiations, he values honesty and fairness in dealing with people."
+        },
+        {
+          "level": "HSK2",
+          "cn": "真正有远见的企业家不仅算盘打得精明，更具有关怀员工和社会公益的博大胸怀。",
+          "py": "Zhēnzhèng yǒu yuǎnjiàn de qǐyèjiā bùjǐn suànpán dǎ de jīngmíng, gèng jùyǒu guānhuái yuángōng hé shèhuì gōngyì de bódà xiōnghuái.",
+          "en": "A truly visionary entrepreneur is not just astute in finances, but possesses a broad heart caring for society."
+        }
+      ],
+      "chars": [
+        "精",
+        "明"
+      ]
+    },
+    {
+      "id": 340,
+      "level": "GCP8 L7",
+      "chinese": "错误",
+      "pinyin": "cuòwù",
+      "english": "mistake",
+      "khmer": "កំហុស",
+      "breakdown": "错(wrong)+误(error)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "每个人都会犯小错误。",
+          "py": "Měi gè rén dōu huì fàn xiǎo cuòwù.",
+          "en": "Everyone makes small mistakes."
+        },
+        {
+          "level": "HSK1",
+          "cn": "请找出文章中的语法错误。",
+          "py": "Qǐng zhǎo chū wénzhāng zhōng de yǔfǎ cuòwù.",
+          "en": "Please find the grammatical errors in the article."
+        },
+        {
+          "level": "HSK1",
+          "cn": "承认错误是改正错误的第一步。",
+          "py": "Chéngrèn cuòwù shì gǎizhèng cuòwù de dì-yī bù.",
+          "en": "Admitting a mistake is the first step toward correcting it."
+        },
+        {
+          "level": "HSK2",
+          "cn": "虽然这项实验遭遇了技术错误，但团队通过认真复盘最终找到了正确的参数。",
+          "py": "Suīrán zhè xiàng shíyàn zāoyùle jìshù cuòwù, dàn tuánduì tōngguò rènzhēn fùpán zuìzhōng zhǎodàole zhèngquè de cānshù.",
+          "en": "Although the experiment suffered technical errors, the team found the correct parameters through careful review."
+        },
+        {
+          "level": "HSK2",
+          "cn": "智者善于从过去的错误中总结宝贵的经验教训，而愚者却总在重复同样的错误。",
+          "py": "Zhìzhě shànyú cóng guòqù de cuòwù zhōng zǒngjié bǎoguì de jīngyàn jiàoxun, ér yúzhě què zǒng zài chóngfù tóngyàng de cuòwù.",
+          "en": "The wise summarize valuable experience from past mistakes, while the foolish repeat the same ones."
+        }
+      ],
+      "chars": [
+        "错",
+        "误"
+      ]
+    },
+    {
+      "id": 341,
+      "level": "GCP8 L7",
+      "chinese": "看得起",
+      "pinyin": "kàndeqǐ",
+      "english": "think highly of",
+      "khmer": "ឱ្យតម្លៃ",
+      "breakdown": "看(look)+得(able)+起(up)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "老师这么信任我，真是看得起我。",
+          "py": "Lǎoshī zhème xìnrèn wǒ, zhēn shì kàndeqǐ wǒ.",
+          "en": "The teacher trusts me so much; she really thinks highly of me."
+        },
+        {
+          "level": "HSK1",
+          "cn": "只要自己努力，别人就会看得起你。",
+          "py": "Zhǐyào zìjǐ nǔlì, biérén jiù huì kàndeqǐ nǐ.",
+          "en": "As long as you work hard yourself, others will think highly of you."
+        },
+        {
+          "level": "HSK1",
+          "cn": "朋友们都很看得起他的为人。",
+          "py": "Péngyoumen dōu hěn kàndeqǐ tā de wéirén.",
+          "en": "His friends all think highly of his conduct."
+        },
+        {
+          "level": "HSK2",
+          "cn": "虽然我初出茅庐经验尚浅，但是经理非常看得起我，把重要项目交给我牵头。",
+          "py": "Suīrán wǒ chūchūmáolú jīngyàn shàng qiǎn, dànshì jīnglǐ fēicháng kàndeqǐ wǒ, bǎ zhòngyào xiàngmù jiāo gěi wǒ qiāntóu.",
+          "en": "Although I was a novice with little experience, the manager thought highly of me and entrusted me with leading an important project."
+        },
+        {
+          "level": "HSK2",
+          "cn": "人要想赢得社会的尊重，首先自己得看得起自己，靠踏实的努力和优良的人品赢得赞誉。",
+          "py": "Rén yào xiǎng yíngdé shèhuì de zūnzhòng, shǒuxiān zìjǐ děi kàndeqǐ zìjǐ, kào tàshi de nǔlì hé yōuliáng de rénpǐn yíngdé zànyù.",
+          "en": "To win respect, one must first respect oneself, earning praise through solid effort and excellent character."
+        }
+      ],
+      "chars": [
+        "看",
+        "得",
+        "起"
+      ]
+    },
+    {
+      "id": 342,
+      "level": "GCP8 L8",
+      "chinese": "西方",
+      "pinyin": "xīfāng",
+      "english": "the West; western",
+      "khmer": "ខាងលិច / បស្ចិមប្រទេស",
+      "breakdown": "西(west)+方(direction)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "太阳从西方落下。",
+          "py": "Tàiyáng cóng xīfāng luòxià.",
+          "en": "The sun sets in the west."
+        },
+        {
+          "level": "HSK1",
+          "cn": "他喜欢西方音乐。",
+          "py": "Tā xǐhuan xīfāng yīnyuè.",
+          "en": "He likes Western music."
+        },
+        {
+          "level": "HSK1",
+          "cn": "西方有很多大城市。",
+          "py": "Xīfāng yǒu hěn duō dà chéngshì.",
+          "en": "There are many big cities in the West."
+        },
+        {
+          "level": "HSK2",
+          "cn": "在西方国家，人们习惯用刀叉吃饭。",
+          "py": "Zài xīfāng guójiā, rénmen xíguàn yòng dāochā chīfàn.",
+          "en": "In Western countries, people are used to eating with knives and forks."
+        },
+        {
+          "level": "HSK2",
+          "cn": "了解西方文化对学好外语很有帮助。",
+          "py": "Liǎojiě xīfāng wénhuà duì xuéhǎo wàiyǔ hěn yǒu bāngzhù.",
+          "en": "Understanding Western culture is very helpful for mastering a foreign language."
+        }
+      ],
+      "chars": [
+        "西",
+        "方"
+      ]
+    },
+    {
+      "id": 343,
+      "level": "GCP8 L8",
+      "chinese": "表示",
+      "pinyin": "biǎoshì",
+      "english": "show; express; indicate",
+      "khmer": "បង្ហាញ / សម្តែង",
+      "breakdown": "表(express)+示(show)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "他点头表示同意。",
+          "py": "Tā diǎntóu biǎoshì tóngyì.",
+          "en": "He nodded to express agreement."
+        },
+        {
+          "level": "HSK1",
+          "cn": "红色表示危险。",
+          "py": "Hóngsè biǎoshì wēixiǎn.",
+          "en": "Red indicates danger."
+        },
+        {
+          "level": "HSK1",
+          "cn": "微笑可以表示友好。",
+          "py": "Wēixiào kěyǐ biǎoshì yǒuhǎo.",
+          "en": "A smile can express friendliness."
+        },
+        {
+          "level": "HSK2",
+          "cn": "大家送上礼物，向老师表示感谢。",
+          "py": "Dàjiā sòngshàng lǐwù, xiàng lǎoshī biǎoshì gǎnxiè.",
+          "en": "Everyone presented gifts to express gratitude to the teacher."
+        },
+        {
+          "level": "HSK2",
+          "cn": "经理表示会认真考虑大家的意见。",
+          "py": "Jīnglǐ biǎoshì huì rènzhēn kǎolǜ dàjiā de yìjiàn.",
+          "en": "The manager stated that everyone's opinions would be seriously considered."
+        }
+      ],
+      "chars": [
+        "表",
+        "示"
+      ]
+    },
+    {
+      "id": 344,
+      "level": "GCP8 L8",
+      "chinese": "用餐",
+      "pinyin": "yòngcān",
+      "english": "dine; have a meal",
+      "khmer": "ទទួលទានអាហារ / ញ៉ាំបាយ",
+      "breakdown": "用(use)+餐(meal)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "请大家去大厅用餐。",
+          "py": "Qǐng dàjiā qù dàtīng yòngcān.",
+          "en": "Please go to the hall to dine."
+        },
+        {
+          "level": "HSK1",
+          "cn": "现在是用餐时间。",
+          "py": "Xiànzài shì yòngcān shíjiān.",
+          "en": "Now is mealtime."
+        },
+        {
+          "level": "HSK1",
+          "cn": "我们在一家小饭店用餐。",
+          "py": "Wǒmen zài yì jiā xiǎo fàndiàn yòngcān.",
+          "en": "We are dining at a small restaurant."
+        },
+        {
+          "level": "HSK2",
+          "cn": "用餐时大声说话是不太礼貌的。",
+          "py": "Yòngcān shí dàshēng shuōhuà shì bú tài lǐmào de.",
+          "en": "Speaking loudly while dining is not very polite."
+        },
+        {
+          "level": "HSK2",
+          "cn": "这家餐厅的环境很优雅，很适合朋友一起用餐。",
+          "py": "Zhè jiā cāntīng de huánjìng hěn yōuyǎ, hěn shìhé péngyou yìqǐ yòngcān.",
+          "en": "The environment of this restaurant is elegant, very suitable for dining with friends."
+        }
+      ],
+      "chars": [
+        "用",
+        "餐"
+      ]
+    },
+    {
+      "id": 345,
+      "level": "GCP8 L8",
+      "chinese": "由",
+      "pinyin": "yóu",
+      "english": "by; from; due to",
+      "khmer": "ដោយ / មកពី",
+      "breakdown": "-",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "这本书由他来写。",
+          "py": "Zhè běn shū yóu tā lái xiě.",
+          "en": "This book is written by him."
+        },
+        {
+          "level": "HSK1",
+          "cn": "今天由我请客。",
+          "py": "Jīntiān yóu wǒ qǐngkè.",
+          "en": "It's my treat today."
+        },
+        {
+          "level": "HSK1",
+          "cn": "这件事由你决定。",
+          "py": "Zhè jiàn shì yóu nǐ juédìng.",
+          "en": "This matter is to be decided by you."
+        },
+        {
+          "level": "HSK2",
+          "cn": "这个活动由学生会负责组织。",
+          "py": "Zhè ge huódòng yóu xuéshēnghuì fùzé zǔzhī.",
+          "en": "This activity is organized by the student union."
+        },
+        {
+          "level": "HSK2",
+          "cn": "很多误会都是由于缺乏沟通引起的。",
+          "py": "Hěn duō wùhuì dōu shì yóuyú quēfá gōutōng yǐnqǐ de.",
+          "en": "Many misunderstandings are caused by a lack of communication."
+        }
+      ],
+      "chars": [
+        "由"
+      ]
+    },
+    {
+      "id": 346,
+      "level": "GCP8 L8",
+      "chinese": "传",
+      "pinyin": "chuán",
+      "english": "pass; transmit; hand down",
+      "khmer": "ហុច / បញ្ជូនបន្ត / ផ្ទេរត",
+      "breakdown": "-",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "请把那本书传给我。",
+          "py": "Qǐng bǎ nà běn shū chuán gěi wǒ.",
+          "en": "Please pass that book to me."
+        },
+        {
+          "level": "HSK1",
+          "cn": "他们一个一个往前传。",
+          "py": "Tāmen yí ge yí ge wǎng qián chuán.",
+          "en": "They passed it forward one by one."
+        },
+        {
+          "level": "HSK1",
+          "cn": "消息传得很快。",
+          "py": "Xiāoxi chuán de hěn kuài.",
+          "en": "The news spread very quickly."
+        },
+        {
+          "level": "HSK2",
+          "cn": "在餐桌上，请由左向右传食物。",
+          "py": "Zài cānzhuō shang, qǐng yóu zuǒ xiàng yòu chuán shíwù.",
+          "en": "At the dining table, please pass food from left to right."
+        },
+        {
+          "level": "HSK2",
+          "cn": "这门老手艺代代相传，已经有上百年的历史了。",
+          "py": "Zhè mén lǎo shǒuyì dàidài xiāngchuán, yǐjīng yǒu shàng bǎi nián de lìshǐ le.",
+          "en": "This traditional craft has been passed down for generations, with over a hundred years of history."
+        }
+      ],
+      "chars": [
+        "传"
+      ]
+    },
+    {
+      "id": 347,
+      "level": "GCP8 L8",
+      "chinese": "一小口",
+      "pinyin": "yìxiǎokǒu",
+      "english": "a small bite; a small sip",
+      "khmer": "មួយម៉ាត់តូច / មួយកំផ្លិច",
+      "breakdown": "一(one)+小(small)+口(mouthful)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "他只喝了一小口水。",
+          "py": "Tā zhǐ hē le yì xiǎokǒu shuǐ.",
+          "en": "He only drank a small sip of water."
+        },
+        {
+          "level": "HSK1",
+          "cn": "请尝一小口蛋糕。",
+          "py": "Qǐng cháng yì xiǎokǒu dàngāo.",
+          "en": "Please taste a small bite of cake."
+        },
+        {
+          "level": "HSK1",
+          "cn": "孩子一小口一小口地吃苹果。",
+          "py": "Háizi yì xiǎokǒu yì xiǎokǒu de chī píngguǒ.",
+          "en": "The child eats the apple small bite by small bite."
+        },
+        {
+          "level": "HSK2",
+          "cn": "汤很烫，你先慢慢喝一小口试试。",
+          "py": "Tāng hěn tàng, nǐ xiān mànmàn hē yì xiǎokǒu shìshi.",
+          "en": "The soup is very hot; try taking a small sip slowly first."
+        },
+        {
+          "level": "HSK2",
+          "cn": "按照西方餐桌礼仪，面包应该撕下一小口来吃。",
+          "py": "Ànzhào xīfāng cānzhuō lǐyí, miànbāo yīnggāi sīxià yìxiǎokǒu lái chī.",
+          "en": "According to Western table manners, bread should be torn into small bites to eat."
+        }
+      ],
+      "chars": [
+        "一",
+        "小",
+        "口"
+      ]
+    },
+    {
+      "id": 348,
+      "level": "GCP8 L8",
+      "chinese": "切",
+      "pinyin": "qiē",
+      "english": "cut; slice",
+      "khmer": "កាត់ / ហាន់",
+      "breakdown": "-",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "妈妈在厨房切菜。",
+          "py": "Māma zài chúfáng qiē cài.",
+          "en": "Mom is cutting vegetables in the kitchen."
+        },
+        {
+          "level": "HSK1",
+          "cn": "请帮我把西瓜切开。",
+          "py": "Qǐng bāng wǒ bǎ xīguā qiē kāi.",
+          "en": "Please help me cut open the watermelon."
+        },
+        {
+          "level": "HSK1",
+          "cn": "用这把刀切肉很容易。",
+          "py": "Yòng zhè bǎ dāo qiē ròu hěn róngyì.",
+          "en": "Cutting meat with this knife is very easy."
+        },
+        {
+          "level": "HSK2",
+          "cn": "吃牛排的时候，要一边切一边吃。",
+          "py": "Chī niúpái de shíhou, yào yìbiān qiē yìbiān chī.",
+          "en": "When eating steak, you should cut and eat piece by piece."
+        },
+        {
+          "level": "HSK2",
+          "cn": "他小心地把面包切成整齐的薄片。",
+          "py": "Tā xiǎoxīn de bǎ miànbāo qiē chéng zhěngqí de báopiàn.",
+          "en": "He carefully sliced the bread into neat, thin pieces."
+        }
+      ],
+      "chars": [
+        "切"
+      ]
+    },
+    {
+      "id": 349,
+      "level": "GCP8 L8",
+      "chinese": "要求",
+      "pinyin": "yāoqiú",
+      "english": "request; demand; requirement",
+      "khmer": "សំណូមពរ / តម្រូវការ",
+      "breakdown": "要(demand)+求(request)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "老师对我们的要求很高。",
+          "py": "Lǎoshī duì wǒmen de yāoqiú hěn gāo.",
+          "en": "The teacher has high requirements for us."
+        },
+        {
+          "level": "HSK1",
+          "cn": "他提出了一个新的要求。",
+          "py": "Tā tíchū le yí ge xīn de yāoqiú.",
+          "en": "He put forward a new request."
+        },
+        {
+          "level": "HSK1",
+          "cn": "学校要求大家准时到校。",
+          "py": "Xuéxiào yāoqiú dàjiā zhǔnshí dào xiào.",
+          "en": "The school requires everyone to arrive on time."
+        },
+        {
+          "level": "HSK2",
+          "cn": "公司严格要求员工遵守工作秩序。",
+          "py": "Gōngsī yángé yāoqiú yuángōng zūnshǒu gōngzuò zhìxù.",
+          "en": "The company strictly requires employees to observe workplace order."
+        },
+        {
+          "level": "HSK2",
+          "cn": "父母从小要求他讲礼貌、守规矩。",
+          "py": "Fùmǔ cóngxiǎo yāoqiú tā jiǎng lǐmào, shǒu guīju.",
+          "en": "His parents required him from childhood to be polite and follow rules."
+        }
+      ],
+      "chars": [
+        "要",
+        "求"
+      ]
+    },
+    {
+      "id": 350,
+      "level": "GCP8 L8",
+      "chinese": "按照",
+      "pinyin": "ànzhào",
+      "english": "according to; in light of",
+      "khmer": "យោងតាម / ស្របតាម",
+      "breakdown": "按(press/follow)+照(according to)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "请按照书上的方法做。",
+          "py": "Qǐng ànzhào shū shang de fāngfǎ zuò.",
+          "en": "Please do it according to the method in the book."
+        },
+        {
+          "level": "HSK1",
+          "cn": "我们按照计划出发了。",
+          "py": "Wǒmen ànzhào jìhuà chūfā le.",
+          "en": "We set off according to the plan."
+        },
+        {
+          "level": "HSK1",
+          "cn": "按照老师说的做，准没错。",
+          "py": "Ànzhào lǎoshī shuō de zuò, zhǔn méi cuò.",
+          "en": "Doing as the teacher said will certainly not go wrong."
+        },
+        {
+          "level": "HSK2",
+          "cn": "大家应该按照规定排队入场，遵守秩序。",
+          "py": "Dàjiā yīnggāi ànzhào guīdìng páiduì rùchǎng, zūnshǒu zhìxù.",
+          "en": "Everyone should line up to enter according to regulations and maintain order."
+        },
+        {
+          "level": "HSK2",
+          "cn": "按照西方餐桌礼仪，餐巾应平铺在大腿上。",
+          "py": "Ànzhào xīfāng cānzhuō lǐyí, cānjīn yīng píngpū zài dàtuǐ shang.",
+          "en": "According to Western table etiquette, the napkin should be laid flat on one's lap."
+        }
+      ],
+      "chars": [
+        "按",
+        "照"
+      ]
+    },
+    {
+      "id": 351,
+      "level": "GCP8 L8",
+      "chinese": "随便",
+      "pinyin": "suíbiàn",
+      "english": "as one pleases; casual; informal",
+      "khmer": "តាមសម្រួល / តាមចិត្ត",
+      "breakdown": "随(follow)+便(convenience)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "你想吃什么？随便。",
+          "py": "Nǐ xiǎng chī shénme? Suíbiàn.",
+          "en": "What do you want to eat? Anything is fine."
+        },
+        {
+          "level": "HSK1",
+          "cn": "请进，大家随便坐。",
+          "py": "Qǐng jìn, dàjiā suíbiàn zuò.",
+          "en": "Please come in, sit wherever you like."
+        },
+        {
+          "level": "HSK1",
+          "cn": "不要随便扔垃圾。",
+          "py": "Bú yào suíbiàn rēng lājī.",
+          "en": "Do not throw trash around casually."
+        },
+        {
+          "level": "HSK2",
+          "cn": "在正式场合不能太随便，必须讲究礼仪。",
+          "py": "Zài zhèngshì chǎnghé bù néng tài suíbiàn, bìxū jiǎngjiu lǐyí.",
+          "en": "One cannot be too casual on formal occasions; one must pay attention to etiquette."
+        },
+        {
+          "level": "HSK2",
+          "cn": "他说话总是很随便，有时会让人觉得粗俗。",
+          "py": "Tā shuōhuà zǒngshì hěn suíbiàn, yǒushí huì ràng rén juéde cūsú.",
+          "en": "He always speaks very casually, which sometimes makes people feel it is vulgar."
+        }
+      ],
+      "chars": [
+        "随",
+        "便"
+      ]
+    },
+    {
+      "id": 352,
+      "level": "GCP8 L8",
+      "chinese": "养成",
+      "pinyin": "yǎngchéng",
+      "english": "cultivate; form; acquire (habit)",
+      "khmer": "បណ្តុះ / បង្កើតទម្លាប់",
+      "breakdown": "养(raise/nurture)+成(become)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "我们要养成早睡早起的好习惯。",
+          "py": "Wǒmen yào yǎngchéng zǎoshuì zǎoqǐ de hǎo xíguàn.",
+          "en": "We must form the good habit of sleeping early and rising early."
+        },
+        {
+          "level": "HSK1",
+          "cn": "他养成了每天看书的好习惯。",
+          "py": "Tā yǎngchéng le měitiān kànshū de hǎo xíguàn.",
+          "en": "He has formed the habit of reading books every day."
+        },
+        {
+          "level": "HSK1",
+          "cn": "好习惯是慢慢养成的。",
+          "py": "Hǎo xíguàn shì mànmàn yǎngchéng de.",
+          "en": "Good habits are cultivated gradually."
+        },
+        {
+          "level": "HSK2",
+          "cn": "从小养成讲卫生的习惯，对身体健康很有好处。",
+          "py": "Cóngxiǎo yǎngchéng jiǎng wèishēng de xíguàn, duì shēntǐ jiànkāng hěn yǒu hǎochu.",
+          "en": "Cultivating hygienic habits from childhood is very good for physical health."
+        },
+        {
+          "level": "HSK2",
+          "cn": "在良好的家教下，孩子容易养成彬彬有礼的品格。",
+          "py": "Zài liánghǎo de jiājiào xià, háizi róngyì yǎngchéng bīnbīnyǒulǐ de pǐngé.",
+          "en": "Under good family upbringing, children easily cultivate a courteous character."
+        }
+      ],
+      "chars": [
+        "养",
+        "成"
+      ]
+    },
+    {
+      "id": 353,
+      "level": "GCP8 L8",
+      "chinese": "餐桌",
+      "pinyin": "cānzhuō",
+      "english": "dining table",
+      "khmer": "តុបាយ",
+      "breakdown": "餐(meal)+桌(table)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "大家围坐在餐桌旁吃饭。",
+          "py": "Dàjiā wéizuò zài cānzhuō páng chīfàn.",
+          "en": "Everyone sat around the dining table to eat."
+        },
+        {
+          "level": "HSK1",
+          "cn": "餐桌上摆着很多水果。",
+          "py": "Cānzhuō shang bǎizhe hěn duō shuǐguǒ.",
+          "en": "A lot of fruit is placed on the dining table."
+        },
+        {
+          "level": "HSK1",
+          "cn": "请把餐桌擦干净。",
+          "py": "Qǐng bǎ cānzhuō cā gānjìng.",
+          "en": "Please wipe the dining table clean."
+        },
+        {
+          "level": "HSK2",
+          "cn": "在餐桌上保持良好的礼仪是非常重要的。",
+          "py": "Zài cānzhuō shang bǎochí liánghǎo de lǐyí shì fēicháng zhòngyào de.",
+          "en": "Maintaining good etiquette at the dining table is very important."
+        },
+        {
+          "level": "HSK2",
+          "cn": "妈妈买了一张新餐桌，可以让八个人一起用餐。",
+          "py": "Māma mǎi le yì zhāng xīn cānzhuō, kěyǐ ràng bā ge rén yìqǐ yòngcān.",
+          "en": "Mom bought a new dining table that can seat eight people dining together."
+        }
+      ],
+      "chars": [
+        "餐",
+        "桌"
+      ]
+    },
+    {
+      "id": 354,
+      "level": "GCP8 L8",
+      "chinese": "规矩",
+      "pinyin": "guīju",
+      "english": "rule; established custom; well-behaved",
+      "khmer": "វិន័យ / ទម្លាប់",
+      "breakdown": "规(rule)+矩(standard)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "做事情要有规矩。",
+          "py": "Zuò shìqing yào yǒu guīju.",
+          "en": "One must follow rules when doing things."
+        },
+        {
+          "level": "HSK1",
+          "cn": "这个孩子真懂规矩。",
+          "py": "Zhè ge háizi zhēn dǒng guīju.",
+          "en": "This child really understands etiquette and rules."
+        },
+        {
+          "level": "HSK1",
+          "cn": "每个地方都有不同的规矩。",
+          "py": "Měi ge dìfang dōu yǒu bùtóng de guīju.",
+          "en": "Every place has different customs and rules."
+        },
+        {
+          "level": "HSK2",
+          "cn": "按照老规矩，过年的时候全家人要一起吃年夜饭。",
+          "py": "Ànzhào lǎo guīju, guònián de shíhou quánjiā rén yào yìqǐ chī niányèfàn.",
+          "en": "According to old customs, the whole family eats New Year's Eve dinner together."
+        },
+        {
+          "level": "HSK2",
+          "cn": "西方用餐有很多规矩，初学者往往容易手忙脚乱。",
+          "py": "Xīfāng yòngcān yǒu hěn duō guīju, chūxuézhě wǎngwǎng róngyì shǒumángjiǎoluàn.",
+          "en": "Western dining has many rules, and beginners often get flustered."
+        }
+      ],
+      "chars": [
+        "规",
+        "矩"
+      ]
+    },
+    {
+      "id": 355,
+      "level": "GCP8 L8",
+      "chinese": "规定",
+      "pinyin": "guīdìng",
+      "english": "regulation; rule; stipulate",
+      "khmer": "បទបញ្ជា / កំណត់",
+      "breakdown": "规(rule)+定(fix)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "图书馆规定不能大声说话。",
+          "py": "Túshūguǎn guīdìng bù néng dàshēng shuōhuà.",
+          "en": "The library stipulates that one cannot speak loudly."
+        },
+        {
+          "level": "HSK1",
+          "cn": "我们要遵守学校的规定。",
+          "py": "Wǒmen yào zūnshǒu xuéxiào de guīdìng.",
+          "en": "We must abide by school regulations."
+        },
+        {
+          "level": "HSK1",
+          "cn": "这项新规定从下个月开始执行。",
+          "py": "Zhè xiàng xīn guīdìng cóng xià ge yuè kāishǐ zhíxíng.",
+          "en": "This new regulation takes effect starting next month."
+        },
+        {
+          "level": "HSK2",
+          "cn": "按照严格规定，考试时不准携带任何电子设备。",
+          "py": "Ànzhào yángé guīdìng, kǎoshì shí bù zhǔn xiédài rènhé diànzǐ shèbèi.",
+          "en": "According to strict regulations, no electronic devices are allowed during exams."
+        },
+        {
+          "level": "HSK2",
+          "cn": "虽然这里的规定比较宽松，但大家依然自觉守秩序。",
+          "py": "Suīrán zhèlǐ de guīdìng bǐjiào kuānsōng, dàn dàjiā yīrán zìjué shǒuzhìxù.",
+          "en": "Although regulations here are relatively lenient, everyone still maintains order conscientiously."
+        }
+      ],
+      "chars": [
+        "规",
+        "定"
+      ]
+    },
+    {
+      "id": 356,
+      "level": "GCP8 L8",
+      "chinese": "礼仪",
+      "pinyin": "lǐyí",
+      "english": "etiquette; rite; ceremony",
+      "khmer": "ពិធីការ / មារយាទ",
+      "breakdown": "礼(rite)+仪(ceremony)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "我们要讲究文明礼仪。",
+          "py": "Wǒmen yào jiǎngjiu wénmíng lǐyí.",
+          "en": "We should pay attention to civilized etiquette."
+        },
+        {
+          "level": "HSK1",
+          "cn": "老师教我们社交礼仪。",
+          "py": "Lǎoshī jiāo wǒmen shèjiāo lǐyí.",
+          "en": "The teacher taught us social etiquette."
+        },
+        {
+          "level": "HSK1",
+          "cn": "餐桌礼仪非常重要。",
+          "py": "Cānzhuō lǐyí fēicháng zhòngyào.",
+          "en": "Table etiquette is very important."
+        },
+        {
+          "level": "HSK2",
+          "cn": "掌握西方用餐礼仪，能让人在宴会上显得得体大方。",
+          "py": "Zhǎngwò xīfāng yòngcān lǐyí, néng ràng rén zài yànhuì shang xiǎnde détǐ dàfāng.",
+          "en": "Mastering Western dining etiquette makes one appear proper and gracious at banquets."
+        },
+        {
+          "level": "HSK2",
+          "cn": "中国自古被称为礼仪之邦，历来重视道德修养。",
+          "py": "Zhōngguó zìgǔ bèi chēngwéi lǐyí zhī bāng, lìlái zhòngshì dàodé xiūyǎng.",
+          "en": "China has been known since ancient times as a land of etiquette, always valuing moral cultivation."
+        }
+      ],
+      "chars": [
+        "礼",
+        "仪"
+      ]
+    },
+    {
+      "id": 357,
+      "level": "GCP8 L8",
+      "chinese": "家教",
+      "pinyin": "jiājiào",
+      "english": "family upbringing; tutor",
+      "khmer": "ការអប់រំក្នុងគ្រួសារ",
+      "breakdown": "家(family)+教(teach)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "他很有家教，对人很有礼貌。",
+          "py": "Tā hěn yǒu jiājiào, duì rén hěn yǒu lǐmào.",
+          "en": "He has great family upbringing and is very polite to people."
+        },
+        {
+          "level": "HSK1",
+          "cn": "哥哥在大学当家教。",
+          "py": "Gēge zài dàxué dāng jiājiào.",
+          "en": "Older brother works as a private tutor in college."
+        },
+        {
+          "level": "HSK1",
+          "cn": "良好的家教对孩子影响深远。",
+          "py": "Liánghǎo de jiājiào duì háizi yǐngxiǎng shēnyuǎn.",
+          "en": "A good family upbringing has a profound impact on children."
+        },
+        {
+          "level": "HSK2",
+          "cn": "从他的言行举止可以看出，他受到了非常严格的家教。",
+          "py": "Cóng tā de yánxíng jǔzhǐ kěyǐ kànchū, tā shòudào le fēicháng yángé de jiājiào.",
+          "en": "From his words and behavior, one can tell he received a very strict family upbringing."
+        },
+        {
+          "level": "HSK2",
+          "cn": "知书达礼的父母，往往能培养出有良好家教的孩子。",
+          "py": "Zhīshūdálǐ de fùmǔ, wǎngwǎng néng péiyǎng chū yǒu liánghǎo jiājiào de háizi.",
+          "en": "Educated and cultured parents often raise children with excellent upbringing."
+        }
+      ],
+      "chars": [
+        "家",
+        "教"
+      ]
+    },
+    {
+      "id": 358,
+      "level": "GCP8 L8",
+      "chinese": "困难",
+      "pinyin": "kùnnan",
+      "english": "difficulty; difficult; hard",
+      "khmer": "ការលំបាក / ពិបាក",
+      "breakdown": "困(trapped)+难(hard)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "遇到困难不要放弃。",
+          "py": "Yùdào kùnnan bú yào fàngqì.",
+          "en": "Don't give up when encountering difficulties."
+        },
+        {
+          "level": "HSK1",
+          "cn": "学习汉语并不困难。",
+          "py": "Xuéxí Hànyǔ bìng bù kùnnan.",
+          "en": "Learning Chinese is not difficult at all."
+        },
+        {
+          "level": "HSK1",
+          "cn": "朋友有困难我们要主动帮忙。",
+          "py": "Péngyou yǒu kùnnan wǒmen yào zhǔdòng bāngmáng.",
+          "en": "When friends have difficulties, we should take the initiative to help."
+        },
+        {
+          "level": "HSK2",
+          "cn": "只要我们齐心协力，再大的困难也能克服。",
+          "py": "Zhǐyào wǒmen qíxīnxiélì, zài dà de kùnnan yě néng kèfú.",
+          "en": "As long as we work together, even the greatest difficulty can be overcome."
+        },
+        {
+          "level": "HSK2",
+          "cn": "面对生活中的重重困难，他依然保持乐观开朗的心态。",
+          "py": "Miànduì shēnghuó zhōng de chóngchóng kùnnan, tā yīrán bǎochí lèguān kāilǎng de xīntài.",
+          "en": "Facing repeated difficulties in life, he still maintains an optimistic and cheerful attitude."
+        }
+      ],
+      "chars": [
+        "困",
+        "难"
+      ]
+    },
+    {
+      "id": 359,
+      "level": "GCP8 L8",
+      "chinese": "严格",
+      "pinyin": "yángé",
+      "english": "strict; rigorous",
+      "khmer": "តឹងរ៉ឹង",
+      "breakdown": "严(strict)+格(standard)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "老师对我们要求很严格。",
+          "py": "Lǎoshī duì wǒmen yāoqiú hěn yángé.",
+          "en": "The teacher is very strict with us."
+        },
+        {
+          "level": "HSK1",
+          "cn": "这里的安全检查非常严格。",
+          "py": "Zhèlǐ de ānquán jiǎnchá fēicháng yángé.",
+          "en": "The security check here is very strict."
+        },
+        {
+          "level": "HSK1",
+          "cn": "他是一个对自己很严格的人。",
+          "py": "Tā shì yí ge duì zìjǐ hěn yángé de rén.",
+          "en": "He is a person who is very strict with himself."
+        },
+        {
+          "level": "HSK2",
+          "cn": "只有严格遵守交通规则，才能保障行人和车辆的安全。",
+          "py": "Zhǐyǒu yángé zūnshǒu jiāotōng guīzé, cái néng bǎozhàng xíngrén hé chēliàng de ānquán.",
+          "en": "Only by strictly obeying traffic rules can the safety of pedestrians and vehicles be ensured."
+        },
+        {
+          "level": "HSK2",
+          "cn": "相比过去的严格规定，现在的管理方式已经宽松多了。",
+          "py": "Xiāngbǐ guòqù de yángé guīdìng, xiànzài de guǎnlǐ fāngshì yǐjīng kuānsōng duō le.",
+          "en": "Compared with the strict rules of the past, current management methods are much more relaxed."
+        }
+      ],
+      "chars": [
+        "严",
+        "格"
+      ]
+    },
+    {
+      "id": 360,
+      "level": "GCP8 L8",
+      "chinese": "手忙脚乱",
+      "pinyin": "shǒumángjiǎoluàn",
+      "english": "in a frantic rush; flustered; in a muddle",
+      "khmer": "ស្លន់ស្លោ / ច្របូកច្របល់",
+      "breakdown": "手(hand)+忙(busy)+脚(foot)+乱(chaotic)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "客人突然来了，大家手忙脚乱地准备饭菜。",
+          "py": "Kèrén tūrán lái le, dàjiā shǒumángjiǎoluàn de zhǔnbèi fàncài.",
+          "en": "Guests arrived suddenly, and everyone rushed about preparing food."
+        },
+        {
+          "level": "HSK1",
+          "cn": "他一紧张就手忙脚乱。",
+          "py": "Tā yì jǐnzhāng jiù shǒumángjiǎoluàn.",
+          "en": "Whenever he gets nervous, he gets all flustered."
+        },
+        {
+          "level": "HSK1",
+          "cn": "慢点做，别手忙脚乱的。",
+          "py": "Màn diǎn zuò, bié shǒumángjiǎoluàn de.",
+          "en": "Do it slowly; don't get in a frantic rush."
+        },
+        {
+          "level": "HSK2",
+          "cn": "第一次参加西餐晚宴，复杂的餐具让他手忙脚乱。",
+          "py": "Dì yī cì cānjiā xīcān wǎnyàn, fùzá de cānjù ràng tā shǒumángjiǎoluàn.",
+          "en": "Attending a Western banquet for the first time, the complex cutlery made him flustered."
+        },
+        {
+          "level": "HSK2",
+          "cn": "提前做好充分准备，遇到突发情况才不会手忙脚乱。",
+          "py": "Tíqián zuòhǎo chōngfèn zhǔnbèi, yùdào tūfā qíngkuàng cái bú huì shǒumángjiǎoluàn.",
+          "en": "Preparing well in advance ensures one won't panic when emergencies happen."
+        }
+      ],
+      "chars": [
+        "手",
+        "忙",
+        "脚",
+        "乱"
+      ]
+    },
+    {
+      "id": 361,
+      "level": "GCP8 L8",
+      "chinese": "餐具",
+      "pinyin": "cānjù",
+      "english": "cutlery; tableware",
+      "khmer": "សម្ភារៈញ៉ាំបាយ (ស្លាបព្រា សម កាំបិត)",
+      "breakdown": "餐(meal)+具(utensil)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "请把干净的餐具拿过来。",
+          "py": "Qǐng bǎ gānjìng de cānjù ná guòlái.",
+          "en": "Please bring over the clean cutlery."
+        },
+        {
+          "level": "HSK1",
+          "cn": "中国人习惯用筷子作为餐具。",
+          "py": "Zhōngguórén xíguàn yòng kuàizi zuòwéi cānjù.",
+          "en": "Chinese people are used to using chopsticks as tableware."
+        },
+        {
+          "level": "HSK1",
+          "cn": "饭后记得洗餐具。",
+          "py": "Fàn hòu jìde xǐ cānjù.",
+          "en": "Remember to wash the dishes and cutlery after eating."
+        },
+        {
+          "level": "HSK2",
+          "cn": "西餐的餐具通常由外向内依次使用。",
+          "py": "Xīcān de cānjù tōngcháng yóu wài xiàng nèi yīcì shǐyòng.",
+          "en": "Western cutlery is usually used in sequence from outside to inside."
+        },
+        {
+          "level": "HSK2",
+          "cn": "这家餐厅提供的餐具非常精致，让人用餐心情愉悦。",
+          "py": "Zhè jiā cāntīng tígōng de cānjù fēicháng jīngzhì, ràng rén yòngcān xīnqíng yúyuè.",
+          "en": "The tableware provided by this restaurant is exquisite, making dining a pleasure."
+        }
+      ],
+      "chars": [
+        "餐",
+        "具"
+      ]
+    },
+    {
+      "id": 362,
+      "level": "GCP8 L8",
+      "chinese": "餐巾",
+      "pinyin": "cānjīn",
+      "english": "napkin",
+      "khmer": "កន្សែងជូតមាត់",
+      "breakdown": "餐(meal)+巾(cloth)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "服务员，请给我一张餐巾。",
+          "py": "Fúwùyuán, qǐng gěi wǒ yì zhāng cānjīn.",
+          "en": "Waiter, please give me a napkin."
+        },
+        {
+          "level": "HSK1",
+          "cn": "吃完饭后用纸餐巾擦擦嘴。",
+          "py": "Chīwán fàn hòu yòng zhǐ cānjīn cāca zuǐ.",
+          "en": "Wipe your mouth with a paper napkin after finishing the meal."
+        },
+        {
+          "level": "HSK1",
+          "cn": "桌上放着折好的餐巾。",
+          "py": "Zhuō shang fàngzhe zhéhǎo de cānjīn.",
+          "en": "Folded napkins are placed on the table."
+        },
+        {
+          "level": "HSK2",
+          "cn": "入座后，第一件事就是将餐巾打开铺在腿上。",
+          "py": "Rùzuò hòu, dì yī jiàn shì jiùshì jiāng cānjīn dǎkāi pū zài tuǐ shang.",
+          "en": "After taking your seat, the first thing is to unfold the napkin and place it on your lap."
+        },
+        {
+          "level": "HSK2",
+          "cn": "用餐途中离席时，餐巾应该轻轻放在椅子上。",
+          "py": "Yòngcān túzhōng líxí shí, cānjīn yīnggāi qīngqīng fàng zài yǐzi shang.",
+          "en": "When leaving the table during a meal, the napkin should be gently placed on the chair."
+        }
+      ],
+      "chars": [
+        "餐",
+        "巾"
+      ]
+    },
+    {
+      "id": 363,
+      "level": "GCP8 L8",
+      "chinese": "餐盘",
+      "pinyin": "cānpán",
+      "english": "dinner plate; dining tray",
+      "khmer": "ចានបាយ",
+      "breakdown": "餐(meal)+盘(plate)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "请把餐盘端到桌子上。",
+          "py": "Qǐng bǎ cānpán duān dào zhuōzi shang.",
+          "en": "Please carry the dinner plate to the table."
+        },
+        {
+          "level": "HSK1",
+          "cn": "餐盘里放着美味的牛肉。",
+          "py": "Cānpán lǐ fàngzhe měiwèi de niúròu.",
+          "en": "Delicious beef is placed on the dinner plate."
+        },
+        {
+          "level": "HSK1",
+          "cn": "大家吃完后自觉收拾餐盘。",
+          "py": "Dàjiā chīwán hòu zìjué shōushi cānpán.",
+          "en": "Everyone conscientiously clears their dinner trays after eating."
+        },
+        {
+          "level": "HSK2",
+          "cn": "切牛排时动作要轻，不要让刀叉碰响餐盘。",
+          "py": "Qiē niúpái shí dòngzuò yào qīng, bú yào ràng dāochā pèng xiǎng cānpán.",
+          "en": "Cut steak gently without letting the knife and fork clatter against the plate."
+        },
+        {
+          "level": "HSK2",
+          "cn": "学校食堂的餐盘每天都会经过高温消毒。",
+          "py": "Xuéxiào shítáng de cānpán měitiān dōu huì jīngguò gāowēn xiāodú.",
+          "en": "The dinner trays in the school cafeteria undergo high-temperature sterilization every day."
+        }
+      ],
+      "chars": [
+        "餐",
+        "盘"
+      ]
+    },
+    {
+      "id": 364,
+      "level": "GCP8 L8",
+      "chinese": "美味",
+      "pinyin": "měiwèi",
+      "english": "delicious; fine food; delicacy",
+      "khmer": "ឆ្ងាញ់ / រសជាតិឆ្ងាញ់",
+      "breakdown": "美(fine)+味(flavor)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "这道菜真美味！",
+          "py": "Zhè dào cài zhēn měiwèi!",
+          "en": "This dish is truly delicious!"
+        },
+        {
+          "level": "HSK1",
+          "cn": "大家一起分享美味的食物。",
+          "py": "Dàjiā yìqǐ fēnxiǎng měiwèi de shíwù.",
+          "en": "Everyone shares delicious food together."
+        },
+        {
+          "level": "HSK1",
+          "cn": "妈妈做的饭菜非常美味。",
+          "py": "Māma zuò de fàncài fēicháng měiwèi.",
+          "en": "The meals cooked by mom are very delicious."
+        },
+        {
+          "level": "HSK2",
+          "cn": "这家餐厅的名菜不仅味道独特，而且是一道难得的美味。",
+          "py": "Zhè jiā cāntīng de míngcài bùjǐn wèidào dútè, érqiě shì yí dào nándé de měiwèi.",
+          "en": "The specialty dish of this restaurant is not only unique in taste, but also a rare delicacy."
+        },
+        {
+          "level": "HSK2",
+          "cn": "品尝各地的传统美味，是了解当地文化的好途径。",
+          "py": "Pǐncháng gèdì de chuántǒng měiwèi, shì liǎojiě dāngdì wénhuà de hǎo tújìng.",
+          "en": "Tasting local traditional delicacies everywhere is a great way to understand local culture."
+        }
+      ],
+      "chars": [
+        "美",
+        "味"
+      ]
+    },
+    {
+      "id": 365,
+      "level": "GCP8 L8",
+      "chinese": "味道",
+      "pinyin": "wèidào",
+      "english": "taste; flavor; odor",
+      "khmer": "រសជាតិ",
+      "breakdown": "味(taste)+道(sense)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "这个汤的味道很好。",
+          "py": "Zhè ge tāng de wèidào hěn hǎo.",
+          "en": "The taste of this soup is very good."
+        },
+        {
+          "level": "HSK1",
+          "cn": "这是什么味道？好香啊。",
+          "py": "Zhè shì shénme wèidào? Hǎo xiāng a.",
+          "en": "What smell is this? Smells so fragrant."
+        },
+        {
+          "level": "HSK1",
+          "cn": "苹果的味道甜甜的。",
+          "py": "Píngguǒ de wèidào tiántián de.",
+          "en": "The taste of the apple is sweet."
+        },
+        {
+          "level": "HSK2",
+          "cn": "虽然加了不同的调料，但这道菜依然保持了原来的味道。",
+          "py": "Suīrán jiā le bùtóng de tiáoliào, dàn zhè dào cài yīrán bǎochí le yuánlái de wèidào.",
+          "en": "Although various seasonings were added, this dish still retained its original flavor."
+        },
+        {
+          "level": "HSK2",
+          "cn": "家乡菜的味道，总能勾起游子对家乡的思念。",
+          "py": "Jiāxiāng cài de wèidào, zǒng néng gōuqǐ yóuzǐ duì jiāxiāng de sīniàn.",
+          "en": "The taste of hometown cooking always evokes deep nostalgia in travelers far from home."
+        }
+      ],
+      "chars": [
+        "味",
+        "道"
+      ]
+    },
+    {
+      "id": 366,
+      "level": "GCP8 L8",
+      "chinese": "粗俗",
+      "pinyin": "cūsú",
+      "english": "vulgar; coarse; uncouth",
+      "khmer": "ឈ្លើយ / អសុរោះ",
+      "breakdown": "粗(coarse)+俗(vulgar)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "在公共场所大喊大叫显得很粗俗。",
+          "py": "Zài gōnggòng chǎngsuǒ dà hǎn dà jiào xiǎnde hěn cūsú.",
+          "en": "Shouting loudly in public places appears very vulgar."
+        },
+        {
+          "level": "HSK1",
+          "cn": "我们不要说粗俗的话。",
+          "py": "Wǒmen bú yào shuō cūsú de huà.",
+          "en": "We should not speak vulgar words."
+        },
+        {
+          "level": "HSK1",
+          "cn": "他的言行一点也不粗俗。",
+          "py": "Tā de yánxíng yìdiǎnr yě bù cūsú.",
+          "en": "His words and actions are not vulgar at all."
+        },
+        {
+          "level": "HSK2",
+          "cn": "粗俗的行为会让人觉得缺少教养，很不礼貌。",
+          "py": "Cūsú de xíngwéi huì ràng rén juéde quēshǎo jiàoyǎng, hěn bù lǐmào.",
+          "en": "Vulgar behavior makes people feel one lacks upbringing and is very impolite."
+        },
+        {
+          "level": "HSK2",
+          "cn": "与粗俗相反，彬彬有礼的举止总能赢得他人的敬重。",
+          "py": "Yǔ cūsú xiāngfǎn, bīnbīnyǒulǐ de jǔzhǐ zǒng néng yíngdé tārén de jìngzhòng.",
+          "en": "Contrary to vulgarity, courteous behavior always earns the respect of others."
+        }
+      ],
+      "chars": [
+        "粗",
+        "俗"
+      ]
+    },
+    {
+      "id": 367,
+      "level": "GCP8 L8",
+      "chinese": "守秩序",
+      "pinyin": "shǒuzhìxù",
+      "english": "maintain order; keep order",
+      "khmer": "គោរពសណ្តាប់ធ្នាប់",
+      "breakdown": "守(keep)+秩(order)+序(sequence)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "排队上车，大家都要守秩序。",
+          "py": "Páiduì shàngchē, dàjiā dōu yào shǒuzhìxù.",
+          "en": "Line up to board the bus; everyone must maintain order."
+        },
+        {
+          "level": "HSK1",
+          "cn": "同学们在操场上很守秩序。",
+          "py": "Tóngxuémen zài cāochǎng shang hěn shǒuzhìxù.",
+          "en": "The students maintained great order on the playground."
+        },
+        {
+          "level": "HSK1",
+          "cn": "公共场所大家要自觉守秩序。",
+          "py": "Gōnggòng chǎngsuǒ dàjiā yào zìjué shǒuzhìxù.",
+          "en": "Everyone should conscientiously maintain order in public places."
+        },
+        {
+          "level": "HSK2",
+          "cn": "在大型集会中，守秩序能够有效防止意外发生。",
+          "py": "Zài dàxíng jíhuì zhōng, shǒuzhìxù nénggòu yǒuxiào fángzhǐ yìwài fāshēng.",
+          "en": "In large gatherings, maintaining order can effectively prevent accidents."
+        },
+        {
+          "level": "HSK2",
+          "cn": "公民守秩序、讲文明，是社会进步的重要标志。",
+          "py": "Gōngmín shǒuzhìxù, jiǎng wénmíng, shì shèhuì jìnbù de zhòngyào biāozhì.",
+          "en": "Citizens keeping order and being civilized is an important mark of social progress."
+        }
+      ],
+      "chars": [
+        "守",
+        "秩",
+        "序"
+      ]
+    },
+    {
+      "id": 368,
+      "level": "GCP8 L8",
+      "chinese": "彬彬有礼",
+      "pinyin": "bīnbīnyǒulǐ",
+      "english": "refined and courteous; polite; gentlemanly",
+      "khmer": "សុភាពរាបសារ",
+      "breakdown": "彬彬(refined)+有(have)+礼(courtesy)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "他对每个人都彬彬有礼。",
+          "py": "Tā duì měi ge rén dōu bīnbīnyǒulǐ.",
+          "en": "He is courteous and polite to everyone."
+        },
+        {
+          "level": "HSK1",
+          "cn": "这个年轻人举止彬彬有礼。",
+          "py": "Zhè ge niánqīngrén jǔzhǐ bīnbīnyǒulǐ.",
+          "en": "This young person's manner is refined and courteous."
+        },
+        {
+          "level": "HSK1",
+          "cn": "服务员彬彬有礼地迎接客人。",
+          "py": "Fúwùyuán bīnbīnyǒulǐ de yíngjiē kèrén.",
+          "en": "The waiter welcomed guests politely."
+        },
+        {
+          "level": "HSK2",
+          "cn": "他彬彬有礼的态度给所有面试官留下了深刻的印象。",
+          "py": "Tā bīnbīnyǒulǐ de tàidù gěi suǒyǒu miànshìguān liúxià le shēnkè de yìnxiàng.",
+          "en": "His polite demeanor left a deep impression on all the interviewers."
+        },
+        {
+          "level": "HSK2",
+          "cn": "从小受到优良家教的孩子，在待人接物时总是彬彬有礼。",
+          "py": "Cóngxiǎo shòudào yōuliáng jiājiào de háizi, zài dàirénjiēwù shí zǒngshì bīnbīnyǒulǐ.",
+          "en": "Children raised with fine family upbringing are always courteous when interacting with others."
+        }
+      ],
+      "chars": [
+        "彬",
+        "彬",
+        "有",
+        "礼"
+      ]
+    },
+    {
+      "id": 369,
+      "level": "GCP8 L8",
+      "chinese": "知书达礼",
+      "pinyin": "zhīshūdálǐ",
+      "english": "educated and well-mannered; cultured and polite",
+      "khmer": "ចេះដឹងនិងមានមារយាទល្អ",
+      "breakdown": "知(know)+书(books)+达(attain)+礼(propriety)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "她是一个知书达礼的好姑娘。",
+          "py": "Tā shì yí ge zhīshūdálǐ de hǎo gūniang.",
+          "en": "She is an educated and well-mannered young woman."
+        },
+        {
+          "level": "HSK1",
+          "cn": "他说话温和，显得很有知书达礼的气质。",
+          "py": "Tā shuōhuà wēnhé, xiǎnde hěn yǒu zhīshūdálǐ de qìzhì.",
+          "en": "He speaks gently, showing the disposition of someone educated and cultured."
+        },
+        {
+          "level": "HSK1",
+          "cn": "父母希望孩子长大后知书达礼。",
+          "py": "Fùmǔ xīwàng háizi zhǎngdà hòu zhīshūdálǐ.",
+          "en": "Parents hope their child will grow up cultured and polite."
+        },
+        {
+          "level": "HSK2",
+          "cn": "不仅要有丰富的知识，还要知书达礼、懂得做人的道理。",
+          "py": "Bùjǐn yào yǒu fēngfù de zhīshi, hái yào zhīshūdálǐ, dǒngde zuòrén de dàolǐ.",
+          "en": "One must not only possess abundant knowledge, but also be cultured and understand moral conduct."
+        },
+        {
+          "level": "HSK2",
+          "cn": "在这座文化名城里，很多人不仅才华横溢，而且知书达礼。",
+          "py": "Zài zhè zuò wénhuà míngchéng lǐ, hěn duō rén bùjǐn cáihuá héngyì, érqiě zhīshūdálǐ.",
+          "en": "In this famous cultural city, many people are not only brilliantly talented, but also cultured and courteous."
+        }
+      ],
+      "chars": [
+        "知",
+        "书",
+        "达",
+        "礼"
+      ]
+    },
+    {
+      "id": 370,
+      "level": "GCP8 L8",
+      "chinese": "容易",
+      "pinyin": "róngyì",
+      "english": "easy; likely; liable",
+      "khmer": "ងាយស្រួល",
+      "breakdown": "容(hold)+易(easy)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "这个题很容易做。",
+          "py": "Zhè ge tí hěn róngyì zuò.",
+          "en": "This question is very easy to answer."
+        },
+        {
+          "level": "HSK1",
+          "cn": "生病了容易觉得累。",
+          "py": "Shēngbìng le róngyì juéde lèi.",
+          "en": "When sick, one gets tired easily."
+        },
+        {
+          "level": "HSK1",
+          "cn": "说起来容易，做起来难。",
+          "py": "Shuō qǐlái róngyì, zuò qǐlái nán.",
+          "en": "Easier said than done."
+        },
+        {
+          "level": "HSK2",
+          "cn": "冬天天气寒冷，老人和小朋友容易感冒。",
+          "py": "Dōngtiān tiānqì hánlěng, lǎorén hé xiǎopéngyou róngyì gǎnmào.",
+          "en": "In cold winter weather, the elderly and children easily catch colds."
+        },
+        {
+          "level": "HSK2",
+          "cn": "遇到突发事件时不要紧张，慌张反而更容易出错。",
+          "py": "Yùdào tūfā shìjiàn shí bú yào jǐnzhāng, huāngzhāng fǎn'ér gèng róngyì chūcuò.",
+          "en": "Don't panic when facing emergencies; panicking makes it even easier to make mistakes."
+        }
+      ],
+      "chars": [
+        "容",
+        "易"
+      ]
+    },
+    {
+      "id": 371,
+      "level": "GCP8 L8",
+      "chinese": "宽松",
+      "pinyin": "kuānsōng",
+      "english": "loose; lenient; relaxed",
+      "khmer": "ធូររលុង / មិនតឹងរ៉ឹង",
+      "breakdown": "宽(wide)+松(loose)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "这件衣服穿起来很宽松。",
+          "py": "Zhè jiàn yīfu chuān qǐlái hěn kuānsōng.",
+          "en": "This piece of clothing feels very loose and comfortable."
+        },
+        {
+          "level": "HSK1",
+          "cn": "学校的规定很宽松。",
+          "py": "Xuéxiào de guīdìng hěn kuānsōng.",
+          "en": "The school regulations are very lenient."
+        },
+        {
+          "level": "HSK1",
+          "cn": "我们要给孩子一个宽松的环境。",
+          "py": "Wǒmen yào gěi háizi yí ge kuānsōng de huánjìng.",
+          "en": "We should give children a relaxed environment."
+        },
+        {
+          "level": "HSK2",
+          "cn": "公司给员工提供了宽松的工作氛围，鼓励大家自由创新。",
+          "py": "Gōngsī gěi yuángōng tígōng le kuānsōng de gōngzuò fēnwéi, gǔlì dàjiā zìyóu chuàngxīn.",
+          "en": "The company provides employees with a relaxed work atmosphere, encouraging innovation."
+        },
+        {
+          "level": "HSK2",
+          "cn": "管理既不能过于严格，也不能过于宽松，要掌握好分寸。",
+          "py": "Guǎnlǐ jì bù néng guòyú yángé, yě bù néng guòyú kuānsōng, yào zhǎngwò hǎo fēncun.",
+          "en": "Management should neither be overly strict nor overly loose; proper balance must be maintained."
+        }
+      ],
+      "chars": [
+        "宽",
+        "松"
+      ]
+    },
+    {
+      "id": 372,
+      "level": "GCP8 L8",
+      "chinese": "手足无措",
+      "pinyin": "shǒuzúwúcuò",
+      "english": "at a loss of what to do; bewildered; helpless",
+      "khmer": "គាំង / មិនដឹងធ្វើម៉េច",
+      "breakdown": "手(hand)+足(foot)+无(without)+措(action)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "听到这个意外的消息，他手足无措。",
+          "py": "Tīngdào zhè ge yìwài de xiāoxi, tā shǒuzúwúcuò.",
+          "en": "Hearing this unexpected news, he was at a total loss of what to do."
+        },
+        {
+          "level": "HSK1",
+          "cn": "孩子做错了事，紧张得手足无措。",
+          "py": "Háizi zuòcuò le shì, jǐnzhāng de shǒuzúwúcuò.",
+          "en": "The child made a mistake and was so nervous he didn't know what to do."
+        },
+        {
+          "level": "HSK1",
+          "cn": "别慌，手足无措解决不了问题。",
+          "py": "Bié huāng, shǒuzúwúcuò jiějué bù liǎo wèntí.",
+          "en": "Don't panic; being helpless won't solve problems."
+        },
+        {
+          "level": "HSK2",
+          "cn": "面对突如其来的变故，大家都显得有些手足无措。",
+          "py": "Miànduì tūrúqílái de biàngù, dàjiā dōu xiǎnde yǒuxiē shǒuzúwúcuò.",
+          "en": "Facing the sudden turn of events, everyone appeared somewhat bewildered."
+        },
+        {
+          "level": "HSK2",
+          "cn": "遇到紧急情况时，保持沉着冷静才不至于手足无措。",
+          "py": "Yùdào jǐnjí qíngkuàng shí, bǎochí chénzhuó lěngjìng cái bú zhìyú shǒuzúwúcuò.",
+          "en": "When facing emergencies, staying composed ensures one will not be at a total loss."
+        }
+      ],
+      "chars": [
+        "手",
+        "足",
+        "无",
+        "措"
+      ]
+    },
+    {
+      "id": 373,
+      "level": "GCP8 L8",
+      "chinese": "七手八脚",
+      "pinyin": "qīshǒubājiǎo",
+      "english": "many hands bustling together; hurriedly with many people",
+      "khmer": "ជ្រួលច្របល់ជួយគ្នា / ដៃជើងរវល់",
+      "breakdown": "七(seven)+手(hand)+八(eight)+脚(foot)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "大家七手八脚地把桌子抬了进去。",
+          "py": "Dàjiā qīshǒubājiǎo de bǎ zhuōzi tái le jìnqù.",
+          "en": "Everyone bustled together with many hands and carried the table inside."
+        },
+        {
+          "level": "HSK1",
+          "cn": "大家七手八脚，很快就把房间打扫干净了。",
+          "py": "Dàjiā qīshǒubājiǎo, hěn kuài jiù bǎ fángjiān dǎsǎo gānjìng le.",
+          "en": "With everyone pitching in, the room was quickly cleaned up."
+        },
+        {
+          "level": "HSK1",
+          "cn": "东西掉在地上，大家七手八脚地帮忙捡。",
+          "py": "Dōngxi diào zài dìshang, dàjiā qīshǒubājiǎo de bāngmáng jiǎn.",
+          "en": "Things dropped on the floor, and everyone bustled to help pick them up."
+        },
+        {
+          "level": "HSK2",
+          "cn": "下雨了，全家人七手八脚地把院子里的衣服收了回来。",
+          "py": "Xiàyǔ le, quánjiā rén qīshǒubājiǎo de bǎ yuànzi lǐ de yīfu shōu le huílái.",
+          "en": "It started raining, and the whole family hurried with many hands to gather the clothes from the yard."
+        },
+        {
+          "level": "HSK2",
+          "cn": "大家七手八脚地把行李搬上车，准备出发去旅行。",
+          "py": "Dàjiā qīshǒubājiǎo de bǎ xíngli bān shàng chē, zhǔnbèi chūfā qù lǚxíng.",
+          "en": "Everyone pitched in hurriedly loading luggage into the car, getting ready to set off for travel."
+        }
+      ],
+      "chars": [
+        "七",
+        "手",
+        "八",
+        "脚"
+      ]
+    },
+    {
+      "id": 374,
+      "level": "GCP8 L8",
+      "chinese": "慌慌张张",
+      "pinyin": "huānghuangzhāngzhang",
+      "english": "flurried; in a flurry; panic-stricken",
+      "khmer": "ស្លន់ស្លោ / ភ័យញាប់ញ័រ",
+      "breakdown": "慌慌(panicked)+张张(flustered)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "他慌慌张张地跑了进来。",
+          "py": "Tā huānghuangzhāngzhang de pǎo le jìnlái.",
+          "en": "He ran inside flurried and panicked."
+        },
+        {
+          "level": "HSK1",
+          "cn": "别慌慌张张的，慢点说。",
+          "py": "Bié huānghuangzhāngzhang de, màn diǎn shuō.",
+          "en": "Don't be flustered; speak slowly."
+        },
+        {
+          "level": "HSK1",
+          "cn": "她慌慌张张地找钱包。",
+          "py": "Tā huānghuangzhāngzhang de zhǎo qiánbāo.",
+          "en": "She was searching for her wallet in a panic."
+        },
+        {
+          "level": "HSK2",
+          "cn": "快要迟到了，他慌慌张张地拿上书包就往学校跑。",
+          "py": "Kuài yào chídào le, tā huānghuangzhāngzhang de ná shàng shūbāo jiù wǎng xuéxiào pǎo.",
+          "en": "Almost late, he hurriedly grabbed his schoolbag in a flurry and ran to school."
+        },
+        {
+          "level": "HSK2",
+          "cn": "做事情如果总是慌慌张张的，就很容易丢三落四。",
+          "py": "Zuò shìqing rúguǒ zǒngshì huānghuangzhāngzhang de, jiù hěn róngyì diūsānlàsì.",
+          "en": "If you are always flustered when doing things, it's very easy to be scatterbrained and forget things."
+        }
+      ],
+      "chars": [
+        "慌",
+        "慌",
+        "张",
+        "张"
+      ]
+    },
+    {
+      "id": 375,
+      "level": "GCP8 L8",
+      "chinese": "惊慌失措",
+      "pinyin": "jīnghuāngshīcuò",
+      "english": "panic-stricken; terrified and helpless",
+      "khmer": "ភ័យស្លន់ស្លោ / ភ័យបាត់បង់ស្មារតី",
+      "breakdown": "惊(startled)+慌(panicked)+失(lose)+措(measure)",
+      "examples": [
+        {
+          "level": "HSK1",
+          "cn": "突然停电了，大家有些惊慌失措。",
+          "py": "Tūrán tíngdiàn le, dàjiā yǒuxiē jīnghuāngshīcuò.",
+          "en": "The power suddenly cut out, and everyone was somewhat panic-stricken."
+        },
+        {
+          "level": "HSK1",
+          "cn": "面对火灾，千万不要惊慌失措。",
+          "py": "Miànduì huǒzāi, qiānwàn bú yào jīnghuāngshīcuò.",
+          "en": "In the face of fire, by no means panic."
+        },
+        {
+          "level": "HSK1",
+          "cn": "他吓得惊慌失措，不知道该怎么办。",
+          "py": "Tā xià de jīnghuāngshīcuò, bù zhīdào gāi zěnme bàn.",
+          "en": "He was so frightened and panicked that he didn't know what to do."
+        },
+        {
+          "level": "HSK2",
+          "cn": "优秀的飞行员在遇到气流时，绝不会惊慌失措。",
+          "py": "Yōuxiù de fēixíngyuán zài yùdào qìliú shí, jué bú huì jīnghuāngshīcuò.",
+          "en": "An outstanding pilot will never panic when encountering air turbulence."
+        },
+        {
+          "level": "HSK2",
+          "cn": "在危急关头保持镇静，比起惊慌失措更能找到解决问题的办法。",
+          "py": "Zài wēijí guāntóu bǎochí zhènjìng, bǐqǐ jīnghuāngshīcuò gèng néng zhǎodào jiějué wèntí de bànfǎ.",
+          "en": "Staying calm in critical moments is far better than panicking to find solutions."
+        }
+      ],
+      "chars": [
+        "惊",
+        "慌",
+        "失",
+        "措"
+      ]
     }
   ],
   "charInfo": {
@@ -16064,6 +19233,376 @@ const DB = /*__DB_JSON_START__*/{
       "type": "whole",
       "parts": "-",
       "story": "-"
+    },
+    "位": {
+      "type": "compound",
+      "parts": "亻(person) + 立(to stand)",
+      "story": "A person (亻) standing (立) in their assigned place — position, seat, status."
+    },
+    "准": {
+      "type": "phono",
+      "parts": "冫(water level) + 隹(sound clue, zhuī)",
+      "story": "冫 gives the sense of a water level to measure flatness; 隹 gives an approximate sound clue — standard, accurate."
+    },
+    "列": {
+      "type": "compound",
+      "parts": "歹(broken bones/remains) + 刂(knife)",
+      "story": "Using a knife (刂) to divide and arrange things into an orderly line or row — to line up, to arrange, a list."
+    },
+    "前": {
+      "type": "whole",
+      "parts": "-",
+      "story": "-"
+    },
+    "勤": {
+      "type": "phono",
+      "parts": "堇(sound clue) + 力(strength, effort)",
+      "story": "力 shows physical effort and diligence; 堇 gives an approximate sound clue — diligent, hardworking."
+    },
+    "历": {
+      "type": "whole",
+      "parts": "-",
+      "story": "-"
+    },
+    "史": {
+      "type": "pictograph",
+      "parts": "a hand holding a brush or record book",
+      "story": "An ancient drawing of an official's hand holding a writing tablet to record events — history, scribe."
+    },
+    "奋": {
+      "type": "whole",
+      "parts": "-",
+      "story": "-"
+    },
+    "学": {
+      "type": "compound",
+      "parts": "⺍(sparks/knowledge) + 冖(roof) + 子(child)",
+      "story": "A child (子) under a school roof (冖) acquiring knowledge — to study, learn."
+    },
+    "将": {
+      "type": "whole",
+      "parts": "-",
+      "story": "-"
+    },
+    "录": {
+      "type": "whole",
+      "parts": "-",
+      "story": "-"
+    },
+    "悲": {
+      "type": "phono",
+      "parts": "非(sound clue, fēi) + 心(heart, feelings)",
+      "story": "心 shows deep emotion or sorrow; 非 gives the sound clue (fēi -> bēi) — sad, sorrowful, grief."
+    },
+    "惰": {
+      "type": "phono",
+      "parts": "忄(heart/mind) + 隋(sound clue)",
+      "story": "忄 shows a lazy or sluggish state of mind; 隋 gives the sound clue — lazy, negligent."
+    },
+    "懒": {
+      "type": "phono",
+      "parts": "忄(heart/mind, meaning) + 赖(sound clue, lài)",
+      "story": "忄 shows an attitude of mind; 赖 gives the sound clue — lazy, sluggish."
+    },
+    "文": {
+      "type": "pictograph",
+      "parts": "decorative crossing lines on a human chest",
+      "story": "An ancient drawing of woven lines or body patterns — lines, writing, literature, culture."
+    },
+    "朗": {
+      "type": "phono",
+      "parts": "良(sound clue, liáng) + 月(moon, light)",
+      "story": "月 gives the meaning of bright moonlight; 良 provides the sound clue — bright, clear, open."
+    },
+    "标": {
+      "type": "whole",
+      "parts": "-",
+      "story": "-"
+    },
+    "格": {
+      "type": "phono",
+      "parts": "木(wood, meaning) + 各(sound clue, gè)",
+      "story": "木 shows a wooden lattice, frame, or division; 各 gives the sound clue (gè -> gé) — pattern, grid, standard, character."
+    },
+    "正": {
+      "type": "compound",
+      "parts": "一(target line) + 止(foot marching)",
+      "story": "A foot (止) stepping straight toward a boundary line (一) without veering off — straight, upright, correct."
+    },
+    "目": {
+      "type": "pictograph",
+      "parts": "drawing of an eye",
+      "story": "An ancient drawing of an eye, turned vertically — eye, vision, item, list."
+    },
+    "看": {
+      "type": "compound",
+      "parts": "手(hand) + 目(eye)",
+      "story": "A hand placed above the eye (目) to shade it while gazing into the distance — to look, see, watch."
+    },
+    "确": {
+      "type": "whole",
+      "parts": "-",
+      "story": "-"
+    },
+    "科": {
+      "type": "compound",
+      "parts": "禾(grain) + 斗(measuring ladle)",
+      "story": "Measuring grain (禾) with a ladle (斗) into sorted categories — classification, subject, branch of study."
+    },
+    "突": {
+      "type": "compound",
+      "parts": "穴(cave, hole) + 犬(dog)",
+      "story": "A dog (犬) suddenly bursting out of a cave hole (穴) — sudden, abrupt, prominent, to burst forth."
+    },
+    "笨": {
+      "type": "phono",
+      "parts": "竹(bamboo, meaning) + 本(sound clue, běn)",
+      "story": "竹 shows this originally named the dense inner part of bamboo; 本 gives the sound clue (běn -> bèn) — clumsy, dull, stupid."
+    },
+    "精": {
+      "type": "phono",
+      "parts": "米(rice, meaning) + 青(sound clue, qīng)",
+      "story": "米 shows pure, finely polished rice; 青 gives the sound clue (qīng -> jīng) — refined, essence, astute, smart."
+    },
+    "纪": {
+      "type": "phono",
+      "parts": "纟(silk thread, meaning) + 己(sound clue, jǐ)",
+      "story": "纟 shows sorting and organizing threads; 己 gives the sound clue (jǐ -> jì) — order, era, to record."
+    },
+    "绩": {
+      "type": "phono",
+      "parts": "纟(silk thread, meaning) + 责(sound clue)",
+      "story": "纟 shows spinning thread through persistent labor; 责 gives an approximate sound clue — spin, accomplishment, grade, result."
+    },
+    "考": {
+      "type": "compound",
+      "parts": "耂(elder) + 丂(curved cane/breath)",
+      "story": "An elder (耂) inspecting or inquiring deeply — to examine, test, verify."
+    },
+    "职": {
+      "type": "phono",
+      "parts": "耳(ear, meaning) + 只(sound clue, zhǐ)",
+      "story": "耳 shows listening to official duties; 只 gives the sound clue (zhǐ -> zhí) — post, occupation, duty."
+    },
+    "观": {
+      "type": "whole",
+      "parts": "-",
+      "story": "-"
+    },
+    "解": {
+      "type": "compound",
+      "parts": "角(horn) + 刀(knife) + 牛(ox)",
+      "story": "Using a knife (刀) to separate the horn (角) and parts of an ox (牛) — to untie, dissect, explain, understand."
+    },
+    "试": {
+      "type": "phono",
+      "parts": "讠(speech, meaning) + 式(sound clue, shì, exact match)",
+      "story": "讠 shows speech or verbal questioning; 式 gives the exact sound shì — to try, test, examination."
+    },
+    "误": {
+      "type": "phono",
+      "parts": "讠(speech, meaning) + 吴(sound clue, wú)",
+      "story": "讠 shows words or spoken communication; 吴 gives the sound clue (wú -> wù) — error, mistake, wrong."
+    },
+    "途": {
+      "type": "phono",
+      "parts": "辶(walking/road, meaning) + 余(sound clue, yú)",
+      "story": "辶 shows a road or journey; 余 gives an approximate sound clue — way, road, pathway."
+    },
+    "金": {
+      "type": "pictograph",
+      "parts": "gold nuggets inside the earth",
+      "story": "An ancient drawing of precious metal nuggets buried in the ground — gold, metal, money."
+    },
+    "错": {
+      "type": "phono",
+      "parts": "钅(metal, meaning) + 昔(sound clue, xī)",
+      "story": "钅 originally referred to metal inlaying that crosses back and forth; 昔 gives a sound clue — crisscrossed, mistake, wrong."
+    },
+    "面": {
+      "type": "pictograph",
+      "parts": "drawing of a human face with an eye",
+      "story": "An ancient drawing framing a human face with an eye inside — face, side, surface, aspect."
+    },
+    "七": {
+      "type": "pictograph",
+      "parts": "one line cutting across another",
+      "story": "An ancient drawing of one line cutting across another — the number seven."
+    },
+    "严": {
+      "type": "whole",
+      "parts": "-",
+      "story": "-"
+    },
+    "乱": {
+      "type": "whole",
+      "parts": "-",
+      "story": "-"
+    },
+    "仪": {
+      "type": "phono",
+      "parts": "亻(person, meaning) + 义(sound clue, yì)",
+      "story": "亻 shows a person's dignified bearing or conduct; 义 gives the sound clue — etiquette, ceremony, appearance."
+    },
+    "传": {
+      "type": "phono",
+      "parts": "亻(person, meaning) + 专(sound clue)",
+      "story": "亻 shows people relaying something; 专 gives the sound clue — to pass on, convey, transmit."
+    },
+    "便": {
+      "type": "compound",
+      "parts": "亻(person) + 更(to change, renew)",
+      "story": "A person (亻) adapting or changing (更) easily — convenient, casual, informal."
+    },
+    "俗": {
+      "type": "phono",
+      "parts": "亻(person, meaning) + 谷(sound clue, gǔ)",
+      "story": "亻 shows people's habits; 谷 gives an approximate sound clue — custom, popular, vulgar, worldly."
+    },
+    "八": {
+      "type": "pictograph",
+      "parts": "two curved lines parting away from each other",
+      "story": "An ancient drawing showing two curved lines separating — to divide, the number eight."
+    },
+    "具": {
+      "type": "compound",
+      "parts": "a vessel + 廾(two hands holding it up)",
+      "story": "Two hands presenting a utensil or vessel — tool, utensil, equipment, to possess."
+    },
+    "味": {
+      "type": "phono",
+      "parts": "口(mouth, meaning) + 未(sound clue, wèi, exact match)",
+      "story": "口 shows tasting with the mouth; 未 gives the exact sound wèi — taste, flavor, smell."
+    },
+    "困": {
+      "type": "compound",
+      "parts": "囗(enclosure) + 木(tree)",
+      "story": "A tree (木) trapped inside an enclosure (囗), unable to expand — trapped, hard-pressed, difficulty."
+    },
+    "守": {
+      "type": "compound",
+      "parts": "宀(roof, home) + 寸(hand, rule)",
+      "story": "A hand (寸) keeping watch inside a house (宀) — to guard, defend, observe rules."
+    },
+    "家": {
+      "type": "compound",
+      "parts": "宀(roof, shelter) + 豕(pig)",
+      "story": "A pig (豕) kept under a roof (宀) — a settled household, family, home."
+    },
+    "宽": {
+      "type": "whole",
+      "parts": "-",
+      "story": "-"
+    },
+    "巾": {
+      "type": "pictograph",
+      "parts": "a piece of cloth hanging down",
+      "story": "An ancient drawing of a piece of cloth or towel hanging down — cloth, towel, napkin."
+    },
+    "序": {
+      "type": "phono",
+      "parts": "广(hall, shelter) + 予(sound clue, yú)",
+      "story": "广 gives the sense of a school or public hall; 予 gives an approximate sound clue — order, sequence, preface."
+    },
+    "彬": {
+      "type": "compound",
+      "parts": "林(trees, balance) + 彡(decorative patterns)",
+      "story": "Rich substance (林) combined with elegant external patterns (彡) — refined, courteous, well-mannered."
+    },
+    "惊": {
+      "type": "phono",
+      "parts": "忄(heart/mind, meaning) + 京(sound clue, jīng, exact match)",
+      "story": "忄 shows a sudden state of the heart; 京 gives the exact sound jīng — startled, frightened, surprised."
+    },
+    "慌": {
+      "type": "phono",
+      "parts": "忄(heart/mind, meaning) + 荒(sound clue, huāng, exact match)",
+      "story": "忄 shows an agitated state of mind; 荒 gives the exact sound huāng — flustered, panicked, hurried."
+    },
+    "按": {
+      "type": "phono",
+      "parts": "扌(hand, meaning) + 安(sound clue, ān)",
+      "story": "扌 shows pressing with the hand; 安 gives the sound clue (ān -> àn) — press down, according to."
+    },
+    "措": {
+      "type": "phono",
+      "parts": "扌(hand, meaning) + 昔(sound clue, xī)",
+      "story": "扌 shows handling or arranging with hands; 昔 gives the sound clue — to arrange, take measures, manage."
+    },
+    "易": {
+      "type": "pictograph",
+      "parts": "a chameleon or sun above rays/stream",
+      "story": "An ancient drawing of a lizard changing color, or liquid poured easily — change, easy."
+    },
+    "桌": {
+      "type": "phono",
+      "parts": "卓(tall, high, sound clue) + 木(wood, meaning)",
+      "story": "木 shows a wooden piece of furniture; 卓 gives the sound clue (zhuó -> zhuō) and means tall — table, desk."
+    },
+    "由": {
+      "type": "pictograph",
+      "parts": "drawing of a vessel with something emerging from top",
+      "story": "An ancient drawing of a sprout or liquid emerging from a vessel — source, origin, by, from."
+    },
+    "盘": {
+      "type": "compound",
+      "parts": "舟(shallow container) + 皿(plate, dish)",
+      "story": "皿 shows a dining dish or bowl; 舟 gives the shallow basin shape — plate, tray, dish."
+    },
+    "矩": {
+      "type": "compound",
+      "parts": "矢(arrow, straight line) + 巨(carpenter's square)",
+      "story": "A carpenter's square (巨) and a straight measuring arrow (矢) — carpenter's square, rule, standard."
+    },
+    "示": {
+      "type": "pictograph",
+      "parts": "an ancient altar table showing signs",
+      "story": "An ancient drawing of an altar table showing heavenly signs — to show, reveal, manifest."
+    },
+    "秩": {
+      "type": "phono",
+      "parts": "禾(grain, meaning) + 失(sound clue, shī)",
+      "story": "禾 shows regular grain distributions; 失 gives an approximate sound clue — orderly arrangement, sequence, order."
+    },
+    "脚": {
+      "type": "phono",
+      "parts": "月(flesh/body, meaning) + 却(sound clue, què)",
+      "story": "月 shows a body part; 却 gives the sound clue (què -> jiǎo) — foot, leg, base."
+    },
+    "西": {
+      "type": "pictograph",
+      "parts": "a bird roosting in its nest at sunset",
+      "story": "An ancient drawing of a bird returning to its nest at sunset — the west."
+    },
+    "要": {
+      "type": "pictograph",
+      "parts": "a human figure emphasizing the waist",
+      "story": "Originally drew a person with hands on the waist — the central core, essential, to want, demand."
+    },
+    "规": {
+      "type": "compound",
+      "parts": "夫(person) + 见(observe, measure)",
+      "story": "An instrument for drawing circles and measuring standards — compass, rule, regulation."
+    },
+    "足": {
+      "type": "pictograph",
+      "parts": "drawing of a leg and foot",
+      "story": "An ancient drawing of a foot (止) attached to a leg — foot, sufficient, enough."
+    },
+    "达": {
+      "type": "compound",
+      "parts": "辶(walking) + 大(great, open)",
+      "story": "Walking freely along a wide open path without obstruction — to reach, attain, communicate."
+    },
+    "随": {
+      "type": "whole",
+      "parts": "-",
+      "story": "-"
+    },
+    "餐": {
+      "type": "compound",
+      "parts": "歺(cutting food) + 又(hand) + 食(food)",
+      "story": "Hands handling and eating food (食) at a meal — meal, dining, food."
     }
   },
   "charToFamily": {
@@ -16072,6 +19611,21 @@ const DB = /*__DB_JSON_START__*/{
     ],
     "饭": [
       "The 反 (fǎn) sound family"
+    ],
+    "清": [
+      "The 青 (qīng) sound family"
+    ],
+    "请": [
+      "The 青 (qīng) sound family"
+    ],
+    "精": [
+      "The 青 (qīng) sound family"
+    ],
+    "京": [
+      "The 京 (jīng) sound family"
+    ],
+    "惊": [
+      "The 京 (jīng) sound family"
     ]
   },
   "patternGroups": [
@@ -16091,6 +19645,50 @@ const DB = /*__DB_JSON_START__*/{
           "fàn",
           "饣(food) + 反(sound)",
           "rice, meal"
+        ]
+      ]
+    },
+    {
+      "sound_component": "青 (qīng)",
+      "title": "The 青 (qīng) sound family",
+      "explain": "青 alone means 'blue-green' and sounds like qīng. In these characters it acts as the sound clue.",
+      "members": [
+        [
+          "清",
+          "qīng",
+          "氵(water) + 青(sound)",
+          "clear, pure"
+        ],
+        [
+          "请",
+          "qǐng",
+          "讠(speech) + 青(sound)",
+          "invite, engage"
+        ],
+        [
+          "精",
+          "jīng",
+          "米(rice) + 青(sound)",
+          "refined, smart"
+        ]
+      ]
+    },
+    {
+      "sound_component": "京",
+      "title": "The 京 (jīng) sound family",
+      "explain": "京 gives the sound jīng; in 惊, adding 忄 (heart) produces 惊 (jīng, startled / panic).",
+      "members": [
+        [
+          "京",
+          "jīng",
+          "亠 + 口 + 小",
+          "capital city"
+        ],
+        [
+          "惊",
+          "jīng",
+          "忄 + 京",
+          "startled / frightened"
         ]
       ]
     }
@@ -16136,7 +19734,12 @@ const DB = /*__DB_JSON_START__*/{
         "信",
         "俭",
         "值",
-        "件"
+        "件",
+        "位",
+        "仪",
+        "传",
+        "便",
+        "俗"
       ]
     },
     {
@@ -16199,7 +19802,9 @@ const DB = /*__DB_JSON_START__*/{
         "拒",
         "接",
         "排",
-        "挤"
+        "挤",
+        "按",
+        "措"
       ]
     },
     {
@@ -16218,7 +19823,9 @@ const DB = /*__DB_JSON_START__*/{
         "许",
         "译",
         "请",
-        "谢"
+        "谢",
+        "试",
+        "误"
       ]
     },
     {
@@ -16233,7 +19840,11 @@ const DB = /*__DB_JSON_START__*/{
         "档",
         "机",
         "构",
-        "横"
+        "横",
+        "标",
+        "格",
+        "困",
+        "桌"
       ]
     },
     {
@@ -16264,7 +19875,9 @@ const DB = /*__DB_JSON_START__*/{
         "通",
         "造",
         "迎",
-        "追"
+        "追",
+        "途",
+        "达"
       ]
     },
     {
@@ -16280,7 +19893,8 @@ const DB = /*__DB_JSON_START__*/{
         "制",
         "券",
         "切",
-        "初"
+        "初",
+        "列"
       ]
     },
     {
@@ -16322,7 +19936,8 @@ const DB = /*__DB_JSON_START__*/{
         "吃",
         "咳",
         "嗽",
-        "响"
+        "响",
+        "味"
       ]
     },
     {
@@ -16346,7 +19961,9 @@ const DB = /*__DB_JSON_START__*/{
         "室",
         "定",
         "完",
-        "害"
+        "害",
+        "守",
+        "家"
       ]
     },
     {
@@ -16358,7 +19975,9 @@ const DB = /*__DB_JSON_START__*/{
         "经",
         "绝",
         "级",
-        "组"
+        "组",
+        "纪",
+        "绩"
       ]
     },
     {
@@ -16373,7 +19992,8 @@ const DB = /*__DB_JSON_START__*/{
         "脑",
         "胁",
         "脸",
-        "胖"
+        "胖",
+        "脚"
       ]
     },
     {
@@ -16397,7 +20017,12 @@ const DB = /*__DB_JSON_START__*/{
         "感",
         "愿",
         "忙",
-        "心"
+        "心",
+        "悲",
+        "惰",
+        "懒",
+        "惊",
+        "慌"
       ]
     },
     {
@@ -16448,7 +20073,17 @@ const DB = /*__DB_JSON_START__*/{
       "meaning": "bamboo — pipes, flutes, and the split bamboo strips once used to write and keep records",
       "members": [
         "等",
-        "管"
+        "管",
+        "笨"
+      ]
+    },
+    {
+      "radical": "禾 (grain)",
+      "meaning": "grain, crops, agriculture, order",
+      "members": [
+        "科",
+        "稀",
+        "秩"
       ]
     }
   ],
